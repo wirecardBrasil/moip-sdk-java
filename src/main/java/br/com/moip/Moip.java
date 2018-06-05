@@ -24,7 +24,8 @@ public class Moip {
      * Use this method will change the connect timeout default value.
      * It will be used to request the Moip APIs.
      *
-     * @param connectTimeout integer timeout in milliseconds
+     * @param   connectTimeout
+     *          {@code int} timeout in milliseconds
      */
     public static void setConnectTimeout(final int connectTimeout) { CONNECT_TIMEOUT = connectTimeout; }
 
@@ -32,7 +33,8 @@ public class Moip {
      * Use this method will change the read timeout default value.
      * It will be used to request the Moip APIs.
      *
-     * @param readTimeout integer timeout in millisecond
+     * @param   readTimeout
+     *          {@code int} timeout in millisecond
      */
     public static void setReadTimeout(final int readTimeout) { READ_TIMEOUT = readTimeout; }
 }

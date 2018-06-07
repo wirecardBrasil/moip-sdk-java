@@ -10,16 +10,16 @@ public class ValidationException extends MoipAPIException {
 
     /**
      * This constructor is used to set the code, status and errors
-     * from request response, when it trows a ValidationException.
+     * from api response, when it trows a ValidationException.
      *
      * @param   responseCode
-     *          {@code int} request response code
+     *          {@code int} api response code
      *
      * @param   responseStatus
-     *          {@code String} request response status
+     *          {@code String} api response status
      *
      * @param   errors
-     *          {@code Errors} request errors
+     *          {@code Errors} api errors
      */
     public ValidationException(final int responseCode, final String responseStatus, final Errors errors) {
         this.responseCode = responseCode;

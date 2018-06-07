@@ -9,7 +9,7 @@ public class ErrorBuilder extends Error {
      * @param   code
      *          {@code String} Moip error code
      *
-     * @return  {@code ErrorBuilder}
+     * @return  {@code this} (ErrorBuilder)
      */
     public ErrorBuilder code(final String code) {
         this.setCode(code);
@@ -24,7 +24,7 @@ public class ErrorBuilder extends Error {
      * @param   path
      *          {@code String} Moip error path
      *
-     * @return {@code ErrorBuilder}
+     * @return {@code this} (ErrorBuilder)
      */
     public ErrorBuilder path(final String path) {
         this.setPath(path);
@@ -40,7 +40,7 @@ public class ErrorBuilder extends Error {
      * @param   description
      *          {@code String} Moip error description
      *
-     * @return {@code ErrorBuilder}
+     * @return {@code this} (ErrorBuilder)
      */
     public ErrorBuilder description(final String description) {
         this.setDescription(description);
@@ -52,7 +52,7 @@ public class ErrorBuilder extends Error {
      * This method is used to parse the object to Error type and
      * complete the build.
      *
-     * @return {@code Error}
+     * @return {@code this} (Error)
      */
     public Error build() {
         return this;

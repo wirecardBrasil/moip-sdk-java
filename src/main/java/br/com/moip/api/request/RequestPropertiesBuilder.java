@@ -123,4 +123,12 @@ public class RequestPropertiesBuilder extends RequestProperties {
 
         return acceptValue;
     }
+
+    /**
+     * This method is used to parse the object to RequestProperties type and
+     * complete the build.
+     *
+     * @return {@code this} (RequestProperties)
+     */
+    public RequestProperties build() { return this; }
 }

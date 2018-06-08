@@ -1,6 +1,10 @@
 package br.com.moip;
 
+import br.com.moip.models.Setup;
+
 public class Moip {
+
+    private Setup setup;
 
     private static final String SANDBOX_URL = "https://sandbox.moip.com.br/v2";
 
@@ -10,31 +14,12 @@ public class Moip {
 
     private static final String CONNECT_PRODUCTION_URL = "https://connect.moip.com.br";
 
-    // Default connect timeout (in milliseconds) with default value.
-    private static int CONNECT_TIMEOUT = 60 * 1000;
-
-    // Read timeout (in milliseconds) with default value.
-    private static int READ_TIMEOUT = 80 * 1000;
-
-    public static int getConnectTimeout() { return CONNECT_TIMEOUT; }
-
-    public static int getReadTimeout() { return READ_TIMEOUT; }
-
     /**
-     * Use this method will change the connect timeout default value.
-     * It will be used to api the Moip APIs.
+     * This constructor receives a Setup object to use its attributes
+     * to configure and authenticate the Moip connection.
      *
-     * @param   connectTimeout
-     *          {@code int} timeout in milliseconds
+     * @param   setup
+     *          {@code Setup} object to configure the connection.
      */
-    public static void setConnectTimeout(final int connectTimeout) { CONNECT_TIMEOUT = connectTimeout; }
-
-    /**
-     * Use this method will change the read timeout default value.
-     * It will be used to api the Moip APIs.
-     *
-     * @param   readTimeout
-     *          {@code int} timeout in millisecond
-     */
-    public static void setReadTimeout(final int readTimeout) { READ_TIMEOUT = readTimeout; }
+    public Moip(Setup setup) { this.setup = setup; }
 }

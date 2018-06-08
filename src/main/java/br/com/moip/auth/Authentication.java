@@ -2,7 +2,7 @@ package br.com.moip.auth;
 
 import java.net.HttpURLConnection;
 
-interface Authentication {
+public interface Authentication {
 
     void authenticate(HttpURLConnection connection);
 }

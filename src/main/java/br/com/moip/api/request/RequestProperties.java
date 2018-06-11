@@ -23,4 +23,15 @@ class RequestProperties {
 
     public String getAccept() { return accept; }
 
+    /**
+     *
+     * @return
+     */
+    public boolean hasAccept() {
+
+        if (this.accept == null) { return false; }
+
+        return true;
+    }
+
 }

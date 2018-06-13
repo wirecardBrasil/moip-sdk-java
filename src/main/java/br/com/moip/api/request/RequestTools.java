@@ -18,16 +18,22 @@ public class RequestTools {
     private final Gson gson = GsonFactory.gson();
 
     /**
+     * Method to get a Gson instance.
      *
-     * @return
+     * @return  {@code Gson}
      */
     Gson getGsonInstance() { return gson; }
 
     /**
+     * This method is used to read a {@code InputStream} and build a body object with this stream.
      *
-     * @param inputStream
-     * @return
-     * @throws IOException
+     * @param   inputStream
+     *          {@code InputStream} the stream that will charge the body object.
+     *
+     * @return  {@code StringBuilder}
+     *
+     * @throws  IOException
+     *          This method throws a {@code IOException} if the inputted stream isn't correctly.
      */
     StringBuilder readBody(final InputStream inputStream) throws IOException {
         StringBuilder body = new StringBuilder();
@@ -43,10 +49,15 @@ public class RequestTools {
     }
 
     /**
+     * This method is used to get a serialized object into its equivalent JSON representation.
      *
-     * @param object
-     * @param contentType
-     * @return
+     * @param   object
+     *          {@code Object} the body object.
+     *
+     * @param   contentType
+     *          {@ContentType} the content type header.
+     *
+     * @return  {@code String}
      */
     String getBody(Object object, ContentType contentType) {
         if (contentType == ContentType.APPLICATION_FORM_URLENCODED) {

@@ -34,9 +34,16 @@ public class RequestMaker extends Moip {
 
 
     /**
+     * This constructor sets the Moip environment and the authentication received from parameter.
      *
-     * @param moipEnvironment
-     * @param authentication
+     * @param   moipEnvironment
+     *          {#code String} the Moip environment for requests (Sandbox or Production).
+     *
+     * @param   authentication
+     *          {@code Authentication} the authentication of the respective environment
+     *          (BasicAuth or OAuth).
+     *
+     * @see br.com.moip.auth.Authentication
      */
     public RequestMaker(final String moipEnvironment, final Authentication authentication) {
         this.moipEnvironment = moipEnvironment;
@@ -44,10 +51,21 @@ public class RequestMaker extends Moip {
     }
 
     /**
+     * This method is used to build the request, it set the environment (Sandbox or Production)
+     * and the headers, create the {@code connection} object to establish connection with Moip
+     * APIs, authenticate the connection, load the request properties received from parameter,
+     * serialize the request object and send it to the API. Finally, this method receive the
+     * response JSON and deserialize it into the respective model object, sending the response
+     * code and response body to {@code responseBodyTreatment} method to treat the response.
      *
-     * @param requestProps
-     * @param <T>
-     * @return
+     * @param   requestProps
+     *          {@code RequestProperties} the object containing the properties of
+     *          request, its like request method, endpoint, object, type, content type
+     *          and if it accepts another JSON version.
+     *
+     * @param   <T> {@code generic type}
+     *
+     * @return  {@code generic type}
      */
     public <T> T doRequest(final RequestProperties requestProps) {
 
@@ -109,18 +127,32 @@ public class RequestMaker extends Moip {
     }
 
     /**
+     * This method is used to check the response code and apply the correct treatment to the
+     * response body. Basically, if the response code is between 200 and 299, this method returns
+     * a response body charged with the right input stream. If the response code is 401, this
+     * method throws a {@code UnauthorizedException}. If the code is between 400 and 499 (except 401),
+     * this method create and charge an {@code Error} object with a deserialize JSON returned from
+     * Moip API to build a {@code ValidationException} and throw it. And finally, if the response
+     * code is 500 or higher, this method throws a {@code UnexpectedException}.
      *
-     * @param responseBody
-     * @param responseCode
-     * @param conn
-     * @return
+     * @param   responseBody
+     *          {@code StringBuilder} the response body returned from API.
+     *
+     * @param   responseCode
+     *          {@code int} the response code returned from API.
+     *
+     * @param   connection
+     *          {@code HttpURLConnection} the object containing the connection
+     *          with Moip API.
+     *
+     * @return  {@code StringBuilder} response body.
      */
-    private StringBuilder responseBodyTreatment(StringBuilder responseBody, int responseCode, HttpURLConnection conn) {
+    private StringBuilder responseBodyTreatment(StringBuilder responseBody, int responseCode, HttpURLConnection connection) {
 
         try {
 
             if (responseCode >= 200 && responseCode < 299) {
-                responseBody = tools.readBody(conn.getInputStream());
+                responseBody = tools.readBody(connection.getInputStream());
             }
 
             if (responseCode == 401) {
@@ -128,7 +160,7 @@ public class RequestMaker extends Moip {
             }
 
             if (responseCode >= 400 && responseCode < 499) {
-                responseBody = tools.readBody(conn.getErrorStream());
+                responseBody = tools.readBody(connection.getErrorStream());
                 LOGGER.debug("API ERROR {}", responseBody.toString());
 
                 Errors errors = new Errors();
@@ -142,7 +174,7 @@ public class RequestMaker extends Moip {
                     LOGGER.debug("There was not possible cast the JSON to object");
                 }
 
-                throw new ValidationException(responseCode, conn.getResponseMessage(), errors);
+                throw new ValidationException(responseCode, connection.getResponseMessage(), errors);
             }
 
             if (responseCode >= 500) {
@@ -157,10 +189,13 @@ public class RequestMaker extends Moip {
     }
 
     /**
+     * This method is used to populate an {@code Map.Entry} with passed keys and values to
+     * charge the debug logger.
      *
-     * @param entries
+     * @param   entries
+     *          {@code Map.Entry<String, List<String>>}
      */
-    private void logHeaders(Set< Map.Entry<String, List<String>>> entries) {
+    private void logHeaders(Set<Map.Entry<String, List<String>>> entries) {
         for (Map.Entry<String, List<String>> header : entries) {
             if (header.getKey() != null) {
                 LOGGER.debug("{}: {}", header.getKey(), header.getValue());

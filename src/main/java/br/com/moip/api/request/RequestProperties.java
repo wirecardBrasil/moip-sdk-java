@@ -24,8 +24,9 @@ class RequestProperties {
     public String getAccept() { return accept; }
 
     /**
+     * This method is used to verify if the {@code Accept} header was settled into properties.
      *
-     * @return
+     * @return  {@code boolean}
      */
     public boolean hasAccept() {
 

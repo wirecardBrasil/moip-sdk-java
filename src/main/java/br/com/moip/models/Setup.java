@@ -25,7 +25,7 @@ public class Setup {
      *
      * @return  {@code this} (Setup)
      */
-    public Setup authentication(final Authentication authentication) {
+    public Setup setAuthentication(final Authentication authentication) {
         this.authentication = authentication;
 
         return this;

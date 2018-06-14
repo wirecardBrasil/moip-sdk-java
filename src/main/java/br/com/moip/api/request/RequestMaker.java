@@ -1,6 +1,7 @@
 package br.com.moip.api.request;
 
 import br.com.moip.Moip;
+import br.com.moip.api.response.Response;
 import br.com.moip.auth.Authentication;
 import br.com.moip.exception.MoipAPIException;
 import br.com.moip.exception.UnauthorizedException;
@@ -31,6 +32,7 @@ public class RequestMaker extends Moip {
     private final Authentication authentication;
     private static final Logger LOGGER = LoggerFactory.getLogger(RequestMaker.class);
     private RequestTools tools;
+    private Response response = new Response();
 
 
     /**
@@ -63,11 +65,10 @@ public class RequestMaker extends Moip {
      *          request, its like request method, endpoint, object, type, content type
      *          and if it accepts another JSON version.
      *
-     * @param   <T> {@code generic type}
      *
-     * @return  {@code generic type}
+     * @return  {@code Map<String, Object>}
      */
-    public <T> T doRequest(final RequestProperties requestProps) {
+    public Map doRequest(final RequestProperties requestProps) {
 
         try {
 
@@ -119,7 +120,8 @@ public class RequestMaker extends Moip {
             LOGGER.debug("{}", responseBody.toString());
             LOGGER.debug("<-- END HTTP ({}-byte body)", connection.getContentLength());
 
-            return tools.getGsonInstance().fromJson(responseBody.toString(), requestProps.<T>getType());
+            // Return the parsed response from JSON to Map.
+            return response.jsonToMap(responseBody.toString());
 
         } catch(IOException | KeyManagementException | NoSuchAlgorithmException e){
             throw new MoipAPIException("Error occurred connecting to Moip API: " + e.getMessage(), e);

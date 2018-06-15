@@ -19,7 +19,7 @@ public class Response extends HashMap<String, Object> {
      *
      * @return  {@code Map}
      */
-    public Map jsonToMap(String json) {
+    public Map<String, Object> jsonToMap(String json) {
         try {
             ObjectMapper mapper = new ObjectMapper();
 

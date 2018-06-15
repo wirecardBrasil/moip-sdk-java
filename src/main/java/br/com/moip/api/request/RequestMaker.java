@@ -32,30 +32,32 @@ public class RequestMaker extends Moip {
     private final Authentication authentication;
     private static final Logger LOGGER = LoggerFactory.getLogger(RequestMaker.class);
     private RequestTools tools;
-    private Response response = new Response();
+    private Response response;
 
 
     /**
      * This constructor sets the Moip environment and the authentication received from parameter.
      *
-     * @param   moipEnvironment
-     *          {#code String} the Moip environment for requests (Sandbox or Production).
-     *
-     * @param   authentication
-     *          {@code Authentication} the authentication of the respective environment
-     *          (BasicAuth or OAuth).
-     *
      * @see br.com.moip.auth.Authentication
      */
-    public RequestMaker(final String moipEnvironment, final Authentication authentication) {
-        this.moipEnvironment = moipEnvironment;
-        this.authentication = authentication;
+    public RequestMaker() {
+
+        switch (super.getSetup().getEnvironment()) {
+
+            case SANDBOX : this.moipEnvironment = SANDBOX_URL; break;
+            case PRODUCTION : this.moipEnvironment = PRODUCTION_URL; break;
+            case CONNECT_SANDBOX : this.moipEnvironment = CONNECT_SANDBOX_URL; break;
+            case CONNECT_PRODUCTION : this.moipEnvironment = CONNECT_PRODUCTION_URL; break;
+
+            default : this.moipEnvironment = "";
+        }
+        this.authentication = super.getSetup().getAuthentication();
     }
 
     /**
      * This method is used to build the request, it set the environment (Sandbox or Production)
      * and the headers, create the {@code connection} object to establish connection with Moip
-     * APIs, authenticate the connection, load the request properties received from parameter,
+     * APIResources, authenticate the connection, load the request properties received from parameter,
      * serialize the request object and send it to the API. Finally, this method receive the
      * response JSON and deserialize it into the respective model object, sending the response
      * code and response body to {@code responseBodyTreatment} method to treat the response.
@@ -68,7 +70,7 @@ public class RequestMaker extends Moip {
      *
      * @return  {@code Map<String, Object>}
      */
-    public Map doRequest(final RequestProperties requestProps) {
+    public Map<String, Object> doRequest(final RequestProperties requestProps) {
 
         try {
 
@@ -92,9 +94,11 @@ public class RequestMaker extends Moip {
             LOGGER.debug("---> {} {}", requestProps.method, connection.getURL().toString());
             logHeaders(connection.getRequestProperties().entrySet());
 
-            if (requestProps.object != null) {
+            // Verificar essa parte do código, pois o objeto serializado deve ser um Map, não mais um String
+
+            if (requestProps.body != null) {
                 connection.setDoOutput(true);
-                String body = tools.getBody(requestProps.object, requestProps.contentType);
+                String body = tools.getBody(requestProps.body, requestProps.contentType);
 
                 LOGGER.debug("{}", body);
 
@@ -105,6 +109,8 @@ public class RequestMaker extends Moip {
                 wr.flush();
                 wr.close();
             }
+
+            // ----------------------------------------------------------------------------------------------
 
             LOGGER.debug("---> END HTTP");
 

@@ -2,11 +2,13 @@ package br.com.moip.api.request;
 
 import org.apache.http.entity.ContentType;
 
+import java.util.Map;
+
 class RequestProperties {
 
     protected String method;
     protected String endpoint;
-    protected Object object;
+    protected Map<String, Object> body;
     protected Class type;
     protected ContentType contentType;
     protected String accept;
@@ -15,7 +17,7 @@ class RequestProperties {
 
     public String getEndpoint() { return endpoint; }
 
-    public Object getObject() { return object; }
+    public Object getObject() { return body; }
 
     public <T> Class<T> getType() { return type; }
 

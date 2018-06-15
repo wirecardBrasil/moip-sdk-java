@@ -2,6 +2,8 @@ package br.com.moip.api.request;
 
 import org.apache.http.entity.ContentType;
 
+import java.util.Map;
+
 public class RequestPropertiesBuilder extends RequestProperties {
 
     // Default constructor.
@@ -42,15 +44,15 @@ public class RequestPropertiesBuilder extends RequestProperties {
      * This method is used to set the request object into super class.
      * The object is the body of the request.
      *
-     * @param   object
+     * @param   body
      *          {@code Object} request object
      *
      * @see java.lang.Object
      *
      * @return  {@code this} (RequestPropertiesBuilder)
      */
-    public RequestPropertiesBuilder object(Object object) {
-        super.object = object;
+    public RequestPropertiesBuilder body(Map<String, Object> body) {
+        super.body = body;
 
         return this;
     }

@@ -4,7 +4,9 @@ import br.com.moip.auth.Authentication;
 
 public class Setup {
 
-    private static Authentication authentication;
+    private Authentication authentication;
+
+    private Environment environment;
 
     // Default connect timeout (in milliseconds) with default value.
     private static int CONNECT_TIMEOUT = 60 * 1000;
@@ -21,7 +23,7 @@ public class Setup {
      * @see br.com.moip.auth.OAuth
      *
      * @param   authentication
-     *          {@code Authentication} to connect with Moip APIs.
+     *          {@code Authentication} to connect with Moip APIResources.
      *
      * @return  {@code this} (Setup)
      */
@@ -32,8 +34,23 @@ public class Setup {
     }
 
     /**
+     * This method is used to set the Moip API environment where the requests will be sent.
+     * The only Moip environments that are possible request are {@code SANDBOX} or {@code PRODUCTION}.
+     *
+     * @param   environment
+     *          {@code String} the Moip API environment.
+     *
+     * @return  {@code Setup}
+     */
+    public Setup setEnvironment(final Environment environment) {
+        this.environment = environment;
+
+        return this;
+    }
+
+    /**
      * Use this method will change the connect timeout default value.
-     * It will be used to request the Moip APIs.
+     * It will be used to request the Moip APIResources.
      *
      * @param   connectTimeout
      *          {@code int} timeout in milliseconds.
@@ -48,7 +65,7 @@ public class Setup {
 
     /**
      * Use this method will change the read timeout default value.
-     * It will be used to request the Moip APIs.
+     * It will be used to request the Moip APIResources.
      *
      * @param   readTimeout
      *          {@code int} timeout in millisecond.
@@ -66,7 +83,14 @@ public class Setup {
      *
      * @return  {@code Authentication}
      */
-    public static Authentication getAuthentication() { return authentication; }
+    public Authentication getAuthentication() { return this.authentication; }
+
+    /**
+     * This method is used to get the value of {@code environment} attribute.
+     *
+     * @return  {@code String}
+     */
+    public Environment getEnvironment() { return this.environment; }
 
     /**
      * This method is used to get the value of {@code CONNECT_TIMEOUT} attribute.
@@ -81,4 +105,10 @@ public class Setup {
      * @return  {@code int}
      */
     public static int getReadTimeout() { return READ_TIMEOUT; }
+
+
+    /**
+     * These enums are used to difference all Moip API environments.
+     */
+    public enum Environment { SANDBOX, CONNECT_SANDBOX, PRODUCTION, CONNECT_PRODUCTION }
 }

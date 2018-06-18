@@ -34,7 +34,57 @@ public class Customer {
                 .type(Customer.class)
                 .contentType(CONTENT_TYPE);
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
+    }
+
+    /**
+     * This method is used to add a new credit card to a registered customer.
+     *
+     * @param   body
+     *          {@code Map<String, Object>} the request body.
+     *
+     * @param   customerId
+     *          {@code String} the Moip customer external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public Map<String, Object> addCreditCard(Map<String, Object> body, String customerId, Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("POST")
+                .endpoint(String.format("%s/%s/fundinginstruments", ENDPOINT, customerId))
+                .body(body)
+                .type(Customer.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return this.requestMaker.doRequest(props);
+    }
+
+    /**
+     * This method is used to delete a saved credit card of an customer.
+     *
+     * @param   creditCardId
+     *          {@code String} the Moip credit card external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public Map<String, Object> deleteCreditCard(String creditCardId, Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("DELETE")
+                .endpoint(String.format("/fundinginstruments/%s", creditCardId))
+                .type(Customer.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return this.requestMaker.doRequest(props);
     }
 
     /**
@@ -49,7 +99,7 @@ public class Customer {
      * @return  {@code Map<String, Object>}.
      */
     public Map<String, Object> get(String customerId, Setup setup) {
-        requestMaker = new RequestMaker(setup);
+        this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/%s", ENDPOINT, customerId))
@@ -57,6 +107,26 @@ public class Customer {
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
+    }
+
+    /**
+     * This method is used to get all registered customers.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public Map<String, Object> list(Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("GET")
+                .endpoint(ENDPOINT)
+                .type(Customer.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return this.requestMaker.doRequest(props);
     }
 }

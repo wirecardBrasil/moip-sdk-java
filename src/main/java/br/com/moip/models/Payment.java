@@ -15,11 +15,19 @@ public class Payment {
     private RequestMaker requestMaker;
 
     /**
+     * This method is used to create a payment. To make it, is necessary send the {@code body}
+     * filled with the payment data and the ID of the order that will be payed.
      *
-     * @param body
-     * @param orderId
-     * @param setup
-     * @return
+     * @param   body
+     *          {@code Map<String, Object>} the request body.
+     *
+     * @param   orderId
+     *          {@code String} the Moip order external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
      */
     public Map<String, Object> pay(Map<String, Object> body, String orderId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
@@ -35,10 +43,15 @@ public class Payment {
     }
 
     /**
+     * This method is used to get the data of a created payment by Moip payment external ID.
      *
-     * @param paymentId
-     * @param setup
-     * @return
+     * @param   paymentId
+     *          {@code String} the Moip payment external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
      */
     public Map<String, Object> get(String paymentId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);

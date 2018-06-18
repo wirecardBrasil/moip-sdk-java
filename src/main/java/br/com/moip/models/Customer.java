@@ -1,6 +1,7 @@
 package br.com.moip.models;
 
 import br.com.moip.api.request.RequestMaker;
+import br.com.moip.api.request.RequestProperties;
 import br.com.moip.api.request.RequestPropertiesBuilder;
 import org.apache.http.entity.ContentType;
 
@@ -26,12 +27,24 @@ public class Customer {
      */
     public Map<String, Object> create(Map<String, Object> body, Setup setup) {
         requestMaker = new RequestMaker(setup);
-        RequestPropertiesBuilder props = new RequestPropertiesBuilder()
+        RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
                 .endpoint(ENDPOINT)
                 .body(body)
                 .type(Customer.class)
                 .contentType(CONTENT_TYPE);
+
+        return requestMaker.doRequest(props);
+    }
+
+    public Map<String, Object> get(String moipId, Setup setup) {
+        requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("GET")
+                .endpoint(String.format("%s/%s", ENDPOINT, moipId))
+                .type(Customer.class)
+                .contentType(CONTENT_TYPE)
+                .build();
 
         return requestMaker.doRequest(props);
     }

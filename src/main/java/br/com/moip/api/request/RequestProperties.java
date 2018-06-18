@@ -4,7 +4,7 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-class RequestProperties {
+public class RequestProperties {
 
     protected String method;
     protected String endpoint;

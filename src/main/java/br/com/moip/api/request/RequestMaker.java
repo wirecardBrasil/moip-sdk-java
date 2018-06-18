@@ -39,6 +39,9 @@ public class RequestMaker extends Moip {
     /**
      * This constructor sets the Moip environment and the authentication received from parameter.
      *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
      * @see br.com.moip.auth.Authentication
      */
     public RequestMaker(Setup setup) {
@@ -53,7 +56,6 @@ public class RequestMaker extends Moip {
             default : this.moipEnvironment = "";
         }
         this.authentication = setup.getAuthentication();
-
         this.tools = new RequestTools();
         this.response = new Response();
     }

@@ -23,10 +23,10 @@ public class Customer {
      * @param   setup
      *          {@code Setup} the basic connection setup (authentication and timeouts).
      *
-     * @return  {@code Map}
+     * @return  {@code Map<String, Object}
      */
     public Map<String, Object> create(Map<String, Object> body, Setup setup) {
-        requestMaker = new RequestMaker(setup);
+        this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
                 .endpoint(ENDPOINT)
@@ -37,6 +37,17 @@ public class Customer {
         return requestMaker.doRequest(props);
     }
 
+    /**
+     * This method is used to get a created customer by Moip external ID.
+     *
+     * @param   moipId
+     *          {@code String} the Moip external ID. Ex: CUS-XXXXXXXXXXXX.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}.
+     */
     public Map<String, Object> get(String moipId, Setup setup) {
         requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()

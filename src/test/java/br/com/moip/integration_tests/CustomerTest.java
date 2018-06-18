@@ -57,7 +57,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void testCreate() {
+    public void test() {
         Map<String, Object> myCustomer = createCustomer();
 
         Map<String, Object> responseCreation = customer.create(myCustomer, setup);

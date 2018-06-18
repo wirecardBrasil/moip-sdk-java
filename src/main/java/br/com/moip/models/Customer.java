@@ -38,21 +38,21 @@ public class Customer {
     }
 
     /**
-     * This method is used to get a created customer by Moip external ID.
+     * This method is used to get a created customer by Moip customer external ID.
      *
-     * @param   moipId
-     *          {@code String} the Moip external ID. Ex: CUS-XXXXXXXXXXXX.
+     * @param   customerId
+     *          {@code String} the Moip customer external ID. Ex: CUS-XXXXXXXXXXXX.
      *
      * @param   setup
      *          {@code Setup} the setup object.
      *
      * @return  {@code Map<String, Object>}.
      */
-    public Map<String, Object> get(String moipId, Setup setup) {
+    public Map<String, Object> get(String customerId, Setup setup) {
         requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
-                .endpoint(String.format("%s/%s", ENDPOINT, moipId))
+                .endpoint(String.format("%s/%s", ENDPOINT, customerId))
                 .type(Customer.class)
                 .contentType(CONTENT_TYPE)
                 .build();

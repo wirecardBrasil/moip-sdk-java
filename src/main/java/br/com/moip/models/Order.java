@@ -31,4 +31,22 @@ public class Order {
 
         return requestMaker.doRequest(props);
     }
+
+    /**
+     *
+     * @param orderId
+     * @param setup
+     * @return
+     */
+    public Map<String, Object> get(String orderId, Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("GET")
+                .endpoint(String.format("%s/%s", ENDPOINT, orderId))
+                .type(Order.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return requestMaker.doRequest(props);
+    }
 }

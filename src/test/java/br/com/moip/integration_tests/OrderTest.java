@@ -53,7 +53,7 @@ public class OrderTest {
         customer.put("id", "CUS-XXOBPZ80QLYP");
 
         Map<String, Object> orderBody = new HashMap<>();
-        orderBody.put("ownId", "asmaofnaosfnoa");
+        orderBody.put("ownId", "asfasaggas");
         orderBody.put("amount", amount);
         orderBody.put("items", items);
         orderBody.put("customer", customer);
@@ -61,5 +61,11 @@ public class OrderTest {
         Map<String, Object> responseCreation = order.create(orderBody, setup);
 
         System.out.println(responseCreation);
+
+        String id = responseCreation.get("id").toString();
+
+        Map<String, Object> responseGet = order.get(id, setup);
+
+        System.out.println(responseGet);
     }
 }

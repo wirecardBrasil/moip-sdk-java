@@ -7,30 +7,27 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Order {
+public class Payment {
 
-    private static final String ENDPOINT = "/v2/orders";
+    private static final String ENDPOINT = "/v2/payments";
+    private static final String ENDPOINT_TO_PAY = "/v2/orders/%s/payments";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
     private RequestMaker requestMaker;
 
     /**
-     * This method is used to create a new order.
      *
-     * @param   body
-     *          {@code Map<String, Object>} the request body.
-     *
-     * @param   setup
-     *          {@code Setup} the setup object.
-     *
-     * @return  {@code Map<String, Object>}
+     * @param body
+     * @param orderId
+     * @param setup
+     * @return
      */
-    public Map<String, Object> create(Map<String, Object> body, Setup setup) {
+    public Map<String, Object> pay(Map<String, Object> body, String orderId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
-                .endpoint(ENDPOINT)
+                .endpoint(String.format(ENDPOINT_TO_PAY, orderId))
                 .body(body)
-                .type(Order.class)
+                .type(Payment.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -38,22 +35,17 @@ public class Order {
     }
 
     /**
-     * This method is used to get the data of a created order by Moip order external ID.
      *
-     * @param   orderId
-     *          {@code String} the Moip order external ID. Ex: ORD-XXXXXXXXXXXX
-     *
-     * @param   setup
-     *          {@code Setup} the setup object.
-     *
-     * @return  {@code Map<String, Object>}
+     * @param paymentId
+     * @param setup
+     * @return
      */
-    public Map<String, Object> get(String orderId, Setup setup) {
+    public Map<String, Object> get(String paymentId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
-                .endpoint(String.format("%s/%s", ENDPOINT, orderId))
-                .type(Order.class)
+                .endpoint(String.format("%s/%s", ENDPOINT, paymentId))
+                .type(Payment.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

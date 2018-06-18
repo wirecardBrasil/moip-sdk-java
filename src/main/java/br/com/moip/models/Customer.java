@@ -38,7 +38,7 @@ public class Customer {
     }
 
     /**
-     * This method is used to get a created customer by Moip customer external ID.
+     * This method is used to get the data of a created customer by Moip customer external ID.
      *
      * @param   customerId
      *          {@code String} the Moip customer external ID. Ex: CUS-XXXXXXXXXXXX.

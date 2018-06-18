@@ -10,7 +10,7 @@ public class Customer {
 
     private static final String ENDPOINT = "/v2/customers";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
-    private RequestMaker requestMaker = new RequestMaker();
+    private RequestMaker requestMaker;
 
     /**
      * This method is used to create an customer.
@@ -25,6 +25,7 @@ public class Customer {
      * @return  {@code Map}
      */
     public Map<String, Object> create(Map<String, Object> body, Setup setup) {
+        requestMaker = new RequestMaker(setup);
         RequestPropertiesBuilder props = new RequestPropertiesBuilder()
                 .method("POST")
                 .endpoint(ENDPOINT)

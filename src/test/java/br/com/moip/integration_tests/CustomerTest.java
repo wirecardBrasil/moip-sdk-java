@@ -45,7 +45,7 @@ public class CustomerTest {
         shippingAddress.put("country", "BRA");
         shippingAddress.put("zipCode", "01451001");
 
-        customerRequestBody.put("ownId", "Moip_test_customer_new_sdk_java");
+        customerRequestBody.put("ownId", "pafsfpksfpasfoaijsfoajsf123");
         customerRequestBody.put("fullname", "Test Moip da Silva");
         customerRequestBody.put("email", "test.moip@mail.com");
         customerRequestBody.put("birthDate", "1980-5-10");
@@ -59,9 +59,7 @@ public class CustomerTest {
     @Test
     public void testCreate() {
         Map<String, Object> myCustomer = createCustomer();
-
-        customer.create(myCustomer, setup);
-
-        System.out.println(customer);
+        
+        System.out.println(customer.create(myCustomer, setup));
     }
 }

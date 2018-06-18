@@ -11,9 +11,9 @@ public class Moip {
 
     private Setup setup;
 
-    public static final String SANDBOX_URL = "https://sandbox.moip.com.br/v2";
+    public static final String SANDBOX_URL = "https://sandbox.moip.com.br";
 
-    public static final String PRODUCTION_URL = "https://api.moip.com.br/v2";
+    public static final String PRODUCTION_URL = "https://api.moip.com.br";
 
     public static final String CONNECT_SANDBOX_URL = "https://connect-sandbox.moip.com.br";
 

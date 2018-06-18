@@ -7,6 +7,7 @@ import br.com.moip.exception.MoipAPIException;
 import br.com.moip.exception.UnauthorizedException;
 import br.com.moip.exception.UnexpectedException;
 import br.com.moip.exception.ValidationException;
+import br.com.moip.models.Setup;
 import br.com.moip.models.error.Errors;
 import br.com.moip.util.ssl.SSLSupport;
 
@@ -40,9 +41,9 @@ public class RequestMaker extends Moip {
      *
      * @see br.com.moip.auth.Authentication
      */
-    public RequestMaker() {
+    public RequestMaker(Setup setup) {
 
-        switch (super.getSetup().getEnvironment()) {
+        switch (setup.getEnvironment()) {
 
             case SANDBOX : this.moipEnvironment = SANDBOX_URL; break;
             case PRODUCTION : this.moipEnvironment = PRODUCTION_URL; break;
@@ -51,7 +52,10 @@ public class RequestMaker extends Moip {
 
             default : this.moipEnvironment = "";
         }
-        this.authentication = super.getSetup().getAuthentication();
+        this.authentication = setup.getAuthentication();
+
+        this.tools = new RequestTools();
+        this.response = new Response();
     }
 
     /**

@@ -20,12 +20,15 @@ public class Response extends HashMap<String, Object> {
      * @return  {@code Map}
      */
     public Map<String, Object> jsonToMap(String json) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
+        if (!json.equals("")) {
+            try {
+                ObjectMapper mapper = new ObjectMapper();
 
-            this.body = mapper.readValue(json, new TypeReference<Map<String, Object>>(){});
-        } catch (IOException e) {
-            e.printStackTrace();
+                this.body = mapper.readValue(json, new TypeReference<Map<String, Object>>() {
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return this.body;
     }

@@ -4,6 +4,7 @@ import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
 import br.com.moip.models.Customer;
 import br.com.moip.models.Setup;
+import br.com.moip.util.ObjectToMap;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public class CustomerTest {
         shippingAddress.put("country", "BRA");
         shippingAddress.put("zipCode", "01451001");
 
-        customerRequestBody.put("ownId", "afosjnfajneajnskmdanje12124");
+        customerRequestBody.put("ownId", "ffasfafsfg4qq1je24");
         customerRequestBody.put("fullname", "Test Moip da Silva");
         customerRequestBody.put("email", "test.moip@mail.com");
         customerRequestBody.put("birthDate", "1980-5-10");
@@ -59,14 +60,14 @@ public class CustomerTest {
     @Test
     public void testCreate() {
 
-        // Create customer test
+        // Create customer test //
         Map<String, Object> myCustomer = createCustomer();
 
         Map<String, Object> responseCreation = customer.create(myCustomer, setup);
 
         System.out.println("create: " + responseCreation);
 
-        // Add credit card test
+        // Add credit card test //
         Map<String, Object> taxDocumentHolder = new HashMap<>();
         taxDocumentHolder.put("type", "CPF");
         taxDocumentHolder.put("number", "22288866644");
@@ -99,21 +100,28 @@ public class CustomerTest {
 
         System.out.println("add credit card: " + addCreditCardResponse);
 
-        // Delete credit card
-        String creditCardId = addCreditCardResponse.get("id").toString();
+        // Delete credit card //
+        Object creditCardId = addCreditCardResponse.get("creditCard");
 
-        Map<String, Object> deleteCreditCardResponse = customer.deleteCreditCard(creditCardId, setup);
+        // ->Cast the object to Map
+        Map<String, Object> mapper = new ObjectToMap().convert(creditCardId);
+
+        String ccId = mapper.get("id").toString();
+
+        System.out.println(ccId);
+
+        Map<String, Object> deleteCreditCardResponse = customer.deleteCreditCard(ccId, setup);
 
         System.out.println("delete credit card: " + deleteCreditCardResponse);
 
-        // Get customer test
+        // Get customer test //
         Object id = responseCreation.get("id");
 
         Map<String, Object> responseGet = customer.get(id.toString(), setup);
 
         System.out.println("get: " + responseGet);
 
-        // List Customer
+        // List Customer //
         Map<String, Object> listResponse = customer.list(setup);
 
         System.out.println("list: " + listResponse);

@@ -79,7 +79,7 @@ public class Customer {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("DELETE")
-                .endpoint(String.format("/fundinginstruments/%s", creditCardId))
+                .endpoint(String.format("/v2/fundinginstruments/%s", creditCardId))
                 .type(Customer.class)
                 .contentType(CONTENT_TYPE)
                 .build();

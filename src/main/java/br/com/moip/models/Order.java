@@ -79,4 +79,27 @@ public class Order {
 
         return requestMaker.doRequest(props);
     }
+
+    /**
+     * This method is used to get all payments of an order by its Moip order external ID.
+     *
+     * @param   orderId
+     *          {@code String} the Moip order external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public Map<String, Object> listOrderPayments(String orderId, Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("GET")
+                .endpoint(String.format("%s/%s/%s", ENDPOINT, orderId, "payments"))
+                .type(Order.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return requestMaker.doRequest(props);
+    }
 }

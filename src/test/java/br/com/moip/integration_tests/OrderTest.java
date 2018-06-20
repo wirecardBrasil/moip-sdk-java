@@ -55,7 +55,7 @@ public class OrderTest {
         customer.put("id", "CUS-XXOBPZ80QLYP");
 
         Map<String, Object> orderBody = new HashMap<>();
-        orderBody.put("ownId", "asagg12131as");
+        orderBody.put("ownId", "asagasfg12131as");
         orderBody.put("amount", amount);
         orderBody.put("items", items);
         orderBody.put("customer", customer);
@@ -75,5 +75,10 @@ public class OrderTest {
         Map<String, Object> responseList = order.list(setup);
 
         System.out.println("list: " + responseList);
+
+        // List payments of an order test //
+        Map<String, Object> responseListOrderPayments = order.listOrderPayments(id, setup);
+
+        System.out.println("list of order payments: " + responseListOrderPayments);
     }
 }

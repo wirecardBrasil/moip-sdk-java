@@ -95,7 +95,7 @@ public class Order {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
-                .endpoint(String.format("%s/%s/%s", ENDPOINT, orderId, "payments"))
+                .endpoint(String.format("%s/%s/payments", ENDPOINT, orderId))
                 .type(Order.class)
                 .contentType(CONTENT_TYPE)
                 .build();

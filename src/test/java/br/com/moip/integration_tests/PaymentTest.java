@@ -21,6 +21,8 @@ public class PaymentTest {
 
     @Test
     public void test() {
+
+        // Create payment test //
         String hash = "CCbe2TVHIsINX+v+bVPP0KSKWfXs6AtrJlHznaSdTgmvNFOvsalZ7pFgoddc3fH7vEdpxCa55ed1DoNIz" +
                 "WWUo3+7KLQgV0Gi/ux0RShBiNzB0wiFf+OBef9x7b3IgcdulZqdNGn84AvGInJ9r6a2iZ8kY0xQ1xONOod5rVku" +
                 "GDvNgVVOIB7Zs5In9j3f4TENRU7aqx63srT3UPP+wsQBMNJ4wQturogjZBhDIQqEm2sC9Zzx+E8zP/aZ+YBF9O+" +
@@ -55,14 +57,43 @@ public class PaymentTest {
         paymentBody.put("statementDescriptor", "minhaLoja.com");
         paymentBody.put("fundingInstrument", fundingInstrument);
 
-        Map<String, Object> payResponse = payment.pay(paymentBody, "ORD-B9GO7YN9649X", setup);
+        Map<String, Object> payResponse = payment.pay(paymentBody, "ORD-0SGQXTWI2KO0", setup);
 
-        System.out.println(payResponse);
+        System.out.println("create: " + payResponse);
 
-        String paymentId = payResponse.get("id").toString();
+        // Create pre-authorized test //
+        paymentBody.put("delayCapture", true);
+
+        Map<String, Object> preAuthorizedResponse = payment.pay(paymentBody, "ORD-OV7XAYCZ56JC", setup);
+
+        System.out.println("pre-authorized: " + preAuthorizedResponse);
+
+        // Capture pre-authorized test //
+        String capturePreAuthorizedId = preAuthorizedResponse.get("id").toString();
+
+        Map<String, Object> convertResponse = payment.capturePreAuthorized(capturePreAuthorizedId, setup);
+
+        System.out.println("capture: " + convertResponse);
+
+        // Cancel pre-authorized test //
+        String cancelPreAuthorizedId = preAuthorizedResponse.get("id").toString();
+
+        Map<String, Object> cancelResponse = payment.cancelPreAuthorized(cancelPreAuthorizedId, setup);
+
+        System.out.println("cancel: " + cancelResponse);
+
+        // Get payment test //
+        String paymentId = cancelResponse.get("id").toString();
 
         Map<String, Object> getResponse = payment.get(paymentId, setup);
 
-        System.out.println(getResponse);
+        System.out.println("get: " + getResponse);
+
+        // Authorize payment test //
+        String authorizePaymentId = payResponse.get("id").toString();
+
+        Map<String, Object> authorizeResponse = payment.authorize(authorizePaymentId, 9500, setup);
+
+        System.out.println("authorize: " + authorizeResponse);
     }
 }

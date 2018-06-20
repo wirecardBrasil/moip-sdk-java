@@ -32,6 +32,8 @@ public class OrderTest {
 
     @Test
     public void test() {
+
+        // Create order test //
         Map<String, Object> subtotals = new HashMap<>();
         subtotals.put("shipping", 15000);
 
@@ -53,19 +55,25 @@ public class OrderTest {
         customer.put("id", "CUS-XXOBPZ80QLYP");
 
         Map<String, Object> orderBody = new HashMap<>();
-        orderBody.put("ownId", "asfasaggas");
+        orderBody.put("ownId", "asagg12131as");
         orderBody.put("amount", amount);
         orderBody.put("items", items);
         orderBody.put("customer", customer);
 
         Map<String, Object> responseCreation = order.create(orderBody, setup);
 
-        System.out.println(responseCreation);
+        System.out.println("create: " + responseCreation);
 
+        // Get order test //
         String id = responseCreation.get("id").toString();
 
         Map<String, Object> responseGet = order.get(id, setup);
 
-        System.out.println(responseGet);
+        System.out.println("get: " + responseGet);
+
+        // List orders test //
+        Map<String, Object> responseList = order.list(setup);
+
+        System.out.println("list: " + responseList);
     }
 }

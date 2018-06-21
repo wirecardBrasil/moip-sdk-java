@@ -127,4 +127,25 @@ public class RefundTest {
             e.getStackTrace();
         }
     }
+
+    @Test
+    public void getRefundTest() {
+        Map<String, Object> getResponse = refund.get("REF-LA2XBT8UWNK5", setup);
+
+        System.out.println(getResponse);
+    }
+
+    @Test
+    public void listPaymentRefundsTest() {
+        Map<String, Object> listPaymentRefundResponse = refund.listPaymentRefunds("PAY-E9DCD2A51HK5", setup);
+
+        System.out.println(listPaymentRefundResponse);
+    }
+
+    @Test
+    public void listOrderRefundsTest() {
+        Map<String, Object> listOrderRefundsResponse = refund.listOrderRefunds("ORD-477LLUMK5J71", setup);
+
+        System.out.println(listOrderRefundsResponse);
+    }
 }

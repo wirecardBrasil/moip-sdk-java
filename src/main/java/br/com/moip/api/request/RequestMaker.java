@@ -133,7 +133,7 @@ public class RequestMaker extends Moip {
             LOGGER.debug("<-- END HTTP ({}-byte body)", connection.getContentLength());
 
             // Return the parsed response from JSON to Map.
-            return response.jsonToMap(responseBody.toString());
+            return this.response.jsonToMap(responseBody.toString());
 
         } catch(IOException | KeyManagementException | NoSuchAlgorithmException e){
             throw new MoipAPIException("Error occurred connecting to Moip API: " + e.getMessage(), e);

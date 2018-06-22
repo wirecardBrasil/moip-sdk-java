@@ -4,12 +4,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Response extends HashMap<String, Object> {
 
-    private Map<String, Object> body = new HashMap<>();
+    private Map<String, Object> responseBody = new HashMap<>();
+    private List<Map<String, Object>> responseBodyList = new ArrayList<>();
 
     /**
      * This method is used to receive the JSON returned from API and cast it to a Map.
@@ -21,16 +24,29 @@ public class Response extends HashMap<String, Object> {
      */
     public Map<String, Object> jsonToMap(String json) {
         if (!json.equals("")) {
+            ObjectMapper mapper = new ObjectMapper();
             try {
-                ObjectMapper mapper = new ObjectMapper();
-
-                this.body = mapper.readValue(json, new TypeReference<Map<String, Object>>() {
-                });
+                this.responseBody = mapper.readValue(json, new TypeReference<Map<String, Object>>(){});
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return this.body;
+        return this.responseBody;
+    }
+
+    /**
+     *
+     * @param json
+     * @return
+     */
+    public List<Map<String, Object>> jsonToList(String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            this.responseBodyList = mapper.readValue(json, new TypeReference<List<Map<String, Object>>>(){});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return this.responseBodyList;
     }
 }
 

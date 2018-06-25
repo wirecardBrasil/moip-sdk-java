@@ -5,6 +5,7 @@ import br.com.moip.api.request.RequestProperties;
 import br.com.moip.api.request.RequestPropertiesBuilder;
 import org.apache.http.entity.ContentType;
 
+import java.util.List;
 import java.util.Map;
 
 public class NotificationPreference {
@@ -66,9 +67,9 @@ public class NotificationPreference {
      * @param   setup
      *          {@code Setup} the setup object.
      *
-     * @return  {@code Map<String, Object>}
+     * @return  {@code List<Map<String, Object>>}
      */
-    public Map<String, Object> list(Setup setup) {
+    public List<Map<String, Object>> list(Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
@@ -77,7 +78,7 @@ public class NotificationPreference {
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return this.requestMaker.doRequest(props);
+        return this.requestMaker.getList(props);
     }
 
     /**

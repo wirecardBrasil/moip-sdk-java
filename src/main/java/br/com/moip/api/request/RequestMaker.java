@@ -141,6 +141,75 @@ public class RequestMaker extends Moip {
     }
 
     /**
+     *
+     * @param requestProps
+     * @return
+     */
+    public List<Map<String, Object>> getList(final RequestProperties requestProps) {
+
+        try {
+
+            URL url = new URL(moipEnvironment + requestProps.endpoint);
+
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("User-Agent", getUserAgent());
+            connection.setRequestProperty("Content-type", requestProps.getContentType().getMimeType());
+
+            if (requestProps.hasAccept()) connection.setRequestProperty("Accept", requestProps.accept);
+
+            connection.setRequestMethod(requestProps.method);
+
+            // This validation disable the TLS 1.0
+            if (connection instanceof HttpsURLConnection) {
+                ((HttpsURLConnection) connection).setSSLSocketFactory(new SSLSupport());
+            }
+
+            if (this.authentication != null) authentication.authenticate(connection);
+
+            LOGGER.debug("---> {} {}", requestProps.method, connection.getURL().toString());
+            logHeaders(connection.getRequestProperties().entrySet());
+
+            // Verificar essa parte do código, pois o objeto serializado deve ser um Map, não mais um String
+
+            if (requestProps.body != null) {
+                connection.setDoOutput(true);
+                String body = tools.getBody(requestProps.body, requestProps.contentType);
+
+                LOGGER.debug("{}", body);
+
+                DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, "UTF-8"));
+                writer.write(body);
+                writer.close();
+                wr.flush();
+                wr.close();
+            }
+
+            // ----------------------------------------------------------------------------------------------
+
+            LOGGER.debug("---> END HTTP");
+
+            int responseCode = connection.getResponseCode();
+
+            LOGGER.debug("<--- {} {}", responseCode, connection.getResponseMessage());
+            logHeaders(connection.getHeaderFields().entrySet());
+
+            StringBuilder responseBody = new StringBuilder();
+
+            responseBody = responseBodyTreatment(responseBody, responseCode, connection);
+
+            LOGGER.debug("{}", responseBody.toString());
+            LOGGER.debug("<-- END HTTP ({}-byte body)", connection.getContentLength());
+
+            // Return the parsed response from JSON to Map.
+            return this.response.jsonToList(responseBody.toString());
+
+        } catch(IOException | KeyManagementException | NoSuchAlgorithmException e){
+            throw new MoipAPIException("Error occurred connecting to Moip API: " + e.getMessage(), e);
+        }
+    }
+
+    /**
      * This method is used to check the response code and apply the correct treatment to the
      * response body. Basically, if the response code is between 200 and 299, this method returns
      * a response body charged with the right input stream. If the response code is 401, this

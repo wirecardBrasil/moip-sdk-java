@@ -79,7 +79,28 @@ public class NotificationPreferenceTest {
 
         try {
 
-            Map<String, Object> response = notificationPreference.list(setup);
+            List<Map<String, Object>> response = notificationPreference.list(setup);
+
+            System.out.println(response);
+
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
+    }
+
+    @Test
+    public void removeNotificationPreferenceTest() {
+
+        try {
+
+            Map<String, Object> response = notificationPreference.remove("NPR-NEJL76QRXBZD", setup);
 
             System.out.println(response);
 

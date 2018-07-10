@@ -2,8 +2,6 @@ package br.com.moip;
 
 import br.com.moip.api.APIResources;
 import br.com.moip.api.request.RequestMaker;
-import br.com.moip.models.Customer;
-import br.com.moip.models.Setup;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -40,7 +38,7 @@ public class Moip {
      *
      * @return  {@code String}
      */
-    public String getUserAgent() { return this.USER_AGENT; }
+    protected String getUserAgent() { return USER_AGENT; }
 
     public static class API extends APIResources {}
 }

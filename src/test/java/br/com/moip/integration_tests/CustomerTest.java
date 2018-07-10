@@ -1,10 +1,11 @@
 package br.com.moip.integration_tests;
 
+import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
-import br.com.moip.models.Customer;
+import br.com.moip.exception.UnexpectedException;
+import br.com.moip.exception.ValidationException;
 import br.com.moip.models.Setup;
-import br.com.moip.util.ObjectToMap;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -19,8 +20,6 @@ public class CustomerTest {
 
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    private Customer customer = new Customer();
-
     private Map<String, Object> customerRequestBody = new HashMap<>();
 
     private Map<String, Object> taxDocument = new HashMap<>();
@@ -29,7 +28,8 @@ public class CustomerTest {
 
     private Map<String, Object> shippingAddress = new HashMap<>();
 
-    private Map<String, Object> createCustomer() {
+    @Test
+    public void createCustomerTest() {
 
         taxDocument.put("type", "CPF");
         taxDocument.put("number", "10013390023");
@@ -46,7 +46,7 @@ public class CustomerTest {
         shippingAddress.put("country", "BRA");
         shippingAddress.put("zipCode", "01451001");
 
-        customerRequestBody.put("ownId", "ffasfafsfg4qq1je24");
+        customerRequestBody.put("ownId", "ffaajjsnoafg4qq1je24");
         customerRequestBody.put("fullname", "Test Moip da Silva");
         customerRequestBody.put("email", "test.moip@mail.com");
         customerRequestBody.put("birthDate", "1980-5-10");
@@ -54,20 +54,27 @@ public class CustomerTest {
         customerRequestBody.put("phone", phone);
         customerRequestBody.put("shippingAddress", shippingAddress);
 
-        return customerRequestBody;
+        try {
+
+            Map<String, Object> responseCreation = Moip.API.customers().create(customerRequestBody, setup);
+
+            System.out.println("create: " + responseCreation);
+
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
     }
 
     @Test
-    public void testCreate() {
+    public void addCreditCardTest () {
 
-        // Create customer test //
-        Map<String, Object> myCustomer = createCustomer();
-
-        Map<String, Object> responseCreation = customer.create(myCustomer, setup);
-
-        System.out.println("create: " + responseCreation);
-
-        // Add credit card test //
         Map<String, Object> taxDocumentHolder = new HashMap<>();
         taxDocumentHolder.put("type", "CPF");
         taxDocumentHolder.put("number", "22288866644");
@@ -90,40 +97,88 @@ public class CustomerTest {
         creditCard.put("cvc", "123");
         creditCard.put("holder", holder);
 
-        Map<String, Object> addCreditCardBody = new HashMap<>();
-        addCreditCardBody.put("method", "CREDIT_CARD");
-        addCreditCardBody.put("creditCard", creditCard);
+        Map<String, Object> addCreditCard = new HashMap<>();
+        addCreditCard.put("method", "CREDIT_CARD");
+        addCreditCard.put("creditCard", creditCard);
 
-        String customerId = responseCreation.get("id").toString();
+        try {
 
-        Map<String, Object> addCreditCardResponse = customer.addCreditCard(addCreditCardBody, customerId, setup);
+            Map<String, Object> addCCResponse = Moip.API.customers().addCreditCard(addCreditCard, "CUS-THU3I1K97KN0", setup);
 
-        System.out.println("add credit card: " + addCreditCardResponse);
+            System.out.println("add credit card: " + addCCResponse);
 
-        // Delete credit card //
-        Object creditCardId = addCreditCardResponse.get("creditCard");
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
+    }
 
-        // ->Cast the object to Map
-        Map<String, Object> mapper = new ObjectToMap().convert(creditCardId);
+    @Test
+    public void deleteCreditCardTest() {
 
-        String ccId = mapper.get("id").toString();
+        try {
 
-        System.out.println(ccId);
+            Map<String, Object> deleteCreditCardResponse = Moip.API.customers().deleteCreditCard("CRC-6KGGEP72ZREJ", setup);
 
-        Map<String, Object> deleteCreditCardResponse = customer.deleteCreditCard(ccId, setup);
+            System.out.println("delete credit card: " + deleteCreditCardResponse);
 
-        System.out.println("delete credit card: " + deleteCreditCardResponse);
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
+    }
 
-        // Get customer test //
-        Object id = responseCreation.get("id");
+    @Test
+    public void getCustomerTest() {
 
-        Map<String, Object> responseGet = customer.get(id.toString(), setup);
+        try {
 
-        System.out.println("get: " + responseGet);
+            Map<String, Object> responseGet = Moip.API.customers().get("CUS-THU3I1K97KN0", setup);
 
-        // List Customer //
-        Map<String, Object> listResponse = customer.list(setup);
+            System.out.println("get: " + responseGet);
 
-        System.out.println("list: " + listResponse);
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
+    }
+
+    @Test
+    public void listCustomersTest() {
+
+        try {
+
+            Map<String, Object> listResponse = Moip.API.customers().list(setup);
+
+            System.out.println("list: " + listResponse);
+
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
     }
 }

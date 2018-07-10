@@ -1,11 +1,11 @@
 package br.com.moip.integration_tests;
 
+import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
 import br.com.moip.auth.OAuth;
 import br.com.moip.exception.UnexpectedException;
 import br.com.moip.exception.ValidationException;
-import br.com.moip.models.Refund;
 import br.com.moip.models.Setup;
 import org.junit.Test;
 
@@ -23,15 +23,12 @@ public class RefundTest {
 
     private Setup setup = new Setup().setAuthentication(oAuth).setEnvironment(Setup.Environment.SANDBOX);
 
-    private Refund refund = new Refund();
-
     @Test
     public void refundPaymentTest() {
 
         try {
 
-            // Refund payment credit card //
-            Map<String, Object> refundCC = refund.refundPayment("PAY-E9DCD2A51HK5", setup);
+            Map<String, Object> refundCC = Moip.API.refunds().refundPayment("PAY-E9DCD2A51HK5", setup);
 
             System.out.println(refundCC);
 
@@ -78,7 +75,7 @@ public class RefundTest {
 
         try {
 
-            Map<String, Object> refundBankAccount = refund.refundOrder(refundBankAccountBody, "ORD-477LLUMK5J71", setup);
+            Map<String, Object> refundBankAccount = Moip.API.refunds().refundOrder(refundBankAccountBody, "ORD-477LLUMK5J71", setup);
 
             System.out.println(refundBankAccount);
 
@@ -112,7 +109,7 @@ public class RefundTest {
 
         try {
 
-            Map<String, Object> refundMoipAccount = refund.refundPayment(refundMoipAccountBody, "PAY-E9DCD2A51HK5", setup);
+            Map<String, Object> refundMoipAccount = Moip.API.refunds().refundPayment(refundMoipAccountBody, "PAY-E9DCD2A51HK5", setup);
 
             System.out.println(refundMoipAccount);
 
@@ -130,22 +127,22 @@ public class RefundTest {
 
     @Test
     public void getRefundTest() {
-        Map<String, Object> getResponse = refund.get("REF-LA2XBT8UWNK5", setup);
+        Map<String, Object> get = Moip.API.refunds().get("REF-LA2XBT8UWNK5", setup);
 
-        System.out.println(getResponse);
+        System.out.println(get);
     }
 
     @Test
     public void listPaymentRefundsTest() {
-        Map<String, Object> listPaymentRefundResponse = refund.listPaymentRefunds("PAY-E9DCD2A51HK5", setup);
+        Map<String, Object> listPaymentRefund = Moip.API.refunds().listPaymentRefunds("PAY-E9DCD2A51HK5", setup);
 
-        System.out.println(listPaymentRefundResponse);
+        System.out.println(listPaymentRefund);
     }
 
     @Test
     public void listOrderRefundsTest() {
-        Map<String, Object> listOrderRefundsResponse = refund.listOrderRefunds("ORD-477LLUMK5J71", setup);
+        Map<String, Object> listOrderRefunds = Moip.API.refunds().listOrderRefunds("ORD-477LLUMK5J71", setup);
 
-        System.out.println(listOrderRefundsResponse);
+        System.out.println(listOrderRefunds);
     }
 }

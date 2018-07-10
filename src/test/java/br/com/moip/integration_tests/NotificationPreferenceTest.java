@@ -1,10 +1,10 @@
 package br.com.moip.integration_tests;
 
+import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
 import br.com.moip.exception.UnexpectedException;
 import br.com.moip.exception.ValidationException;
-import br.com.moip.models.NotificationPreference;
 import br.com.moip.models.Setup;
 import org.junit.Test;
 
@@ -21,8 +21,6 @@ public class NotificationPreferenceTest {
     private static Authentication auth = new BasicAuth(token, key);
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    private NotificationPreference notificationPreference = new NotificationPreference();
-
     @Test
     public void createNotificationPreferenceTest() {
         List events = new ArrayList();
@@ -38,7 +36,7 @@ public class NotificationPreferenceTest {
 
         try {
 
-            Map<String, Object> response = notificationPreference.create(body, setup);
+            Map<String, Object> response = Moip.API.notificationPreferences().create(body, setup);
 
             System.out.println(response); // id: NPR-PFDKZLYIROZW
 
@@ -58,7 +56,7 @@ public class NotificationPreferenceTest {
     public void getNotificationPreferenceTest() {
 
         try {
-            Map<String, Object> response = notificationPreference.get("NPR-PFDKZLYIROZW", setup);
+            Map<String, Object> response = Moip.API.notificationPreferences().get("NPR-PFDKZLYIROZW", setup);
 
             System.out.println(response);
 
@@ -79,7 +77,7 @@ public class NotificationPreferenceTest {
 
         try {
 
-            List<Map<String, Object>> response = notificationPreference.list(setup);
+            List<Map<String, Object>> response = Moip.API.notificationPreferences().list(setup);
 
             System.out.println(response);
 
@@ -100,7 +98,7 @@ public class NotificationPreferenceTest {
 
         try {
 
-            Map<String, Object> response = notificationPreference.remove("NPR-NEJL76QRXBZD", setup);
+            Map<String, Object> response = Moip.API.notificationPreferences().remove("NPR-KSF5U90I3B20", setup);
 
             System.out.println(response);
 

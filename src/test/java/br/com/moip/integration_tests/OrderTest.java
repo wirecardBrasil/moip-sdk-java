@@ -1,8 +1,10 @@
 package br.com.moip.integration_tests;
 
+import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
-import br.com.moip.models.Order;
+import br.com.moip.exception.UnexpectedException;
+import br.com.moip.exception.ValidationException;
 import br.com.moip.models.Setup;
 import org.junit.Test;
 
@@ -20,20 +22,9 @@ public class OrderTest {
 
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    private Order order = new Order();
-
-    private Map<String, Object> customerRequestBody = new HashMap<>();
-
-    private Map<String, Object> taxDocument = new HashMap<>();
-
-    private Map<String, Object> phone = new HashMap<>();
-
-    private Map<String, Object> shippingAddress = new HashMap<>();
-
     @Test
-    public void test() {
+    public void createOrderTest() {
 
-        // Create order test //
         Map<String, Object> subtotals = new HashMap<>();
         subtotals.put("shipping", 15000);
 
@@ -46,10 +37,18 @@ public class OrderTest {
         product1.put("category", "CLOTHING");
         product1.put("quantity", 2);
         product1.put("detail", "Anakin's Light Saber");
-        product1.put("price", 100000000);
+        product1.put("price", 1000000);
 
-        List items = new ArrayList();
+        Map<String, Object> product2 = new HashMap<>();
+        product2.put("product", "Product 2 Description");
+        product2.put("category", "SCIENCE_AND_LABORATORY");
+        product2.put("quantity", 5);
+        product2.put("detail", "Pym particles");
+        product2.put("price", 24500000);
+
+        List<Map<String, Object>> items = new ArrayList<>();
         items.add(product1);
+        items.add(product2);
 
         Map<String, Object> customer = new HashMap<>();
         customer.put("id", "CUS-XXOBPZ80QLYP");
@@ -60,25 +59,84 @@ public class OrderTest {
         orderBody.put("items", items);
         orderBody.put("customer", customer);
 
-        Map<String, Object> responseCreation = order.create(orderBody, setup);
+        try {
 
-        System.out.println("create: " + responseCreation);
+            Map<String, Object> order = Moip.API.orders().create(orderBody, setup);
 
-        // Get order test //
-        String id = responseCreation.get("id").toString();
+            System.out.println("create: " + order);
 
-        Map<String, Object> responseGet = order.get(id, setup);
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
+    }
 
-        System.out.println("get: " + responseGet);
+    @Test
+    public void getOrderTest() {
 
-        // List orders test //
-        Map<String, Object> responseList = order.list(setup);
+        try {
 
-        System.out.println("list: " + responseList);
+            Map<String, Object> responseGet = Moip.API.orders().get("ORD-LS7CZHW90N3Y", setup);
 
-        // List payments of an order test //
-        Map<String, Object> responseListOrderPayments = order.listOrderPayments(id, setup);
+            System.out.println("get: " + responseGet);
 
-        System.out.println("list of order payments: " + responseListOrderPayments);
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
+    }
+
+    @Test
+    public void listOrdersTest() {
+
+        try {
+
+            Map<String, Object> responseList = Moip.API.orders().list(setup);
+
+            System.out.println("list: " + responseList);
+
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
+    }
+
+    @Test
+    public void listOrderPayments() {
+
+        try {
+
+            Map<String, Object> responseListOrderPayments = Moip.API.orders().listOrderPayments("ORD-S36MOUQ97AP6", setup);
+
+            System.out.println("list of order payments: " + responseListOrderPayments);
+
+        } catch (ValidationException e) {
+            System.out.println("Validation!");
+            System.out.println(e.getErrors().getErrors());
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        } catch (UnexpectedException e) {
+            System.out.println("Unexpected!");
+            System.out.println(e);
+            e.getStackTrace();
+        }
     }
 }

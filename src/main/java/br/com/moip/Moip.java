@@ -2,14 +2,13 @@ package br.com.moip;
 
 import br.com.moip.api.APIResources;
 import br.com.moip.api.request.RequestMaker;
+import br.com.moip.models.Customer;
 import br.com.moip.models.Setup;
 
 import java.io.InputStream;
 import java.util.Properties;
 
 public class Moip {
-
-    private Setup setup;
 
     public static final String SANDBOX_URL = "https://sandbox.moip.com.br";
 
@@ -43,24 +42,5 @@ public class Moip {
      */
     public String getUserAgent() { return this.USER_AGENT; }
 
-    // Default Moip constructor.
-    public Moip() {}
-
-    /**
-     * This constructor receives a Setup object to use its attributes
-     * to configure and authenticate the Moip connection.
-     *
-     * @param   setup
-     *          {@code Setup} object to configure the connection.
-     */
-    public Moip(Setup setup) { this.setup = setup; }
-
-    /**
-     * This method gets the setup instance.
-     *
-     * @return  {@code Setup}
-     */
-    public Setup getSetup() { return this.setup; }
-
-    private static class API extends APIResources {}
+    public static class API extends APIResources {}
 }

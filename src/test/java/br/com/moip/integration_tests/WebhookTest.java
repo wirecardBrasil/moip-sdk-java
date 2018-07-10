@@ -1,11 +1,11 @@
 package br.com.moip.integration_tests;
 
+import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
 import br.com.moip.exception.UnexpectedException;
 import br.com.moip.exception.ValidationException;
 import br.com.moip.models.Setup;
-import br.com.moip.models.Webhook;
 import org.junit.Test;
 
 import java.util.Map;
@@ -18,14 +18,12 @@ public class WebhookTest {
     private static Authentication auth = new BasicAuth(token, key);
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    private Webhook webhook = new Webhook();
-
     @Test
     public void getWebhookTest() {
 
         try {
 
-            Map<String, Object> response = webhook.get("ORD-RVOF7BDJLWA8", setup);
+            Map<String, Object> response = Moip.API.webhooks().get("ORD-RVOF7BDJLWA8", setup);
 
             System.out.println(response);
 
@@ -46,7 +44,7 @@ public class WebhookTest {
 
         try {
 
-            Map<String, Object> response = webhook.list(setup);
+            Map<String, Object> response = Moip.API.webhooks().list(setup);
 
             System.out.println(response);
 

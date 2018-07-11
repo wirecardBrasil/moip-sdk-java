@@ -21,7 +21,6 @@ public class NotificationPreferenceTest {
     private static Authentication auth = new BasicAuth(token, key);
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    @Test
     public void createNotificationPreferenceTest() {
         List events = new ArrayList();
         events.add("ORDER.*");
@@ -52,7 +51,6 @@ public class NotificationPreferenceTest {
         }
     }
 
-    @Test
     public void getNotificationPreferenceTest() {
 
         try {
@@ -72,7 +70,6 @@ public class NotificationPreferenceTest {
         }
     }
 
-    @Test
     public void listNotificationPreferenceTest() {
 
         try {
@@ -93,7 +90,6 @@ public class NotificationPreferenceTest {
         }
     }
 
-    @Test
     public void removeNotificationPreferenceTest() {
 
         try {

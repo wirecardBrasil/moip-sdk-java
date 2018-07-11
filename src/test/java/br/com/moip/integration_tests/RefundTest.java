@@ -23,7 +23,6 @@ public class RefundTest {
 
     private Setup setup = new Setup().setAuthentication(oAuth).setEnvironment(Setup.Environment.SANDBOX);
 
-    @Test
     public void refundPaymentTest() {
 
         try {
@@ -44,7 +43,6 @@ public class RefundTest {
         }
     }
 
-    @Test
     public void refundBankAccountTest() {
 
         Map<String, Object> taxDocument = new HashMap<>();
@@ -91,7 +89,6 @@ public class RefundTest {
         }
     }
 
-    @Test
     public void refundMoipAccountTest() {
 
         Map<String, Object> moipAccount = new HashMap<>();
@@ -125,21 +122,18 @@ public class RefundTest {
         }
     }
 
-    @Test
     public void getRefundTest() {
         Map<String, Object> get = Moip.API.refunds().get("REF-LA2XBT8UWNK5", setup);
 
         System.out.println(get);
     }
 
-    @Test
     public void listPaymentRefundsTest() {
         Map<String, Object> listPaymentRefund = Moip.API.refunds().listPaymentRefunds("PAY-E9DCD2A51HK5", setup);
 
         System.out.println(listPaymentRefund);
     }
 
-    @Test
     public void listOrderRefundsTest() {
         Map<String, Object> listOrderRefunds = Moip.API.refunds().listOrderRefunds("ORD-477LLUMK5J71", setup);
 

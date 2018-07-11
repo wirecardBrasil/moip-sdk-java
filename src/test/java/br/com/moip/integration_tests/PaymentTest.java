@@ -20,7 +20,6 @@ public class PaymentTest {
 
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    @Test
     public void createPaymentTest() {
 
         String hash = "CCbe2TVHIsINX+v+bVPP0KSKWfXs6AtrJlHznaSdTgmvNFOvsalZ7pFgoddc3fH7vEdpxCa55ed1DoNIz" +
@@ -75,7 +74,6 @@ public class PaymentTest {
         }
     }
 
-    @Test
     public void createPreAuthorizedTest() {
 
         String hash = "CCbe2TVHIsINX+v+bVPP0KSKWfXs6AtrJlHznaSdTgmvNFOvsalZ7pFgoddc3fH7vEdpxCa55ed1DoNIz" +
@@ -131,7 +129,6 @@ public class PaymentTest {
         }
     }
 
-    @Test
     public void capturePreAuthorizedTest() {
 
         try {
@@ -152,7 +149,6 @@ public class PaymentTest {
         }
     }
 
-    @Test
     public void cancelPreAuthorizedTest() {
 
         try {
@@ -173,7 +169,6 @@ public class PaymentTest {
         }
     }
 
-    @Test
     public void getPaymentTest() {
 
         try {
@@ -194,7 +189,6 @@ public class PaymentTest {
         }
     }
 
-    @Test
     public void authorizePaymentTest() {
 
         try {

@@ -18,7 +18,6 @@ public class WebhookTest {
     private static Authentication auth = new BasicAuth(token, key);
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    @Test
     public void getWebhookTest() {
 
         try {
@@ -38,8 +37,7 @@ public class WebhookTest {
             e.getStackTrace();
         }
     }
-
-    @Test
+    
     public void listWebhookTest() {
 
         try {

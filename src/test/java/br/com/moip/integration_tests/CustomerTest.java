@@ -28,7 +28,6 @@ public class CustomerTest {
 
     private Map<String, Object> shippingAddress = new HashMap<>();
 
-    @Test
     public void createCustomerTest() {
 
         taxDocument.put("type", "CPF");
@@ -72,7 +71,6 @@ public class CustomerTest {
         }
     }
 
-    @Test
     public void addCreditCardTest () {
 
         Map<String, Object> taxDocumentHolder = new HashMap<>();
@@ -119,7 +117,6 @@ public class CustomerTest {
         }
     }
 
-    @Test
     public void deleteCreditCardTest() {
 
         try {
@@ -140,7 +137,6 @@ public class CustomerTest {
         }
     }
 
-    @Test
     public void getCustomerTest() {
 
         try {
@@ -161,7 +157,6 @@ public class CustomerTest {
         }
     }
 
-    @Test
     public void listCustomersTest() {
 
         try {

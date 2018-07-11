@@ -22,7 +22,6 @@ public class OrderTest {
 
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    @Test
     public void createOrderTest() {
 
         Map<String, Object> subtotals = new HashMap<>();
@@ -77,7 +76,6 @@ public class OrderTest {
         }
     }
 
-    @Test
     public void getOrderTest() {
 
         try {
@@ -98,7 +96,6 @@ public class OrderTest {
         }
     }
 
-    @Test
     public void listOrdersTest() {
 
         try {
@@ -119,7 +116,6 @@ public class OrderTest {
         }
     }
 
-    @Test
     public void listOrderPayments() {
 
         try {

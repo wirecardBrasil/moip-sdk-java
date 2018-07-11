@@ -2,11 +2,16 @@ package br.com.moip.models;
 
 import br.com.moip.auth.Authentication;
 
+import static br.com.moip.Moip.PRODUCTION_URL;
+import static br.com.moip.Moip.SANDBOX_URL;
+import static br.com.moip.Moip.CONNECT_PRODUCTION_URL;
+import static br.com.moip.Moip.CONNECT_SANDBOX_URL;
+
 public class Setup {
 
     private Authentication authentication;
 
-    private Environment environment;
+    private String environment;
 
     // Default connect timeout (in milliseconds) with default value.
     private static int CONNECT_TIMEOUT = 60 * 1000;
@@ -43,7 +48,30 @@ public class Setup {
      * @return  {@code Setup}
      */
     public Setup setEnvironment(final Environment environment) {
-        this.environment = environment;
+
+        switch (environment) {
+
+            case SANDBOX : this.environment = SANDBOX_URL; break;
+            case PRODUCTION : this.environment = PRODUCTION_URL; break;
+            case CONNECT_SANDBOX : this.environment = CONNECT_SANDBOX_URL; break;
+            case CONNECT_PRODUCTION : this.environment = CONNECT_PRODUCTION_URL; break;
+
+            default : this.environment = "";
+        }
+
+        return this;
+    }
+
+    /**
+     * This method is used to set the {@code Player} endpoint for <strong>mock unit tests</strong>.
+     *
+     * @param   endpoint
+     *          {@code String} the endpoint for mock tests.
+     *
+     * @return  {@code this} (Setup)
+     */
+    public Setup setPlayerEndpoint(final String endpoint) {
+        this.environment = endpoint;
 
         return this;
     }
@@ -90,7 +118,7 @@ public class Setup {
      *
      * @return  {@code String}
      */
-    public Environment getEnvironment() { return this.environment; }
+    public String getEnvironment() { return this.environment; }
 
     /**
      * This method is used to get the value of {@code CONNECT_TIMEOUT} attribute.

@@ -59,7 +59,7 @@ public class PaymentTest {
 
         try {
 
-            Map<String, Object> payResponse = Moip.API.payments().pay(paymentBody, "ORD-TPCAFYL5L3AU", setup);
+            Map<String, Object> payResponse = Moip.API.payments().pay(paymentBody, "ORD-WIBIQXIME7U7", setup);
 
             System.out.println("create: " + payResponse);
 

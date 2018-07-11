@@ -10,6 +10,8 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
+import static br.com.moip.Moip.SANDBOX_URL;
+
 public class Payment {
 
     private static final String ENDPOINT = "/v2/payments";
@@ -133,7 +135,7 @@ public class Payment {
      * @return  {@code Map<String, Object>}
      */
     public Map<String, Object> authorize(String paymentId, int amount, Setup setup) {
-        if (setup.getEnvironment() == Setup.Environment.SANDBOX) {
+        if (setup.getEnvironment() == SANDBOX_URL) {
             this.requestMaker = new RequestMaker(setup);
             RequestProperties props = new RequestPropertiesBuilder()
                     .method("GET")

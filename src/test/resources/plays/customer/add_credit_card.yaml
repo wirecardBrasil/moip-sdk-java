@@ -1,0 +1,29 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/customers/CUS-Z83J8G3EMLIT/fundinginstruments
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "creditCard": {
+              "id": "CRC-9Y3RUBPCR30N",
+              "brand": "VISA",
+              "first6": "401200",
+              "last4": "1112",
+              "store": true
+          },
+          "card": {
+              "brand": "VISA",
+              "store": true
+          },
+          "isPresential": false,
+          "method": "CREDIT_CARD"
+      }

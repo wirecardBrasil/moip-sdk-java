@@ -46,15 +46,7 @@ public class RequestMaker extends Moip {
      */
     public RequestMaker(Setup setup) {
 
-        switch (setup.getEnvironment()) {
-
-            case SANDBOX : this.moipEnvironment = SANDBOX_URL; break;
-            case PRODUCTION : this.moipEnvironment = PRODUCTION_URL; break;
-            case CONNECT_SANDBOX : this.moipEnvironment = CONNECT_SANDBOX_URL; break;
-            case CONNECT_PRODUCTION : this.moipEnvironment = CONNECT_PRODUCTION_URL; break;
-
-            default : this.moipEnvironment = "";
-        }
+        this.moipEnvironment = setup.getEnvironment();
         this.authentication = setup.getAuthentication();
         this.tools = new RequestTools();
         this.response = new Response();

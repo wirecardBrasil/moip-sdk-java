@@ -1,0 +1,177 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/orders/ORD-A4HGZXSXARIV
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "ORD-A4HGZXSXARIV",
+          "ownId": "my_order_ownId",
+          "status": "CREATED",
+          "platform": "V2",
+          "createdAt": "2018-07-12T14:53:46.000-03",
+          "updatedAt": "2018-07-12T14:53:46.000-03",
+          "amount": {
+              "paid": 0,
+              "total": 11000,
+              "fees": 0,
+              "refunds": 0,
+              "liquid": 0,
+              "otherReceivers": 0,
+              "currency": "BRL",
+              "subtotals": {
+                  "shipping": 1500,
+                  "addition": 0,
+                  "discount": 0,
+                  "items": 9500
+              }
+          },
+          "items": [
+              {
+                  "product": "Descrição do pedido",
+                  "price": 9500,
+                  "detail": "Camiseta estampada branca",
+                  "quantity": 1,
+                  "category": "CLOTHING"
+              }
+          ],
+          "addresses": [
+              {
+                  "district": "Itaim Bibi",
+                  "zipCode": "01451001",
+                  "streetNumber": "3064",
+                  "street": "Avenida Brigadeiro Faria Lima",
+                  "city": "São Paulo",
+                  "state": "SP",
+                  "type": "SHIPPING",
+                  "country": "BRA"
+              }
+          ],
+          "customer": {
+              "id": "CUS-35TX8MWZ6SVX",
+              "ownId": "moip_create_customer_unit_test",
+              "fullname": "SDK Java",
+              "createdAt": "2018-07-11T11:57:22.000-03",
+              "updatedAt": "2018-07-12T14:53:46.000-03",
+              "birthDate": "1980-05-10",
+              "email": "sdk.java@moip.com.br",
+              "fundingInstrument": {
+                  "creditCard": {
+                      "id": "CRC-7GKFB3S2R8SS",
+                      "brand": "ELO",
+                      "first6": "636297",
+                      "last4": "7013",
+                      "store": true
+                  },
+                  "method": "CREDIT_CARD"
+              },
+              "phone": {
+                  "countryCode": "55",
+                  "areaCode": "11",
+                  "number": "22226842"
+              },
+              "taxDocument": {
+                  "type": "CPF",
+                  "number": "10013390023"
+              },
+              "addresses": [
+                  {
+                      "district": "Itaim Bibi",
+                      "zipCode": "01451001",
+                      "streetNumber": "3064",
+                      "street": "Avenida Brigadeiro Faria Lima",
+                      "city": "São Paulo",
+                      "state": "SP",
+                      "type": "SHIPPING",
+                      "country": "BRA"
+                  }
+              ],
+              "shippingAddress": {
+                  "zipCode": "01451001",
+                  "street": "Avenida Brigadeiro Faria Lima",
+                  "streetNumber": "3064",
+                  "city": "São Paulo",
+                  "district": "Itaim Bibi",
+                  "state": "SP",
+                  "country": "BRA"
+              },
+              "moipAccount": {
+                  "id": "MPA-8C2107EC8CCB"
+              },
+              "_links": {
+                  "self": {
+                      "href": "https://sandbox.moip.com.br/v2/customers/CUS-35TX8MWZ6SVX"
+                  },
+                  "hostedAccount": {
+                      "redirectHref": "https://hostedaccount-sandbox.moip.com.br?token=69ec54c3-c6a1-4f04-953b-af7d0f0fbee0&id=CUS-35TX8MWZ6SVX&mpa=MPA-CULBBYHD11"
+                  }
+              },
+              "fundingInstruments": [
+                  {
+                      "creditCard": {
+                          "id": "CRC-7GKFB3S2R8SS",
+                          "brand": "ELO",
+                          "first6": "636297",
+                          "last4": "7013",
+                          "store": true
+                      },
+                      "method": "CREDIT_CARD"
+                  }
+              ]
+          },
+          "payments": [],
+          "escrows": [],
+          "refunds": [],
+          "entries": [],
+          "events": [
+              {
+                  "type": "ORDER.CREATED",
+                  "createdAt": "2018-07-12T14:53:46.000-03",
+                  "description": ""
+              }
+          ],
+          "receivers": [
+              {
+                  "moipAccount": {
+                      "id": "MPA-CULBBYHD11",
+                      "login": "integracao@labs.moip.com.br",
+                      "fullname": "Moip SandBox"
+                  },
+                  "type": "PRIMARY",
+                  "amount": {
+                      "total": 11000,
+                      "currency": "BRL",
+                      "fees": 0,
+                      "refunds": 0
+                  },
+                  "feePayor": true
+              }
+          ],
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/orders/ORD-A4HGZXSXARIV"
+              },
+              "checkout": {
+                  "payCheckout": {
+                      "redirectHref": "https://checkout-new-sandbox.moip.com.br?token=82678972-25ad-4d20-951a-ac9e384a6c04&id=ORD-A4HGZXSXARIV"
+                  },
+                  "payCreditCard": {
+                      "redirectHref": "https://checkout-new-sandbox.moip.com.br?token=82678972-25ad-4d20-951a-ac9e384a6c04&id=ORD-A4HGZXSXARIV&payment-method=credit-card"
+                  },
+                  "payBoleto": {
+                      "redirectHref": "https://checkout-new-sandbox.moip.com.br?token=82678972-25ad-4d20-951a-ac9e384a6c04&id=ORD-A4HGZXSXARIV&payment-method=boleto"
+                  },
+                  "payOnlineBankDebitItau": {
+                      "redirectHref": "https://checkout-sandbox.moip.com.br/debit/itau/ORD-A4HGZXSXARIV"
+                  }
+              }
+          }
+      }

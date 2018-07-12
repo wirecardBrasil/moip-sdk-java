@@ -1,0 +1,177 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/orders
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "_links": {
+              "next": {
+                  "href": "https://test.moip.com.br/v2/orders?filters=&limit=0&offset=0"
+              },
+              "previous": {
+                  "href": "https://test.moip.com.br/v2/orders?filters=&limit=0&offset=0"
+              }
+          },
+          "summary": {
+              "count": 48900,
+              "amount": 7750393812
+          },
+          "orders": [
+              {
+                  "id": "ORD-PPKTLN8RH25E",
+                  "ownId": null,
+                  "status": "NOT_PAID",
+                  "blocked": false,
+                  "amount": {
+                      "total": 690,
+                      "addition": 0,
+                      "fees": 0,
+                      "deduction": 0,
+                      "otherReceivers": 0,
+                      "currency": "BRL"
+                  },
+                  "receivers": [
+                      {
+                          "type": "PRIMARY",
+                          "moipAccount": {
+                              "id": "MPA-CULBBYHD11"
+                          }
+                      }
+                  ],
+                  "customer": {
+                      "fullname": "ícaro raupp henrique",
+                      "email": "icaro@bode.io"
+                  },
+                  "items": [
+                      {
+                          "product": null
+                      }
+                  ],
+                  "payments": [
+                      {
+                          "id": "PAY-RYMM1Y75ULVI",
+                          "installmentCount": 1,
+                          "fundingInstrument": {
+                              "method": "CREDIT_CARD",
+                              "brand": "VISA"
+                          }
+                      }
+                  ],
+                  "events": [],
+                  "_links": {
+                      "self": {
+                          "href": "https://test.moip.com.br/v2/orders/ORD-PPKTLN8RH25E"
+                      }
+                  },
+                  "createdAt": "2018-07-12T19:37:41-0300",
+                  "updatedAt": "2018-07-12T19:37:41-0300"
+              },
+              {
+                  "id": "ORD-6MER91AAJI4I",
+                  "ownId": null,
+                  "status": "NOT_PAID",
+                  "blocked": false,
+                  "amount": {
+                      "total": 690,
+                      "addition": 0,
+                      "fees": 0,
+                      "deduction": 0,
+                      "otherReceivers": 0,
+                      "currency": "BRL"
+                  },
+                  "receivers": [
+                      {
+                          "type": "PRIMARY",
+                          "moipAccount": {
+                              "id": "MPA-CULBBYHD11"
+                          }
+                      }
+                  ],
+                  "customer": {
+                      "fullname": "ícaro raupp henrique",
+                      "email": "icaro@bode.io"
+                  },
+                  "items": [
+                      {
+                          "product": null
+                      }
+                  ],
+                  "payments": [
+                      {
+                          "id": "PAY-YIMQW9VUSHG8",
+                          "installmentCount": 1,
+                          "fundingInstrument": {
+                              "method": "CREDIT_CARD",
+                              "brand": "VISA"
+                          }
+                      }
+                  ],
+                  "events": [],
+                  "_links": {
+                      "self": {
+                          "href": "https://test.moip.com.br/v2/orders/ORD-6MER91AAJI4I"
+                      }
+                  },
+                  "createdAt": "2018-07-12T18:31:25-0300",
+                  "updatedAt": "2018-07-12T18:31:25-0300"
+              },
+              {
+                  "id": "ORD-BN73SSJ1BO1K",
+                  "ownId": null,
+                  "status": "WAITING",
+                  "blocked": false,
+                  "amount": {
+                      "total": 22000,
+                      "addition": 0,
+                      "fees": 0,
+                      "deduction": 0,
+                      "otherReceivers": 0,
+                      "currency": "BRL"
+                  },
+                  "receivers": [
+                      {
+                          "type": "PRIMARY",
+                          "moipAccount": {
+                              "id": "MPA-CULBBYHD11"
+                          }
+                      }
+                  ],
+                  "customer": {
+                      "fullname": "rafael mateus",
+                      "email": "rafaelmateus@hotmail.com.br"
+                  },
+                  "items": [
+                      {
+                          "product": null
+                      }
+                  ],
+                  "payments": [
+                      {
+                          "id": "PAY-174FKBMG0OFD",
+                          "installmentCount": 1,
+                          "fundingInstrument": {
+                              "method": "CREDIT_CARD",
+                              "brand": "MASTERCARD"
+                          }
+                      }
+                  ],
+                  "events": [],
+                  "_links": {
+                      "self": {
+                          "href": "https://test.moip.com.br/v2/orders/ORD-BN73SSJ1BO1K"
+                      }
+                  },
+                  "createdAt": "2018-07-12T14:15:38-0300",
+                  "updatedAt": "2018-07-12T14:15:39-0300"
+              }
+          ]
+      }

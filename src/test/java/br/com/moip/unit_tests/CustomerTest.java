@@ -184,12 +184,38 @@ public class CustomerTest {
 
         Map<String, Object> customersList = Moip.API.customers().list(setup);
 
-        // Cast Object to Map List
+        // Parse Object to Map List
         List<Map<String, Object>> customers = parser.objectToList(customersList.get("customers"));
+
+        // customers[0] ---
         assertEquals("CUS-GBQJHCRKF2ZJ", customers.get(0).get("id"));
 
         Map<String, Object> fundingInstrument0 = parser.objectToMap(customers.get(0).get("fundingInstrument"));
-        Map<String, Object> creditCard = parser.objectToMap(fundingInstrument0.get("creditCard"));
-        assertEquals("CRC-GX8ZN1HLBHU9", creditCard.get("id"));
+        Map<String, Object> creditCard0 = parser.objectToMap(fundingInstrument0.get("creditCard"));
+        assertEquals("CRC-GX8ZN1HLBHU9", creditCard0.get("id"));
+        assertEquals("VISA", creditCard0.get("brand"));
+        assertEquals("407302", creditCard0.get("first6"));
+        assertEquals("0002", creditCard0.get("last4"));
+
+        // customer[1] ---
+        assertEquals("CUS-U9JX31DJSX6O", customers.get(1).get("id"));
+        assertEquals("r@mail.co", customers.get(1).get("email"));
+
+        Map<String, Object> fundingInstrument1 = parser.objectToMap(customers.get(1).get("fundingInstrument"));
+        Map<String, Object> creditCard1 = parser.objectToMap(fundingInstrument1.get("creditCard"));
+        assertEquals("CRC-QEQ0ZEC1WFCP", creditCard1.get("id"));
+
+        Map<String, Object> shippingAddress1 = parser.objectToMap(customers.get(1).get("billingAddress"));
+        assertEquals("13030-290", shippingAddress1.get("zipCode"));
+
+        // customers[2] ---
+        assertEquals("CUS-J44P8K7QLVLS", customers.get(2).get("id"));
+        assertEquals("Ray Batista", customers.get(2).get("fullname"));
+
+        Map<String, Object> fundingInstrument2 = parser.objectToMap(customers.get(2).get("fundingInstrument"));
+        Map<String, Object> creditCard2 = parser.objectToMap(fundingInstrument2.get("creditCard"));
+        assertEquals("CRC-VWO246R7BXKX", creditCard2.get("id"));
+        assertEquals("407302", creditCard2.get("first6"));
+        assertEquals(true, creditCard2.get("store"));
     }
 }

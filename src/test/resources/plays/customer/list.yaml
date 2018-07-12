@@ -107,6 +107,53 @@ interactions:
                           "method": "CREDIT_CARD"
                       }
                   ]
+              },
+              {
+                  "id": "CUS-J44P8K7QLVLS",
+                  "fullname": "Ray Batista",
+                  "email": "r@mail.co",
+                  "fundingInstrument": {
+                      "creditCard": {
+                          "id": "CRC-VWO246R7BXKX",
+                          "brand": "VISA",
+                          "first6": "407302",
+                          "last4": "0002",
+                          "store": true
+                      },
+                      "method": "CREDIT_CARD"
+                  },
+                  "phone": {
+                      "countryCode": "55",
+                      "areaCode": "19",
+                      "number": "33260064"
+                  },
+                  "billingAddress": {
+                      "zipCode": "13030-290",
+                      "street": "Rua rio grande do sul",
+                      "streetNumber": "0",
+                      "complement": "s/n null",
+                      "city": "Campinas",
+                      "district": "Vila Santana",
+                      "state": "São Paulo",
+                      "country": "Brasil"
+                  },
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/customers/CUS-J44P8K7QLVLS"
+                      }
+                  },
+                  "fundingInstruments": [
+                      {
+                          "creditCard": {
+                              "id": "CRC-VWO246R7BXKX",
+                              "brand": "VISA",
+                              "first6": "407302",
+                              "last4": "0002",
+                              "store": true
+                          },
+                          "method": "CREDIT_CARD"
+                      }
+                  ]
               }
           ]
       }

@@ -1,4 +1,4 @@
-package br.com.moip.util;
+package br.com.moip.utilities;
 
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;

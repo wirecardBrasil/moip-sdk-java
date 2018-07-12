@@ -1,6 +1,6 @@
 package br.com.moip.api.request;
 
-import br.com.moip.util.GsonFactory;
+import br.com.moip.utilities.GsonFactory;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static br.com.moip.util.DataHelper.jsonToUrlEncodedString;
+import static br.com.moip.utilities.DataHelper.jsonToUrlEncodedString;
 
 public class RequestTools {
 

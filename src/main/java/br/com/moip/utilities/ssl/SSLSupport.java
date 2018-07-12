@@ -1,4 +1,4 @@
-package br.com.moip.util.ssl;
+package br.com.moip.utilities.ssl;
 
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.SSLContext;

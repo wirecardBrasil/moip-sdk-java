@@ -1,4 +1,4 @@
-package br.com.moip.util;
+package br.com.moip.utilities;
 
 import br.com.moip.api.request.APIDateRequest;
 import com.google.gson.JsonElement;

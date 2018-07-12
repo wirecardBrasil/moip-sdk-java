@@ -9,7 +9,7 @@ import br.com.moip.exception.UnexpectedException;
 import br.com.moip.exception.ValidationException;
 import br.com.moip.models.Setup;
 import br.com.moip.models.error.Errors;
-import br.com.moip.util.ssl.SSLSupport;
+import br.com.moip.utilities.ssl.SSLSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

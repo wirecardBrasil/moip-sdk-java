@@ -1,0 +1,112 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/customers
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "customers": [
+              {
+                  "id": "CUS-GBQJHCRKF2ZJ",
+                  "fullname": "Ray Batista",
+                  "email": "r@mail.co",
+                  "fundingInstrument": {
+                      "creditCard": {
+                          "id": "CRC-GX8ZN1HLBHU9",
+                          "brand": "VISA",
+                          "first6": "407302",
+                          "last4": "0002",
+                          "store": true
+                      },
+                      "method": "CREDIT_CARD"
+                  },
+                  "phone": {
+                      "countryCode": "55",
+                      "areaCode": "19",
+                      "number": "33260064"
+                  },
+                  "billingAddress": {
+                      "zipCode": "13030-290",
+                      "street": "Rua rio grande do sul",
+                      "streetNumber": "0",
+                      "complement": "s/n null",
+                      "city": "Campinas",
+                      "district": "Vila Santana",
+                      "state": "São Paulo",
+                      "country": "Brasil"
+                  },
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/customers/CUS-GBQJHCRKF2ZJ"
+                      }
+                  },
+                  "fundingInstruments": [
+                      {
+                          "creditCard": {
+                              "id": "CRC-GX8ZN1HLBHU9",
+                              "brand": "VISA",
+                              "first6": "407302",
+                              "last4": "0002",
+                              "store": true
+                          },
+                          "method": "CREDIT_CARD"
+                      }
+                  ]
+              },
+              {
+                  "id": "CUS-U9JX31DJSX6O",
+                  "fullname": "Ray Batista",
+                  "email": "r@mail.co",
+                  "fundingInstrument": {
+                      "creditCard": {
+                          "id": "CRC-QEQ0ZEC1WFCP",
+                          "brand": "VISA",
+                          "first6": "407302",
+                          "last4": "0002",
+                          "store": true
+                      },
+                      "method": "CREDIT_CARD"
+                  },
+                  "phone": {
+                      "countryCode": "55",
+                      "areaCode": "19",
+                      "number": "33260064"
+                  },
+                  "billingAddress": {
+                      "zipCode": "13030-290",
+                      "street": "Rua rio grande do sul",
+                      "streetNumber": "0",
+                      "complement": "s/n null",
+                      "city": "Campinas",
+                      "district": "Vila Santana",
+                      "state": "São Paulo",
+                      "country": "Brasil"
+                  },
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/customers/CUS-U9JX31DJSX6O"
+                      }
+                  },
+                  "fundingInstruments": [
+                      {
+                          "creditCard": {
+                              "id": "CRC-QEQ0ZEC1WFCP",
+                              "brand": "VISA",
+                              "first6": "407302",
+                              "last4": "0002",
+                              "store": true
+                          },
+                          "method": "CREDIT_CARD"
+                      }
+                  ]
+              }
+          ]
+      }

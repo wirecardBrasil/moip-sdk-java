@@ -1,0 +1,83 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/orders/ORD-GVEF677TOU7D/payments
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "PAY-SKEH9F7N532S",
+          "status": "WAITING",
+          "delayCapture": false,
+          "amount": {
+              "total": 11000,
+              "gross": 11000,
+              "fees": 277,
+              "refunds": 0,
+              "liquid": 10723,
+              "currency": "BRL"
+          },
+          "installmentCount": 1,
+          "fundingInstrument": {
+              "method": "ONLINE_BANK_DEBIT",
+              "onlineBankDebit": {
+                  "bankNumber": "341",
+                  "expirationDate": "2018-11-22",
+                  "bankName": "BANCO ITAU S.A."
+              }
+          },
+          "fees": [
+              {
+                  "type": "TRANSACTION",
+                  "amount": 277
+              }
+          ],
+          "events": [
+              {
+                  "type": "PAYMENT.CREATED",
+                  "createdAt": "2018-07-16T13:52:06.138-03"
+              },
+              {
+                  "type": "PAYMENT.WAITING",
+                  "createdAt": "2018-07-16T13:52:06.138-03"
+              }
+          ],
+          "receivers": [
+              {
+                  "moipAccount": {
+                      "id": "MPA-CULBBYHD11",
+                      "login": "integracao@labs.moip.com.br",
+                      "fullname": "Moip SandBox"
+                  },
+                  "type": "PRIMARY",
+                  "amount": {
+                      "total": 11000,
+                      "currency": "BRL",
+                      "fees": 0,
+                      "refunds": 0
+                  },
+                  "feePayor": true
+              }
+          ],
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/payments/PAY-SKEH9F7N532S"
+              },
+              "order": {
+                  "href": "https://sandbox.moip.com.br/v2/orders/ORD-GVEF677TOU7D",
+                  "title": "ORD-GVEF677TOU7D"
+              },
+              "payOnlineBankDebitItau": {
+                  "redirectHref": "https://checkout-sandbox.moip.com.br/debit/itau/PAY-SKEH9F7N532S"
+              }
+          },
+          "createdAt": "2018-07-16T13:52:06.136-03",
+          "updatedAt": "2018-07-16T13:52:06.136-03"
+      }

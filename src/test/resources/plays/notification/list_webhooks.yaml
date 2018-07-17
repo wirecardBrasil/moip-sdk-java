@@ -1,0 +1,50 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/webhooks
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "webhooks": [
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.PAID",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-VP3PTS0QP294",
+                  "sentAt": "2018-07-17T18:11:07.473Z"
+              },
+              {
+                  "resourceId": "PAY-NFSY35SXVCCN",
+                  "event": "PAYMENT.AUTHORIZED",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-O8EC0FBUBBAP",
+                  "sentAt": "2018-07-17T18:11:07.303Z"
+              },
+              {
+                  "resourceId": "PAY-NFSY35SXVCCN",
+                  "event": "PAYMENT.IN_ANALYSIS",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-6QJN2PWF6SOD",
+                  "sentAt": "2018-07-17T18:11:06.228Z"
+              },
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.WAITING",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-YA8Z6XXDZJCY",
+                  "sentAt": "2018-07-17T18:11:06.047Z"
+              }
+          ]
+      }

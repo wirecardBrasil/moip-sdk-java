@@ -33,7 +33,7 @@ jobs:
 
       - run:
           name: Dependencies
-          command: ./gradlew dependencies -PossrhUsername=username -PossrhPassword=password
+          command: ./gradlew clean dependencies
 
       - save_cache:
           paths:
@@ -43,4 +43,4 @@ jobs:
       # run tests!
       - run:
           name: Build and test
-          command: ./gradlew test -PossrhUsername=username -PossrhPassword=password
+          command: ./gradlew clean test

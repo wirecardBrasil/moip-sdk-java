@@ -1,9 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
 group 'br.com.moip'
+archivesBaseName = "sdk-java"
 version '0.1.0'
 
-apply plugin: 'java'
+description = "Java SDK for Moip APIs integration"
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -19,4 +25,75 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: "org.slf4j", name: "slf4j-simple", version: "1.7.12"
     testCompile group: "com.github.rodrigosaito", name: "mockwebserver-player", version: "1.1.0"
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: System.getenv('MVN_USERNAME'), password: System.getenv('MVN_PASSWORD'))
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: System.getenv('MVN_USERNAME'), password: System.getenv('MVN_PASSWORD'))
+            }
+
+            pom.project {
+                name 'Moip Java SDK'
+                packaging 'jar'
+                // the artifactId can be defined here (it's optional)
+                description 'Java SDK for Moip APIs integration'
+                url 'https://github.com/moip/moip-sdk-java'
+
+                scm {
+                    connection 'scm:git:ssh://git@github.com:moip/moip-sdk-java.git'
+                    developerConnection 'scm:git:ssh://git@github.com:moip/moip-sdk-java.git'
+                    url 'https://github.com/moip/moip-sdk-java'
+                }
+
+                licenses {
+                    license {
+                        name 'The MIT License (MIT)'
+                        url 'http://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'matheus.nakaya'
+                        name 'Matheus B. Nakaya'
+                        email 'matheus.nakaya@moip.com.br'
+                    }
+                }
+            }
+        }
+    }
+}
+
+processResources {
+    filesMatching("**/moipJavaSDK.properties") {
+        expand([
+                version: version
+        ])
+    }
 }

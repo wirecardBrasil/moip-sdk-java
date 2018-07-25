@@ -37,7 +37,6 @@ jobs:
             - cd ~/.gunpg
             - ls -la
 
-
   deploy_release:
     docker:
         - image: circleci/openjdk:8-jdk

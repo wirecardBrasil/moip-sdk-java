@@ -1,0 +1,25 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/preferences/notifications
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "events": [
+              "ORDER.*",
+              "PAYMENT.AUTHORIZED",
+              "PAYMENT.CANCELLED"
+          ],
+          "target": "http://requestb.in/1dhjesw1",
+          "media": "WEBHOOK",
+          "token": "1457cbc9e2ab4bc7a62ab24951a9a878",
+          "id": "NPR-LQCZEI6Q7I1G"
+      }

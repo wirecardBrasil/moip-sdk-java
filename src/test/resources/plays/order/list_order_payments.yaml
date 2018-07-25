@@ -1,0 +1,85 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/orders/ORD-BN73SSJ1BO1K/payments
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "payments": [
+              {
+                  "id": "PAY-174FKBMG0OFD",
+                  "status": "IN_ANALYSIS",
+                  "delayCapture": false,
+                  "amount": {
+                      "total": 22000,
+                      "gross": 22000,
+                      "fees": 1277,
+                      "refunds": 0,
+                      "liquid": 20723,
+                      "currency": "BRL"
+                  },
+                  "installmentCount": 1,
+                  "fundingInstrument": {
+                      "creditCard": {
+                          "id": "CRC-TH09IN444CYO",
+                          "brand": "MASTERCARD",
+                          "first6": "555566",
+                          "last4": "8884",
+                          "store": true,
+                          "holder": {
+                              "birthdate": "1986-04-26",
+                              "birthDate": "1986-04-26",
+                              "taxDocument": {
+                                  "type": "UNKNOWN",
+                                  "number": "7847504910"
+                              },
+                              "fullname": "Rafael Bosquetti Mateus"
+                          }
+                      },
+                      "method": "CREDIT_CARD"
+                  },
+                  "acquirerDetails": {
+                      "authorizationNumber": "T12996",
+                      "taxDocument": {
+                          "type": "CNPJ",
+                          "number": "01027058000191"
+                      }
+                  },
+                  "fees": [
+                      {
+                          "type": "TRANSACTION",
+                          "amount": 1277
+                      }
+                  ],
+                  "events": [
+                      {
+                          "type": "PAYMENT.IN_ANALYSIS",
+                          "createdAt": "2018-07-12T14:15:39.000-03"
+                      },
+                      {
+                          "type": "PAYMENT.CREATED",
+                          "createdAt": "2018-07-12T14:15:38.000-03"
+                      }
+                  ],
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/payments/PAY-174FKBMG0OFD"
+                      },
+                      "order": {
+                          "href": "https://sandbox.moip.com.br/v2/orders/ORD-BN73SSJ1BO1K",
+                          "title": "ORD-BN73SSJ1BO1K"
+                      }
+                  },
+                  "createdAt": "2018-07-12T14:15:38.000-03",
+                  "updatedAt": "2018-07-12T14:15:39.000-03"
+              }
+          ]
+      }

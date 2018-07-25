@@ -1,0 +1,125 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/payments/PAY-44R4XT17VP50/void
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: POST
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "PAY-44R4XT17VP50",
+          "status": "CANCELLED",
+          "delayCapture": true,
+          "cancellationDetails": {
+              "code": "7",
+              "description": "Política do Moip",
+              "cancelledBy": "MOIP"
+          },
+          "amount": {
+              "total": 11000,
+              "gross": 11000,
+              "fees": 1127,
+              "refunds": 0,
+              "liquid": 9873,
+              "currency": "BRL"
+          },
+          "installmentCount": 3,
+          "statementDescriptor": "Minha Loja",
+          "fundingInstrument": {
+              "creditCard": {
+                  "id": "CRC-CQC2YNRA6UUT",
+                  "brand": "MASTERCARD",
+                  "first6": "555566",
+                  "last4": "8884",
+                  "store": true,
+                  "holder": {
+                      "birthdate": "1988-12-30",
+                      "birthDate": "1988-12-30",
+                      "taxDocument": {
+                          "type": "CPF",
+                          "number": "78994193600"
+                      },
+                      "billingAddress": {
+                          "street": "Avenida Contorno",
+                          "streetNumber": "400",
+                          "district": "Savassi",
+                          "city": "Belo Horizonte",
+                          "state": "MG",
+                          "country": "BRA",
+                          "zipCode": "76932800"
+                      },
+                      "fullname": "Roberto Oliveira"
+                  }
+              },
+              "method": "CREDIT_CARD"
+          },
+          "acquirerDetails": {
+              "authorizationNumber": "123456",
+              "taxDocument": {
+                  "type": "CNPJ",
+                  "number": "01027058000191"
+              }
+          },
+          "fees": [
+              {
+                  "type": "TRANSACTION",
+                  "amount": 585
+              },
+              {
+                  "type": "PRE_PAYMENT",
+                  "amount": 542
+              }
+          ],
+          "events": [
+              {
+                  "type": "PAYMENT.CANCELLED",
+                  "createdAt": "2018-07-16T16:12:26.499-03"
+              },
+              {
+                  "type": "PAYMENT.PRE_AUTHORIZED",
+                  "createdAt": "2018-07-16T16:12:12.000-03"
+              },
+              {
+                  "type": "PAYMENT.IN_ANALYSIS",
+                  "createdAt": "2018-07-16T16:12:11.000-03"
+              },
+              {
+                  "type": "PAYMENT.CREATED",
+                  "createdAt": "2018-07-16T16:11:50.000-03"
+              }
+          ],
+          "receivers": [
+              {
+                  "moipAccount": {
+                      "id": "MPA-CULBBYHD11",
+                      "login": "integracao@labs.moip.com.br",
+                      "fullname": "Moip SandBox"
+                  },
+                  "type": "PRIMARY",
+                  "amount": {
+                      "total": 11000,
+                      "currency": "BRL",
+                      "fees": 0,
+                      "refunds": 0
+                  },
+                  "feePayor": true
+              }
+          ],
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/payments/PAY-44R4XT17VP50"
+              },
+              "order": {
+                  "href": "https://sandbox.moip.com.br/v2/orders/ORD-3Y3NR4PS4HVP",
+                  "title": "ORD-3Y3NR4PS4HVP"
+              }
+          },
+          "createdAt": "2018-07-16T16:11:50.000-03",
+          "updatedAt": "2018-07-16T16:12:26.498-03"
+      }

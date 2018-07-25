@@ -62,18 +62,5 @@ jobs:
 workflows:
   moip_devx_tools:
     jobs:
-      - build:
-          filters:
-            tag:
-              only: /^v.*/
-            branch:
-              only: /.*/
+      - build
 
-      - deploy_release:
-          require:
-            - build
-          filters:
-            tag:
-              only: /^v.*/
-            branch:
-              ignore: /.*/

@@ -32,9 +32,8 @@ jobs:
 
       - run:
           name: Test
-          command:
-            - cd ~/.gunpg
-            - ls -la
+          command: |
+            cd ~/.gunpg && ls -la
 
 workflows:
   version: 2

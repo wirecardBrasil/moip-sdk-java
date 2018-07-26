@@ -36,9 +36,8 @@ jobs:
             sudo apt-get install gpgv && gpg --help
 
       - run:
-          name: Test
-          command: |
-            cd ~/.gnupg && ls -la
+          name: Decrypt keys
+          command: openssl aes-256-cbc -k $encrypted_key -d -a -in secring.gpg.enc -out secring.gpg
 
 workflows:
   version: 2

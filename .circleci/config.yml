@@ -37,7 +37,7 @@ jobs:
 
       - run:
           name: Decrypt keys
-          command: openssl aes-256-cbc -k $encrypted_1dqsm14n1k24_key -d -a -in secring.gpg.enc -out secring.gpg
+          command: openssl aes-256-cbc -k $encrypted_1dqsm14n1k24_key -d -a -in ~/moip-sdk-java/.circleci/secring.gpg.enc -out secring.gpg
 
       - run:
           name: Deploy Project

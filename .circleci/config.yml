@@ -37,7 +37,11 @@ jobs:
 
       - run:
           name: Decrypt keys
-          command: openssl aes-256-cbc -k $encrypted_key -d -a -in secring.gpg.enc -out secring.gpg
+          command: openssl aes-256-cbc -k $encrypted_1dqsm14n1k24_key -d -a -in secring.gpg.enc -out secring.gpg
+
+      - run:
+          name: Deploy Project
+          command: ./gradlew uploadArchives -PossrhUsername="${MVN_USERNAME}" -PossrhPassword="${MVN_PASSWORD}" -Psigning.keyId="${SIGNING_KEY_ID}" -Psigning.password="${SIGNING_PASSWORD}" -Psigning.secretKeyRingFile="${SIGNING_SECRET_KEY_RING_FILE}"
 
 workflows:
   version: 2

@@ -1,0 +1,108 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/orders/ORD-J5F0JITE58DV/payments
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "PAY-MMU64JJBUI6Z",
+          "status": "IN_ANALYSIS",
+          "delayCapture": true,
+          "amount": {
+              "total": 11000,
+              "gross": 11000,
+              "fees": 0,
+              "refunds": 0,
+              "liquid": 11000,
+              "currency": "BRL"
+          },
+          "installmentCount": 3,
+          "statementDescriptor": "Minha Loja",
+          "fundingInstrument": {
+              "creditCard": {
+                  "id": "CRC-CQC2YNRA6UUT",
+                  "brand": "MASTERCARD",
+                  "first6": "555566",
+                  "last4": "8884",
+                  "store": true,
+                  "holder": {
+                      "birthdate": "1988-12-30",
+                      "birthDate": "1988-12-30",
+                      "taxDocument": {
+                          "type": "CPF",
+                          "number": "78994193600"
+                      },
+                      "billingAddress": {
+                          "street": "Avenida Contorno",
+                          "streetNumber": "400",
+                          "district": "Savassi",
+                          "city": "Belo Horizonte",
+                          "state": "MG",
+                          "country": "BRA",
+                          "zipCode": "76932800"
+                      },
+                      "fullname": "Roberto Oliveira"
+                  }
+              },
+              "method": "CREDIT_CARD"
+          },
+          "acquirerDetails": {
+              "authorizationNumber": "123456",
+              "taxDocument": {
+                  "type": "CNPJ",
+                  "number": "01027058000191"
+              }
+          },
+          "fees": [
+              {
+                  "type": "TRANSACTION",
+                  "amount": 0
+              }
+          ],
+          "events": [
+              {
+                  "type": "PAYMENT.IN_ANALYSIS",
+                  "createdAt": "2018-07-16T14:11:40.090-03"
+              },
+              {
+                  "type": "PAYMENT.CREATED",
+                  "createdAt": "2018-07-16T14:11:34.179-03"
+              }
+          ],
+          "receivers": [
+              {
+                  "moipAccount": {
+                      "id": "MPA-CULBBYHD11",
+                      "login": "integracao@labs.moip.com.br",
+                      "fullname": "Moip SandBox"
+                  },
+                  "type": "PRIMARY",
+                  "amount": {
+                      "total": 11000,
+                      "currency": "BRL",
+                      "fees": 0,
+                      "refunds": 0
+                  },
+                  "feePayor": true
+              }
+          ],
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/payments/PAY-MMU64JJBUI6Z"
+              },
+              "order": {
+                  "href": "https://sandbox.moip.com.br/v2/orders/ORD-J5F0JITE58DV",
+                  "title": "ORD-J5F0JITE58DV"
+              }
+          },
+          "createdAt": "2018-07-16T14:11:34.152-03",
+          "updatedAt": "2018-07-16T14:11:40.090-03"
+      }

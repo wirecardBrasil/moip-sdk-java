@@ -1,0 +1,48 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/customers
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "CUS-Z83J8G3EMLIT",
+          "ownId": "moip_create_customer_unit_test",
+          "fullname": "SDK Java",
+          "createdAt": "2018-07-11T18:26:51.000-03",
+          "birthDate": "1980-05-10",
+          "email": "sdk.java@moip.com.br",
+          "phone": {
+              "countryCode": "55",
+              "areaCode": "11",
+              "number": "22226842"
+          },
+          "taxDocument": {
+              "type": "CPF",
+              "number": "10013390023"
+          },
+          "shippingAddress": {
+              "zipCode": "01451001",
+              "street": "Avenida Brigadeiro Faria Lima",
+              "streetNumber": "3064",
+              "city": "São Paulo",
+              "district": "Itaim Bibi",
+              "state": "SP",
+              "country": "BRA"
+          },
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/customers/CUS-Z83J8G3EMLIT"
+              },
+              "hostedAccount": {
+                  "redirectHref": "https://hostedaccount-sandbox.moip.com.br?token=541a137d-f94a-4ab6-9e2b-40df67309c1b&id=CUS-Z83J8G3EMLIT&mpa=MPA-CULBBYHD11"
+              }
+          }
+      }

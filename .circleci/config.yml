@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/moip-sdk-java
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
+
+      - run:
+          name: Dependencies
+          command: ./gradlew clean dependencies -PossrhUsername=username -PossrhPassword=password
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+
+      - run:
+          name: Build and test
+          command: ./gradlew clean test -PossrhUsername=username -PossrhPassword=password -i
+
+workflows:
+  version: 2
+  moip_devx_tools:
+    jobs:
+      - build
+

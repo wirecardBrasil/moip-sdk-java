@@ -30,23 +30,6 @@ jobs:
           name: Build and test
           command: ./gradlew clean test -PossrhUsername=username -PossrhPassword=password -i
 
-      - run:
-          name: Install GnuPG
-          command: |
-            sudo apt-get install gpgv && gpg --help
-
-      - run:
-          name: Check openssl version
-          command: openssl version -a
-
-      - run:
-          name: Decrypt keys
-          command: openssl aes-256-cbc -k $encrypted_1dqsm14n1k24_key -d -a -in ~/moip-sdk-java/.circleci/secring.gpg.enc -out secring.gpg
-
-      - run:
-          name: Deploy Project
-          command: ./gradlew uploadArchives -PossrhUsername="${MVN_USERNAME}" -PossrhPassword="${MVN_PASSWORD}" -Psigning.keyId="${SIGNING_KEY_ID}" -Psigning.password="${SIGNING_PASSWORD}" -Psigning.secretKeyRingFile="${SIGNING_SECRET_KEY_RING_FILE}"
-
 workflows:
   version: 2
   moip_devx_tools:

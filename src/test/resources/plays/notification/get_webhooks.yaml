@@ -1,0 +1,66 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/webhooks?resourceId=ORD-W496X7T9FVGZ
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "webhooks": [
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.PAID",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-VP3PTS0QP294",
+                  "sentAt": "2018-07-17T18:11:07.473Z"
+              },
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.WAITING",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-YA8Z6XXDZJCY",
+                  "sentAt": "2018-07-17T18:11:06.047Z"
+              },
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.CREATED",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-FXFWBXTD4CBM",
+                  "sentAt": "2018-07-17T18:11:02.628Z"
+              },
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.PAID",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-Z0H3OSCO6CG4",
+                  "sentAt": "2018-07-17T18:10:57.162Z"
+              },
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.WAITING",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-BM1MIMKDV6VR",
+                  "sentAt": "2018-07-17T18:10:55.716Z"
+              },
+              {
+                  "resourceId": "ORD-W496X7T9FVGZ",
+                  "event": "ORDER.CREATED",
+                  "url": "https://requestb.in/16pw5ncfjleofweojfewbl1",
+                  "status": "FAILED",
+                  "id": "EVE-HR1TKRMBBV6P",
+                  "sentAt": "2018-07-17T18:10:52.241Z"
+              }
+          ]
+      }

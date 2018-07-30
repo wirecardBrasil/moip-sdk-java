@@ -1,0 +1,63 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/payments/PAY-SB2B44QAXILI/refunds
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "REF-1QXB9GKQJRNF",
+          "status": "COMPLETED",
+          "events": [
+              {
+                  "type": "REFUND.COMPLETED",
+                  "createdAt": "2018-07-17T16:26:09.000-03"
+              },
+              {
+                  "type": "REFUND.REQUESTED",
+                  "createdAt": "2018-07-17T16:26:09.000-03"
+              }
+          ],
+          "amount": {
+              "total": 8500,
+              "fees": 0,
+              "currency": "BRL"
+          },
+          "receiversDebited": [
+              {
+                  "amount": 8500,
+                  "moipAccount": "MPA-CULBBYHD11"
+              }
+          ],
+          "type": "PARTIAL",
+          "refundingInstrument": {
+              "creditCard": {
+                  "brand": "MASTERCARD",
+                  "first6": "555566",
+                  "last4": "8884",
+                  "store": true
+              },
+              "method": "CREDIT_CARD"
+          },
+          "createdAt": "2018-07-17T16:26:09.000-03",
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/refunds/REF-1QXB9GKQJRNF"
+              },
+              "order": {
+                  "href": "https://sandbox.moip.com.br/v2/orders/ORD-FF9UACPDT5N6",
+                  "title": "ORD-FF9UACPDT5N6"
+              },
+              "payment": {
+                  "href": "https://sandbox.moip.com.br/v2/payments/PAY-SB2B44QAXILI",
+                  "title": "PAY-SB2B44QAXILI"
+              }
+          }
+      }

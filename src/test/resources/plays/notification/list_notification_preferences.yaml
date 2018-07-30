@@ -1,0 +1,71 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/preferences/notifications
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      [
+          {
+              "events": [
+                  "ORDER.*",
+                  "PAYMENT.AUTHORIZED",
+                  "PAYMENT.CANCELLED"
+              ],
+              "target": "http://my.uri/0",
+              "media": "WEBHOOK",
+              "token": "63c351458ccc4967aaa84f66a79c2be6",
+              "id": "NPR-O019G1CWTFV5"
+          },
+          {
+              "events": [
+                  "ORDER.*",
+                  "PAYMENT.AUTHORIZED",
+                  "PAYMENT.CANCELLED"
+              ],
+              "target": "http://my.uri/1",
+              "media": "WEBHOOK",
+              "token": "688e2f2b75df4b968cad7d2b5c9c02d6",
+              "id": "NPR-AV7URX6E5OUF"
+          },
+          {
+              "events": [
+                  "ORDER.*",
+                  "PAYMENT.AUTHORIZED",
+                  "PAYMENT.CANCELLED"
+              ],
+              "target": "http://my.uri/2",
+              "media": "WEBHOOK",
+              "token": "19160e43b6df4f58b31bfe57d291cb8a",
+              "id": "NPR-KCC2M2IYRQXJ"
+          },
+          {
+              "events": [
+                  "ORDER.*",
+                  "PAYMENT.AUTHORIZED",
+                  "PAYMENT.CANCELLED"
+              ],
+              "target": "http://my.uri/3",
+              "media": "WEBHOOK",
+              "token": "a07451ff754449d18fedf60c6582e130",
+              "id": "NPR-GFD5Q9JP0JHO"
+          },
+          {
+              "events": [
+                  "ORDER.*",
+                  "PAYMENT.AUTHORIZED",
+                  "PAYMENT.CANCELLED"
+              ],
+              "target": "http://my.uri/4",
+              "media": "WEBHOOK",
+              "token": "dc5c0470a44145baad470693b1ac7416",
+              "id": "NPR-F0TNENDS2PW0"
+          }
+      ]

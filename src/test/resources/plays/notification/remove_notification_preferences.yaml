@@ -1,0 +1,14 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/preferences/notifications/NPR-KCC2M2IYRQXJ
+    headers:
+      Content-Type: application/json
+      Authorization: Basic MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDE6QUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQkFCQUJBQg==
+    method: DELETE
+  response:
+    status: 204
+    headers:
+      "Content-Type": application/json
+    body: |

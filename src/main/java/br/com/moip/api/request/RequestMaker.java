@@ -161,8 +161,6 @@ public class RequestMaker extends Moip {
             LOGGER.debug("---> {} {}", requestProps.method, connection.getURL().toString());
             logHeaders(connection.getRequestProperties().entrySet());
 
-            // Verificar essa parte do código, pois o objeto serializado deve ser um Map, não mais um String
-
             if (requestProps.body != null) {
                 connection.setDoOutput(true);
                 String body = tools.getBody(requestProps.body, requestProps.contentType);
@@ -176,8 +174,6 @@ public class RequestMaker extends Moip {
                 wr.flush();
                 wr.close();
             }
-
-            // ----------------------------------------------------------------------------------------------
 
             LOGGER.debug("---> END HTTP");
 

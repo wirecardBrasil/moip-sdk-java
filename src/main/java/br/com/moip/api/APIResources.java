@@ -1,6 +1,12 @@
 package br.com.moip.api;
-
-import br.com.moip.models.*;
+;
+import br.com.moip.models.Customer;
+import br.com.moip.models.Order;
+import br.com.moip.models.Payment;
+import br.com.moip.models.Refund;
+import br.com.moip.models.NotificationPreference;
+import br.com.moip.models.Webhook;
+import br.com.moip.models.Account;
 
 public class APIResources {
 

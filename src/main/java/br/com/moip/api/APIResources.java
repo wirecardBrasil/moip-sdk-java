@@ -1,5 +1,5 @@
 package br.com.moip.api;
-;
+
 import br.com.moip.models.Customer;
 import br.com.moip.models.Order;
 import br.com.moip.models.Payment;

@@ -23,6 +23,26 @@ public class Response extends HashMap<String, Object> {
      * @return  {@code Map}
      */
     public Map<String, Object> jsonToMap(String json) {
+
+        /*
+         * This if block treats the /v2/accounts/exists response. Currently the endpoint returns the status
+         * code on its response body, breaking the JSON conversion.
+         */
+        if ("200".equals(json)) {
+            this.responseBody.put("code", 200);
+            return this.responseBody;
+        }
+
+        if ("400".equals(json)) {
+            this.responseBody.put("code", 400);
+            return this.responseBody;
+        }
+
+        if ("404".equals(json)) {
+            this.responseBody.put("code", 404);
+            return this.responseBody;
+        }
+
         if (!json.equals("")) {
             ObjectMapper mapper = new ObjectMapper();
             try {

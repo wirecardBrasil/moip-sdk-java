@@ -27,7 +27,7 @@ public class PaymentTest {
     @Before
     public void initialize() {
         this.body = new HashMap<>();
-        this.setup = new SetupFactory().setup(player.getURL("").toString());
+        this.setup = new SetupFactory().setupBasicAuth(player.getURL("").toString());
         this.parser = new Parser();
     }
 

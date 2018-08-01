@@ -28,17 +28,17 @@ public class Response extends HashMap<String, Object> {
          * This if block treats the /v2/accounts/exists response. Currently the endpoint returns the status
          * code on its response body, breaking the JSON conversion.
          */
-        if (json.equals("200")) {
+        if ("200".equals(json)) {
             this.responseBody.put("code", 200);
             return this.responseBody;
         }
 
-        if (json.equals("400")) {
+        if ("400".equals(json)) {
             this.responseBody.put("code", 400);
             return this.responseBody;
         }
 
-        if (json.equals("404")) {
+        if ("404".equals(json)) {
             this.responseBody.put("code", 404);
             return this.responseBody;
         }

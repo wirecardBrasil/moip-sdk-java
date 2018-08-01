@@ -1,0 +1,99 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/accounts
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "MPA-6A4F2AF0CED7",
+          "login": "my_test_0012930001@moip.com.br",
+          "accessToken": "8229ae27902746058561e2b9e71d12b9_v2",
+          "channelId": "APP-ML6Y8VWT7XFN",
+          "type": "MERCHANT",
+          "transparentAccount": false,
+          "email": {
+              "address": "my_test_0012930001@moip.com.br",
+              "confirmed": false
+          },
+          "person": {
+              "name": "Runscope",
+              "lastName": "Random 9123",
+              "birthDate": "1990-01-01",
+              "taxDocument": {
+                  "type": "CPF",
+                  "number": "123.456.798-91"
+              },
+              "address": {
+                  "street": "Av. Brigadeiro Faria Lima",
+                  "streetNumber": "2927",
+                  "district": "Itaim",
+                  "zipcode": "01234000",
+                  "zipCode": "01234000",
+                  "city": "São Paulo",
+                  "state": "SP",
+                  "country": "BRA"
+              },
+              "phone": {
+                  "countryCode": "55",
+                  "areaCode": "11",
+                  "number": "965213244",
+                  "verified": false,
+                  "phoneType": "cellphone"
+              },
+              "identityDocument": {
+                  "number": "434322344",
+                  "issuer": "SSP",
+                  "issueDate": "2000-12-12",
+                  "type": "RG"
+              }
+          },
+          "company": {
+              "name": "Empresa Moip",
+              "businessName": "Moip Pagamentos",
+              "taxDocument": {
+                  "type": "CNPJ",
+                  "number": "40.674.727/0001-79"
+              },
+              "address": {
+                  "street": "Av. Brigadeiro Faria Lima",
+                  "streetNumber": "2927",
+                  "district": "Itaim",
+                  "zipcode": "01234000",
+                  "zipCode": "01234000",
+                  "city": "São Paulo",
+                  "state": "SP",
+                  "country": "BRA"
+              },
+              "phone": {
+                  "countryCode": "55",
+                  "areaCode": "11",
+                  "number": "32234455",
+                  "verified": false,
+                  "phoneType": "not_informed"
+              },
+              "openingDate": "2011-01-01"
+          },
+          "businessSegment": {
+              "id": 3,
+              "name": "Eletrônicos / Jogos de vídeo game",
+              "mcc": 7622
+          },
+          "createdAt": "2018-07-31T22:33:09.497Z",
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/moipaccounts/MPA-6A4F2AF0CED7",
+                  "title": null
+              },
+              "setPassword": {
+                  "href": "https://desenvolvedor.moip.com.br/sandbox/AskForNewPassword.do?method=confirm&email=my_test_0012930001%40moip.com.br&code=b1cdd30fbcf728cd530f4e13c3ff4e4b"
+              }
+          }
+      }

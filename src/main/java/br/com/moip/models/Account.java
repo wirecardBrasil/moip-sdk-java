@@ -44,28 +44,20 @@ public class Account {
      */
     public Map<String, Object> checkExistence(String argument, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
+        String argumentType;
 
-        if (isTaxDocument(argument)) {
-            RequestProperties props = new RequestPropertiesBuilder()
-                    .method("GET")
-                    .endpoint(String.format("%s/exists?tax_document=%s", ENDPOINT, argument))
-                    .type(Account.class)
-                    .contentType(CONTENT_TYPE)
-                    .build();
+        if (isTaxDocument(argument)) argumentType = "tax_document";
 
-            return requestMaker.doRequest(props);
-        }
+        else argumentType = "email";
 
-        else {
-            RequestProperties props = new RequestPropertiesBuilder()
-                    .method("GET")
-                    .endpoint(String.format("%s/exists?email=%s", ENDPOINT, argument))
-                    .type(Account.class)
-                    .contentType(CONTENT_TYPE)
-                    .build();
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("GET")
+                .endpoint(String.format("%s/exists?%s=%s", ENDPOINT, argumentType, argument))
+                .type(Account.class)
+                .contentType(CONTENT_TYPE)
+                .build();
 
-            return requestMaker.doRequest(props);
-        }
+        return requestMaker.doRequest(props);
     }
 
     /**

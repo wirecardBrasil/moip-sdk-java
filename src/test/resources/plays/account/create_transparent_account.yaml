@@ -1,0 +1,65 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/accounts
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "MPA-51E0C7A09DF6",
+          "login": "my_test_1204102@moip.com.br",
+          "accessToken": "4a2893051cfe490c8c1284d90fac8c02_v2",
+          "channelId": "APP-ML6Y8VWT7XFN",
+          "type": "MERCHANT",
+          "transparentAccount": true,
+          "email": {
+              "address": "my_test_1204102@moip.com.br",
+              "confirmed": false
+          },
+          "person": {
+              "name": "Runscope",
+              "lastName": "Random 9123",
+              "birthDate": "1990-01-01",
+              "taxDocument": {
+                  "type": "CPF",
+                  "number": "123.456.798-91"
+              },
+              "address": {
+                  "street": "Av. Brigadeiro Faria Lima",
+                  "streetNumber": "2927",
+                  "district": "Itaim",
+                  "zipcode": "01234000",
+                  "zipCode": "01234000",
+                  "city": "São Paulo",
+                  "state": "SP",
+                  "country": "BRA"
+              },
+              "phone": {
+                  "countryCode": "55",
+                  "areaCode": "11",
+                  "number": "965213244",
+                  "verified": false,
+                  "phoneType": "cellphone"
+              },
+              "identityDocument": {
+                  "number": "434322344",
+                  "issuer": "SSP",
+                  "issueDate": "2000-12-12",
+                  "type": "RG"
+              }
+          },
+          "createdAt": "2018-08-01T16:26:45.903Z",
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/moipaccounts/MPA-51E0C7A09DF6",
+                  "title": null
+              }
+          }
+      }

@@ -1,0 +1,91 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/accounts/MPA-6A4F2AF0CED7
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "person": {
+              "lastName": "Random 9123",
+              "phone": {
+                  "areaCode": "11",
+                  "countryCode": "55",
+                  "number": "965213244"
+              },
+              "parentsName": {
+                  "mother": "",
+                  "father": ""
+              },
+              "address": {
+                  "zipcode": "01234-000",
+                  "zipCode": "01234-000",
+                  "street": "Av. Brigadeiro Faria Lima",
+                  "state": "SP",
+                  "streetNumber": "2927",
+                  "district": "Itaim",
+                  "country": "BRA",
+                  "city": "São Paulo"
+              },
+              "taxDocument": {
+                  "number": "123.456.798-91",
+                  "type": "CPF"
+              },
+              "name": "Runscope",
+              "birthDate": "1990-01-01"
+          },
+          "transparentAccount": false,
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/accounts/MPA-6A4F2AF0CED7"
+              }
+          },
+          "monthlyRevenueId": 0,
+          "type": "MERCHANT",
+          "id": "MPA-6A4F2AF0CED7",
+          "email": {
+              "confirmed": true,
+              "address": "my_test_0012930001@moip.com.br"
+          },
+          "createdAt": "2018-07-31T19:33:09.000-03:00",
+          "company": {
+              "monthlyRevenue": "",
+              "businessName": "Moip Pagamentos",
+              "phone": {
+                  "areaCode": "11",
+                  "countryCode": "55",
+                  "number": "32234455"
+              },
+              "openingDate": "2011-01-01",
+              "address": {
+                  "complement": "",
+                  "zipcode": "01234-000",
+                  "zipCode": "01234-000",
+                  "street": "Av. Brigadeiro Faria Lima",
+                  "state": "SP",
+                  "streetNumber": "2927",
+                  "district": "Itaim",
+                  "country": "BRA",
+                  "city": "São Paulo"
+              },
+              "taxDocument": {
+                  "number": "40.674.727/0001-79",
+                  "type": "CNPJ"
+              },
+              "name": "Empresa Moip",
+              "constitutionType": ""
+          },
+          "businessSegment": {
+              "id": 3
+          },
+          "feeType": "FIXED_TABLE_FEE",
+          "login": "my_test_0012930001@moip.com.br",
+          "softDescriptor": "Empresa Moip"
+      }

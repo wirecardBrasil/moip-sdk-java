@@ -23,7 +23,7 @@ public class Account {
      */
     private boolean isTaxDocument(String argument) {
         try {
-            Integer.parseInt(argument.substring(0,2));
+            Integer.parseInt(argument.substring(0,1));
         } catch (Exception ex) {
             return false;
         }

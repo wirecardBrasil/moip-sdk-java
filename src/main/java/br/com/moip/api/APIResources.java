@@ -7,6 +7,7 @@ import br.com.moip.models.Refund;
 import br.com.moip.models.NotificationPreference;
 import br.com.moip.models.Webhook;
 import br.com.moip.models.Account;
+import br.com.moip.models.Connect;
 
 public class APIResources {
 
@@ -17,6 +18,7 @@ public class APIResources {
     private static NotificationPreference notificationPreferenceInstance = new NotificationPreference();
     private static Webhook webhookInstance = new Webhook();
     private static Account accountInstance = new Account();
+    private static Connect connectInstance = new Connect();
 
     /**
      * This method is used to get a instance of customer object.
@@ -36,4 +38,6 @@ public class APIResources {
     public static Webhook webhooks() { return webhookInstance; }
 
     public static Account account() { return accountInstance; }
+
+    public static Connect connect() { return connectInstance; }
 }

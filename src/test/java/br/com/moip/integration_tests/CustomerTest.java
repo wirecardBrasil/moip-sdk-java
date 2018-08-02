@@ -6,7 +6,6 @@ import br.com.moip.auth.BasicAuth;
 import br.com.moip.exception.UnexpectedException;
 import br.com.moip.exception.ValidationException;
 import br.com.moip.models.Setup;
-import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;

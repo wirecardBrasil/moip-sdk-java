@@ -280,4 +280,18 @@ public class AccountTest {
         assertEquals("my_test_0012930001@moip.com.br", moipAccount.get("login"));
         assertEquals("Empresa Moip", moipAccount.get("softDescriptor"));
     }
+
+    @Play("account/get_keys")
+    @Test
+    public void getKeysTest() {
+
+        Map<String, Object> getKeys = Moip.API.account().getKeys(setup);
+
+        Map<String, Object> keys = parser.objectToMap(getKeys.get("keys"));
+        Map<String, Object> basicAuth = parser.objectToMap(keys.get("basicAuth"));
+        assertEquals("ABABABABABABABABABABABABABABABABABABABAB", basicAuth.get("secret"));
+        assertEquals("01010101010101010101010101010101", basicAuth.get("token"));
+
+        assertEquals("-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoBttaXwRoI1Fbcond5mS\n7QOb7X2lykY5hvvDeLJelvFhpeLnS4YDwkrnziM3W00UNH1yiSDU+3JhfHu5G387\nO6uN9rIHXvL+TRzkVfa5iIjG+ap2N0/toPzy5ekpgxBicjtyPHEgoU6dRzdszEF4\nItimGk5ACx/lMOvctncS5j3uWBaTPwyn0hshmtDwClf6dEZgQvm/dNaIkxHKV+9j\nMn3ZfK/liT8A3xwaVvRzzuxf09xJTXrAd9v5VQbeWGxwFcW05oJulSFjmJA9Hcmb\nDYHJT+sG2mlZDEruCGAzCVubJwGY1aRlcs9AQc1jIm/l8JwH7le2kpk3QoX+gz0w\nWwIDAQAB\n-----END PUBLIC KEY-----\n", keys.get("encryption"));
+    }
 }

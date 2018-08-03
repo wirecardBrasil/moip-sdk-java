@@ -57,7 +57,7 @@ public class Account {
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
     }
 
     /**
@@ -83,7 +83,7 @@ public class Account {
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
     }
 
     /**
@@ -106,6 +106,26 @@ public class Account {
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
+    }
+
+    /**
+     * This method is used to get the Basic Auth keys and the public key of a Moip Account.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public Map<String, Object> getKeys(Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("GET")
+                .endpoint("/v2/keys")
+                .type(Account.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return this.requestMaker.doRequest(props);
     }
 }

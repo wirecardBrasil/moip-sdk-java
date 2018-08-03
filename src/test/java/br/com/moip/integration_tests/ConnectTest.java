@@ -4,7 +4,6 @@ import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.OAuth;
 import br.com.moip.models.Setup;
-import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +14,6 @@ public class ConnectTest {
 
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.CONNECT_SANDBOX);
 
-    @Test
     public void buildUrlTest() {
 
         String[] scope = {"TRANSFER_FUNDS", "RECEIVE_FUNDS"};
@@ -25,7 +23,6 @@ public class ConnectTest {
         System.out.println(url);
     }
 
-    @Test
     public void generateAccessTokenTest() {
 
         Map<String, Object> body = new HashMap<>();
@@ -40,7 +37,6 @@ public class ConnectTest {
         System.out.println(accessToken);
     }
 
-    @Test
     public void refreshAccessTokenTest() {
 
         Map<String, Object> body = new HashMap<>();

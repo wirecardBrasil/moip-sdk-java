@@ -62,8 +62,8 @@ public class Account {
 
     /**
      * This method allows you to create a Moip Account (classical or transparent). To differentiate the
-     * two account types you have to set the boolean attribute {@code transparentAccount}, <b>true</b> value
-     * (you will create a transparent account) or <b>false</b> value (you will create a classical account).
+     * two accounts types you have to set the boolean attribute {@code transparentAccount}, <b>true</b> value
+     * (you will create a transparent accounts) or <b>false</b> value (you will create a classical accounts).
      *
      * @param   body
      *          {@code Map<String, Object>} the request body.
@@ -87,7 +87,7 @@ public class Account {
     }
 
     /**
-     * This method is used to get a created account by Moip Account external ID.
+     * This method is used to get a created accounts by Moip Account external ID.
      *
      * @param   id
      *          {@code String} the Moip Account external ID.

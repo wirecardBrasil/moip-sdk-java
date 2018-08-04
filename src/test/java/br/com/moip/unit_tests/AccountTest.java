@@ -31,29 +31,29 @@ public class AccountTest {
         this.parser = new Parser();
     }
 
-    @Play("account/check_existence_by_tax_document")
+    @Play("accounts/check_existence_by_tax_document")
     @Test
     public void checkExistenceByTaxDocumentTest() {
 
-        Map<String, Object> checkExists = Moip.API.account().checkExistence("123.456.789-00", setup);
+        Map<String, Object> checkExists = Moip.API.accounts().checkExistence("123.456.789-00", setup);
 
         assertEquals(200, checkExists.get("code"));
     }
 
-    @Play("account/check_existence_by_email")
+    @Play("accounts/check_existence_by_email")
     @Test
     public void checkExistenceByEmailTest() {
 
-        Map<String, Object> checkExists = Moip.API.account().checkExistence("test@moip.com.br", setup);
+        Map<String, Object> checkExists = Moip.API.accounts().checkExistence("test@moip.com.br", setup);
 
         assertEquals(200, checkExists.get("code"));
     }
 
-    @Play("account/create_classical_account")
+    @Play("accounts/create_classical_account")
     @Test
     public void createClassicalAccountTest() {
 
-        Map<String, Object> moipAccount = Moip.API.account().create(body, setup);
+        Map<String, Object> moipAccount = Moip.API.accounts().create(body, setup);
 
         assertEquals("MPA-6A4F2AF0CED7", moipAccount.get("id"));
         assertEquals("my_test_0012930001@moip.com.br", moipAccount.get("login"));
@@ -139,11 +139,11 @@ public class AccountTest {
         assertEquals("https://desenvolvedor.moip.com.br/sandbox/AskForNewPassword.do?method=confirm&email=my_test_0012930001%40moip.com.br&code=b1cdd30fbcf728cd530f4e13c3ff4e4b", setPassword.get("href"));
     }
 
-    @Play("account/create_transparent_account")
+    @Play("accounts/create_transparent_account")
     @Test
     public void createTransparentAccountTest() {
 
-        Map<String, Object> moipAccount = Moip.API.account().create(body, setup);
+        Map<String, Object> moipAccount = Moip.API.accounts().create(body, setup);
 
         assertEquals("MPA-51E0C7A09DF6", moipAccount.get("id"));
         assertEquals("my_test_1204102@moip.com.br", moipAccount.get("login"));
@@ -195,11 +195,11 @@ public class AccountTest {
         assertNull(self.get("title"));
     }
 
-    @Play("account/get")
+    @Play("accounts/get")
     @Test
     public void getAccountTest() {
 
-        Map<String, Object> moipAccount = Moip.API.account().get("MPA-6A4F2AF0CED7", setup);
+        Map<String, Object> moipAccount = Moip.API.accounts().get("MPA-6A4F2AF0CED7", setup);
 
         Map<String, Object> person = parser.objectToMap(moipAccount.get("person"));
         assertEquals("Random 9123", person.get("lastName"));
@@ -281,11 +281,11 @@ public class AccountTest {
         assertEquals("Empresa Moip", moipAccount.get("softDescriptor"));
     }
 
-    @Play("account/get_keys")
+    @Play("accounts/get_keys")
     @Test
     public void getKeysTest() {
 
-        Map<String, Object> getKeys = Moip.API.account().getKeys(setup);
+        Map<String, Object> getKeys = Moip.API.accounts().getKeys(setup);
 
         Map<String, Object> keys = parser.objectToMap(getKeys.get("keys"));
         Map<String, Object> basicAuth = parser.objectToMap(keys.get("basicAuth"));

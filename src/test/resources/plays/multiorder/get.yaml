@@ -2,13 +2,13 @@
 interactions:
 -
   request:
-    uri: /v2/multiorders
+    uri: /v2/multiorders/MOR-R6Q839MNWWO2
     headers:
       Content-Type: application/json
       Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
-    method: POST
+    method: GET
   response:
-    status: 201
+    status: 200
     headers:
       "Content-Type": application/json
     body: |
@@ -16,7 +16,7 @@ interactions:
           "id": "MOR-R6Q839MNWWO2",
           "ownId": "multiorder_id_121414",
           "status": "CREATED",
-          "createdAt": "2018-08-03T17:23:50.230-03",
+          "createdAt": "2018-08-03T17:23:50.000-03",
           "updatedAt": "",
           "amount": {
               "total": 8000,
@@ -28,8 +28,8 @@ interactions:
                   "ownId": "order_1412",
                   "status": "CREATED",
                   "platform": "V2",
-                  "createdAt": "2018-08-03T17:23:50.230-03",
-                  "updatedAt": "2018-08-03T17:23:50.230-03",
+                  "createdAt": "2018-08-03T17:23:50.000-03",
+                  "updatedAt": "2018-08-03T17:23:50.000-03",
                   "amount": {
                       "paid": 0,
                       "total": 4000,
@@ -58,7 +58,7 @@ interactions:
                       "ownId": "customer[1234]",
                       "fullname": "Joao Sousa",
                       "createdAt": "2015-07-01T18:12:33.000-03",
-                      "updatedAt": "2018-08-03T17:23:50.256-03",
+                      "updatedAt": "2018-08-03T17:23:50.000-03",
                       "birthDate": "1988-12-30",
                       "email": "joao.sousa@email.com",
                       "fundingInstrument": {
@@ -138,7 +138,7 @@ interactions:
                   "events": [
                       {
                           "type": "ORDER.CREATED",
-                          "createdAt": "2018-08-03T17:23:50.230-03",
+                          "createdAt": "2018-08-03T17:23:50.000-03",
                           "description": ""
                       }
                   ],
@@ -180,8 +180,8 @@ interactions:
                   "ownId": "order_12441512",
                   "status": "CREATED",
                   "platform": "V2",
-                  "createdAt": "2018-08-03T17:23:50.269-03",
-                  "updatedAt": "2018-08-03T17:23:50.269-03",
+                  "createdAt": "2018-08-03T17:23:50.000-03",
+                  "updatedAt": "2018-08-03T17:23:50.000-03",
                   "amount": {
                       "paid": 0,
                       "total": 4000,
@@ -210,7 +210,7 @@ interactions:
                       "ownId": "customer[1234]",
                       "fullname": "Joao Sousa",
                       "createdAt": "2015-07-01T18:12:33.000-03",
-                      "updatedAt": "2018-08-03T17:23:50.274-03",
+                      "updatedAt": "2018-08-03T17:23:50.000-03",
                       "birthDate": "1988-12-30",
                       "email": "joao.sousa@email.com",
                       "fundingInstrument": {
@@ -290,7 +290,7 @@ interactions:
                   "events": [
                       {
                           "type": "ORDER.CREATED",
-                          "createdAt": "2018-08-03T17:23:50.269-03",
+                          "createdAt": "2018-08-03T17:23:50.000-03",
                           "description": ""
                       }
                   ],

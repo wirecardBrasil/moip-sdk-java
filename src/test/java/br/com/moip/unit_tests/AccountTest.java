@@ -31,7 +31,7 @@ public class AccountTest {
         this.parser = new Parser();
     }
 
-    @Play("accounts/check_existence_by_tax_document")
+    @Play("account/check_existence_by_tax_document")
     @Test
     public void checkExistenceByTaxDocumentTest() {
 
@@ -40,7 +40,7 @@ public class AccountTest {
         assertEquals(200, checkExists.get("code"));
     }
 
-    @Play("accounts/check_existence_by_email")
+    @Play("account/check_existence_by_email")
     @Test
     public void checkExistenceByEmailTest() {
 
@@ -49,7 +49,7 @@ public class AccountTest {
         assertEquals(200, checkExists.get("code"));
     }
 
-    @Play("accounts/create_classical_account")
+    @Play("account/create_classical_account")
     @Test
     public void createClassicalAccountTest() {
 
@@ -139,7 +139,7 @@ public class AccountTest {
         assertEquals("https://desenvolvedor.moip.com.br/sandbox/AskForNewPassword.do?method=confirm&email=my_test_0012930001%40moip.com.br&code=b1cdd30fbcf728cd530f4e13c3ff4e4b", setPassword.get("href"));
     }
 
-    @Play("accounts/create_transparent_account")
+    @Play("account/create_transparent_account")
     @Test
     public void createTransparentAccountTest() {
 
@@ -195,7 +195,7 @@ public class AccountTest {
         assertNull(self.get("title"));
     }
 
-    @Play("accounts/get")
+    @Play("account/get")
     @Test
     public void getAccountTest() {
 
@@ -281,7 +281,7 @@ public class AccountTest {
         assertEquals("Empresa Moip", moipAccount.get("softDescriptor"));
     }
 
-    @Play("accounts/get_keys")
+    @Play("account/get_keys")
     @Test
     public void getKeysTest() {
 

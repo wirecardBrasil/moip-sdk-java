@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static br.com.moip.Moip.SANDBOX_URL;
 
-public class Payment {
+public class Payments {
 
     private static final String ENDPOINT = "/v2/payments";
     private static final String ENDPOINT_TO_PAY = "/v2/orders/%s/payments";
@@ -41,7 +41,7 @@ public class Payment {
                 .method("POST")
                 .endpoint(String.format(ENDPOINT_TO_PAY, orderId))
                 .body(body)
-                .type(Payment.class)
+                .type(Payments.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -64,7 +64,7 @@ public class Payment {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
                 .endpoint(String.format("%s/%s/capture", ENDPOINT, paymentId))
-                .type(Payment.class)
+                .type(Payments.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -87,7 +87,7 @@ public class Payment {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
                 .endpoint(String.format("%s/%s/void", ENDPOINT, paymentId))
-                .type(Payment.class)
+                .type(Payments.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -110,7 +110,7 @@ public class Payment {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/%s", ENDPOINT, paymentId))
-                .type(Payment.class)
+                .type(Payments.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -140,7 +140,7 @@ public class Payment {
             RequestProperties props = new RequestPropertiesBuilder()
                     .method("GET")
                     .endpoint(String.format("%s?payment_id=%s&amount=%s", ENDPOINT_TO_AUTHORIZE, paymentId, amount))
-                    .type(Payment.class)
+                    .type(Payments.class)
                     .contentType(CONTENT_TYPE)
                     .build();
 

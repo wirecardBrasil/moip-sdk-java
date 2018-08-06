@@ -1,47 +1,40 @@
 package br.com.moip.api;
 
-import br.com.moip.models.Customer;
-import br.com.moip.models.Order;
-import br.com.moip.models.Payment;
-import br.com.moip.models.Refund;
-import br.com.moip.models.NotificationPreference;
-import br.com.moip.models.Webhook;
-import br.com.moip.models.Account;
-import br.com.moip.models.Connect;
-import br.com.moip.models.Multiorder;
+import br.com.moip.models.*;
+import br.com.moip.models.Accounts;
 
 public class APIResources {
 
-    private static Customer customerInstance = new Customer();
-    private static Order orderInstance = new Order();
-    private static Payment paymentInstance = new Payment();
-    private static Refund refundInstance = new Refund();
-    private static NotificationPreference notificationPreferenceInstance = new NotificationPreference();
-    private static Webhook webhookInstance = new Webhook();
-    private static Account accountInstance = new Account();
+    private static Customers customerInstance = new Customers();
+    private static Orders orderInstance = new Orders();
+    private static Payments paymentInstance = new Payments();
+    private static Refunds refundInstance = new Refunds();
+    private static NotificationPreferences notificationPreferenceInstance = new NotificationPreferences();
+    private static Webhooks webhookInstance = new Webhooks();
+    private static Accounts accountInstance = new Accounts();
     private static Connect connectInstance = new Connect();
-    private static Multiorder multiorderInstance = new Multiorder();
+    private static Multiorders multiorderInstance = new Multiorders();
 
     /**
      * This method is used to get a instance of customer object.
      *
-     * @return  {@code Customer}
+     * @return  {@code Customers}
      */
-    public static Customer customers() { return customerInstance; }
+    public static Customers customers() { return customerInstance; }
 
-    public static Order orders() { return orderInstance; }
+    public static Orders orders() { return orderInstance; }
 
-    public static Payment payments() { return paymentInstance; }
+    public static Payments payments() { return paymentInstance; }
 
-    public static Refund refunds() { return refundInstance; }
+    public static Refunds refunds() { return refundInstance; }
 
-    public static NotificationPreference notificationPreferences() { return notificationPreferenceInstance; }
+    public static NotificationPreferences notificationPreferences() { return notificationPreferenceInstance; }
 
-    public static Webhook webhooks() { return webhookInstance; }
+    public static Webhooks webhooks() { return webhookInstance; }
 
-    public static Account accounts() { return accountInstance; }
+    public static Accounts accounts() { return accountInstance; }
 
     public static Connect connect() { return connectInstance; }
 
-    public static Multiorder multiorders() {return multiorderInstance; }
+    public static Multiorders multiorders() {return multiorderInstance; }
 }

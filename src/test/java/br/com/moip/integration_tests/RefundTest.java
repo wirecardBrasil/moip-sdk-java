@@ -67,7 +67,7 @@ public class RefundTest {
         refundingInstrument.put("method", "BANK_ACCOUNT");
         refundingInstrument.put("bankAccount", bankAccount);
 
-        // Refund order bank accounts //
+        // Refunds order bank account //
         Map<String, Object> refundBankAccountBody = new HashMap<>();
         refundBankAccountBody.put("refundingInstrument", refundingInstrument);
 
@@ -99,7 +99,7 @@ public class RefundTest {
         refundingInstrument.put("method", "MOIP_ACCOUNT");
         refundingInstrument.put("moipAccount", moipAccount);
 
-        // Partial refund payment Moip accounts test //
+        // Partial refund payment Moip account test //
         Map<String, Object> refundMoipAccountBody = new HashMap<>();
         refundMoipAccountBody.put("amount", "500");
         refundMoipAccountBody.put("refundingInstrument", refundingInstrument);

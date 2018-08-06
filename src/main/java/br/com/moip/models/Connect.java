@@ -43,8 +43,8 @@ public class Connect {
     }
 
     /**
-     *  This method allows you to generate access token for a Moip Account. With this access token, you can
-     *  make some request involving more than one Moip Accounts. Before generate it, you must request
+     *  This method allows you to generate access token for a Moip account. With this access token, you can
+     *  make some request involving more than one Moip account. Before generate it, you must request
      *  access permission for your user to get the code returned on response to generate the token.
      *
      * @param   body
@@ -69,7 +69,7 @@ public class Connect {
     }
 
     /**
-     * This method allows you to refresh the access token of a Moip Account, if you lost the token
+     * This method allows you to refresh the access token of a Moip account, if you lost the token
      * or it has expired.
      *
      * @param   body

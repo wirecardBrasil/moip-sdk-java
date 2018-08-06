@@ -5,19 +5,20 @@ import br.com.moip.api.request.RequestProperties;
 import br.com.moip.api.request.RequestPropertiesBuilder;
 import org.apache.http.entity.ContentType;
 
+import java.util.List;
 import java.util.Map;
 
-public class Order {
+public class NotificationPreferences {
 
-    private static final String ENDPOINT = "/v2/orders";
+    private static final String ENDPOINT = "/v2/preferences/notifications";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
     private RequestMaker requestMaker;
 
     /**
-     * This method is used to create a new order.
+     * This method is used to create a notification preference to receive Webhooks.
      *
      * @param   body
-     *          {@code Map<String, Object>} the request body.
+     *          {@code Map<String, Object>} the map charged with request attributes.
      *
      * @param   setup
      *          {@code Setup} the setup object.
@@ -30,76 +31,76 @@ public class Order {
                 .method("POST")
                 .endpoint(ENDPOINT)
                 .body(body)
-                .type(Order.class)
+                .type(NotificationPreferences.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
     }
 
     /**
-     * This method is used to get the data of a created order by Moip order external ID.
+     * This method is used to get the data of a created notification preference.
      *
-     * @param   orderId
-     *          {@code String} the Moip order external ID. Ex: ORD-XXXXXXXXXXXX
+     * @param   notificationPreferenceId
+     *          {@code String} the Moip notification preference external ID.
      *
      * @param   setup
      *          {@code Setup} the setup object.
      *
      * @return  {@code Map<String, Object>}
      */
-    public Map<String, Object> get(String orderId, Setup setup) {
+    public Map<String, Object> get(String notificationPreferenceId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
-                .endpoint(String.format("%s/%s", ENDPOINT, orderId))
-                .type(Order.class)
+                .endpoint(String.format("%s/%s", ENDPOINT, notificationPreferenceId))
+                .type(NotificationPreferences.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
     }
 
     /**
-     * This method is used to get all created orders.
+     * This method is used to get all created notification preferences.
      *
      * @param   setup
      *          {@code Setup} the setup object.
      *
-     * @return  {@code Map<String, Object>}
+     * @return  {@code List<Map<String, Object>>}
      */
-    public Map<String, Object> list(Setup setup) {
+    public List<Map<String, Object>> list(Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(ENDPOINT)
-                .type(Order.class)
+                .type(NotificationPreferences.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.getList(props);
     }
 
     /**
-     * This method is used to get all payments of an order by its Moip order external ID.
+     * This method is used to remove a created notification preference.
      *
-     * @param   orderId
-     *          {@code String} the Moip order external ID.
+     * @param   notificationPreferenceId
+     *          {@code String} the Moip notification preference external ID.
      *
      * @param   setup
      *          {@code Setup} the setup object.
      *
      * @return  {@code Map<String, Object>}
      */
-    public Map<String, Object> listOrderPayments(String orderId, Setup setup) {
+    public Map<String, Object> remove(String notificationPreferenceId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
-                .method("GET")
-                .endpoint(String.format("%s/%s/payments", ENDPOINT, orderId))
-                .type(Order.class)
+                .method("DELETE")
+                .endpoint(String.format("%s/%s", ENDPOINT, notificationPreferenceId))
+                .type(NotificationPreferences.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
-        return requestMaker.doRequest(props);
+        return this.requestMaker.doRequest(props);
     }
 }

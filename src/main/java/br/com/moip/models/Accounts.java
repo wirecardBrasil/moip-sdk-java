@@ -7,7 +7,7 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Account {
+public class Accounts {
 
     private static final String ENDPOINT = "/v2/accounts";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
@@ -31,7 +31,7 @@ public class Account {
     }
 
     /**
-     * This method allows you to check if a person already has a Moip Account, by it's tax document or e-mail.
+     * This method allows you to check if a person already has a Moip account, by it's tax document or e-mail.
      * The tax document must be write with punctuation, for example: 123.456.789-00.
      *
      * @param   argument
@@ -53,7 +53,7 @@ public class Account {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/exists?%s=%s", ENDPOINT, argumentType, argument))
-                .type(Account.class)
+                .type(Accounts.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -61,7 +61,7 @@ public class Account {
     }
 
     /**
-     * This method allows you to create a Moip Account (classical or transparent). To differentiate the
+     * This method allows you to create a Moip account (classical or transparent). To differentiate the
      * two accounts types you have to set the boolean attribute {@code transparentAccount}, <b>true</b> value
      * (you will create a transparent accounts) or <b>false</b> value (you will create a classical accounts).
      *
@@ -79,7 +79,7 @@ public class Account {
                 .method("POST")
                 .endpoint(ENDPOINT)
                 .body(body)
-                .type(Account.class)
+                .type(Accounts.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -87,10 +87,10 @@ public class Account {
     }
 
     /**
-     * This method is used to get a created accounts by Moip Account external ID.
+     * This method is used to get a created accounts by Moip account external ID.
      *
      * @param   id
-     *          {@code String} the Moip Account external ID.
+     *          {@code String} the Moip account external ID.
      *
      * @param   setup
      *          {@code Setup} the setup object.
@@ -102,7 +102,7 @@ public class Account {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/%s", ENDPOINT, id))
-                .type(Account.class)
+                .type(Accounts.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -110,7 +110,7 @@ public class Account {
     }
 
     /**
-     * This method is used to get the Basic Auth keys and the public key of a Moip Account.
+     * This method is used to get the Basic Auth keys and the public key of a Moip account.
      *
      * @param   setup
      *          {@code Setup} the setup object.
@@ -122,7 +122,7 @@ public class Account {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint("/v2/keys")
-                .type(Account.class)
+                .type(Accounts.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

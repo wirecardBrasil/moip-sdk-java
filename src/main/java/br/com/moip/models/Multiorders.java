@@ -7,14 +7,14 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Multiorder {
+public class Multiorders {
 
     private static final String ENDPOINT = "/v2/multiorders";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
     private RequestMaker requestMaker;
 
     /**
-     * This method allows you to create a Multiorder. The Multiorder is a collection of orders, its used to
+     * This method allows you to create a multiorder. The multiorder is a collection of orders, its used to
      * transact with different sellers in the same shop cart.
      *
      * @param   body
@@ -31,7 +31,7 @@ public class Multiorder {
                 .method("POST")
                 .endpoint(ENDPOINT)
                 .body(body)
-                .type(Multiorder.class)
+                .type(Multiorders.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -54,7 +54,7 @@ public class Multiorder {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/%s", ENDPOINT, id))
-                .type(Multiorder.class)
+                .type(Multiorders.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

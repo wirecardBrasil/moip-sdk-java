@@ -7,7 +7,7 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Customer {
+public class Customers {
 
     private static final String ENDPOINT = "/v2/customers";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
@@ -31,7 +31,7 @@ public class Customer {
                 .method("POST")
                 .endpoint(ENDPOINT)
                 .body(body)
-                .type(Customer.class)
+                .type(Customers.class)
                 .contentType(CONTENT_TYPE);
 
         return this.requestMaker.doRequest(props);
@@ -57,7 +57,7 @@ public class Customer {
                 .method("POST")
                 .endpoint(String.format("%s/%s/fundinginstruments", ENDPOINT, customerId))
                 .body(body)
-                .type(Customer.class)
+                .type(Customers.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -80,7 +80,7 @@ public class Customer {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("DELETE")
                 .endpoint(String.format("/v2/fundinginstruments/%s", creditCardId))
-                .type(Customer.class)
+                .type(Customers.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -103,7 +103,7 @@ public class Customer {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/%s", ENDPOINT, customerId))
-                .type(Customer.class)
+                .type(Customers.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -123,7 +123,7 @@ public class Customer {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(ENDPOINT)
-                .type(Customer.class)
+                .type(Customers.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

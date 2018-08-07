@@ -7,18 +7,18 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Webhook {
+public class Webhooks {
 
     private static final String ENDPOINT = "/v2/webhooks";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
     private RequestMaker requestMaker;
 
     /**
-     * This method is used to get the data of a specific Webhook sent from Moip by Moip
+     * This method is used to get the data of a specific webhook sent from Moip by Moip
      * resource external ID.
      *
      * @param   resourceId
-     *          {@code String} the Moip external ID of a resource (Order, Payment, Refund...).
+     *          {@code String} the Moip external ID of a resource (Orders, Payments, Refunds...).
      *
      * @param   setup
      *          {@code Setup} the setup object.
@@ -30,7 +30,7 @@ public class Webhook {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(ENDPOINT + String.format("?resourceId=%s", resourceId))
-                .type(Webhook.class)
+                .type(Webhooks.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -38,7 +38,7 @@ public class Webhook {
     }
 
     /**
-     * This method is used to get all sent Webhooks.
+     * This method is used to get all sent webhooks.
      *
      * @param   setup
      *          {@code Setup} the setup object.
@@ -50,7 +50,7 @@ public class Webhook {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(ENDPOINT)
-                .type(Webhook.class)
+                .type(Webhooks.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

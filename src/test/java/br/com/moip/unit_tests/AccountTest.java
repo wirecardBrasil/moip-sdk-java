@@ -35,7 +35,7 @@ public class AccountTest {
     @Test
     public void checkExistenceByTaxDocumentTest() {
 
-        Map<String, Object> checkExists = Moip.API.account().checkExistence("123.456.789-00", setup);
+        Map<String, Object> checkExists = Moip.API.accounts().checkExistence("123.456.789-00", setup);
 
         assertEquals(200, checkExists.get("code"));
     }
@@ -44,7 +44,7 @@ public class AccountTest {
     @Test
     public void checkExistenceByEmailTest() {
 
-        Map<String, Object> checkExists = Moip.API.account().checkExistence("test@moip.com.br", setup);
+        Map<String, Object> checkExists = Moip.API.accounts().checkExistence("test@moip.com.br", setup);
 
         assertEquals(200, checkExists.get("code"));
     }
@@ -53,7 +53,7 @@ public class AccountTest {
     @Test
     public void createClassicalAccountTest() {
 
-        Map<String, Object> moipAccount = Moip.API.account().create(body, setup);
+        Map<String, Object> moipAccount = Moip.API.accounts().create(body, setup);
 
         assertEquals("MPA-6A4F2AF0CED7", moipAccount.get("id"));
         assertEquals("my_test_0012930001@moip.com.br", moipAccount.get("login"));
@@ -143,7 +143,7 @@ public class AccountTest {
     @Test
     public void createTransparentAccountTest() {
 
-        Map<String, Object> moipAccount = Moip.API.account().create(body, setup);
+        Map<String, Object> moipAccount = Moip.API.accounts().create(body, setup);
 
         assertEquals("MPA-51E0C7A09DF6", moipAccount.get("id"));
         assertEquals("my_test_1204102@moip.com.br", moipAccount.get("login"));
@@ -199,7 +199,7 @@ public class AccountTest {
     @Test
     public void getAccountTest() {
 
-        Map<String, Object> moipAccount = Moip.API.account().get("MPA-6A4F2AF0CED7", setup);
+        Map<String, Object> moipAccount = Moip.API.accounts().get("MPA-6A4F2AF0CED7", setup);
 
         Map<String, Object> person = parser.objectToMap(moipAccount.get("person"));
         assertEquals("Random 9123", person.get("lastName"));
@@ -285,7 +285,7 @@ public class AccountTest {
     @Test
     public void getKeysTest() {
 
-        Map<String, Object> getKeys = Moip.API.account().getKeys(setup);
+        Map<String, Object> getKeys = Moip.API.accounts().getKeys(setup);
 
         Map<String, Object> keys = parser.objectToMap(getKeys.get("keys"));
         Map<String, Object> basicAuth = parser.objectToMap(keys.get("basicAuth"));

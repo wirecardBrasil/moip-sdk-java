@@ -1,0 +1,362 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/multiorders
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "MOR-R6Q839MNWWO2",
+          "ownId": "multiorder_id_121414",
+          "status": "CREATED",
+          "createdAt": "2018-08-03T17:23:50.230-03",
+          "updatedAt": "",
+          "amount": {
+              "total": 8000,
+              "currency": "BRL"
+          },
+          "orders": [
+              {
+                  "id": "ORD-UMVGMZLNFQFW",
+                  "ownId": "order_1412",
+                  "status": "CREATED",
+                  "platform": "V2",
+                  "createdAt": "2018-08-03T17:23:50.230-03",
+                  "updatedAt": "2018-08-03T17:23:50.230-03",
+                  "amount": {
+                      "paid": 0,
+                      "total": 4000,
+                      "fees": 0,
+                      "refunds": 0,
+                      "liquid": 0,
+                      "otherReceivers": 0,
+                      "currency": "BRL",
+                      "subtotals": {
+                          "shipping": 2000,
+                          "addition": 0,
+                          "discount": 0,
+                          "items": 2000
+                      }
+                  },
+                  "items": [
+                      {
+                          "product": "Camisa Verde e Amarelo - Brasil",
+                          "price": 2000,
+                          "detail": "Seleção Brasileira",
+                          "quantity": 1
+                      }
+                  ],
+                  "customer": {
+                      "id": "CUS-COEFORVOX64K",
+                      "ownId": "customer[1234]",
+                      "fullname": "Joao Sousa",
+                      "createdAt": "2015-07-01T18:12:33.000-03",
+                      "updatedAt": "2018-08-03T17:23:50.256-03",
+                      "birthDate": "1988-12-30",
+                      "email": "joao.sousa@email.com",
+                      "fundingInstrument": {
+                          "creditCard": {
+                              "id": "CRC-A3ZNIT523OYB",
+                              "brand": "VISA",
+                              "first6": "407302",
+                              "last4": "0002",
+                              "store": true
+                          },
+                          "method": "CREDIT_CARD"
+                      },
+                      "phone": {
+                          "countryCode": "55",
+                          "areaCode": "11",
+                          "number": "66778899"
+                      },
+                      "taxDocument": {
+                          "type": "CPF",
+                          "number": "22222222222"
+                      },
+                      "shippingAddress": {
+                          "zipCode": "01234000",
+                          "street": "Avenida Faria Lima",
+                          "streetNumber": "2927",
+                          "complement": "8",
+                          "city": "Sao Paulo",
+                          "district": "Itaim",
+                          "state": "SP",
+                          "country": "BRA"
+                      },
+                      "billingAddress": {
+                          "zipCode": "01234000",
+                          "street": "Avenida Faria Lima",
+                          "streetNumber": "2927",
+                          "complement": "8",
+                          "city": "Sao Paulo",
+                          "district": "Itaim",
+                          "state": "SP",
+                          "country": "BRA"
+                      },
+                      "moipAccount": {
+                          "id": "MPA-PQ0H8UZYNNWY"
+                      },
+                      "_links": {
+                          "self": {
+                              "href": "https://sandbox.moip.com.br/v2/customers/CUS-COEFORVOX64K"
+                          }
+                      },
+                      "fundingInstruments": [
+                          {
+                              "creditCard": {
+                                  "id": "CRC-0DWSR8500SWI",
+                                  "brand": "VISA",
+                                  "first6": "401200",
+                                  "last4": "3335",
+                                  "store": true
+                              },
+                              "method": "CREDIT_CARD"
+                          },
+                          {
+                              "creditCard": {
+                                  "id": "CRC-PMH3KO5OPWSC",
+                                  "brand": "VISA",
+                                  "first6": "401200",
+                                  "last4": "3335",
+                                  "store": true
+                              },
+                              "method": "CREDIT_CARD"
+                          }
+                      ]
+                  },
+                  "payments": [],
+                  "escrows": [],
+                  "refunds": [],
+                  "entries": [],
+                  "events": [
+                      {
+                          "type": "ORDER.CREATED",
+                          "createdAt": "2018-08-03T17:23:50.230-03",
+                          "description": ""
+                      }
+                  ],
+                  "receivers": [
+                      {
+                          "moipAccount": {
+                              "id": "MPA-VB5OGTVPCI52",
+                              "login": "lojista_1@labs.moip.com.br",
+                              "fullname": "Chris Coyier Moip"
+                          },
+                          "type": "PRIMARY",
+                          "amount": {
+                              "total": 4000,
+                              "currency": "BRL",
+                              "fees": 0,
+                              "refunds": 0
+                          },
+                          "feePayor": false
+                      }
+                  ],
+                  "shippingAddress": {
+                      "zipCode": "01234000",
+                      "street": "Avenida Faria Lima",
+                      "streetNumber": "2927",
+                      "complement": "8",
+                      "city": "Sao Paulo",
+                      "district": "Itaim",
+                      "state": "SP",
+                      "country": "BRA"
+                  },
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/orders/ORD-UMVGMZLNFQFW"
+                      }
+                  }
+              },
+              {
+                  "id": "ORD-GRZP5CX0LSSL",
+                  "ownId": "order_12441512",
+                  "status": "CREATED",
+                  "platform": "V2",
+                  "createdAt": "2018-08-03T17:23:50.269-03",
+                  "updatedAt": "2018-08-03T17:23:50.269-03",
+                  "amount": {
+                      "paid": 0,
+                      "total": 4000,
+                      "fees": 0,
+                      "refunds": 0,
+                      "liquid": 0,
+                      "otherReceivers": 0,
+                      "currency": "BRL",
+                      "subtotals": {
+                          "shipping": 3000,
+                          "addition": 0,
+                          "discount": 0,
+                          "items": 1000
+                      }
+                  },
+                  "items": [
+                      {
+                          "product": "Camisa Preta - Alemanha",
+                          "price": 1000,
+                          "detail": "Camiseta da Copa 2014",
+                          "quantity": 1
+                      }
+                  ],
+                  "customer": {
+                      "id": "CUS-COEFORVOX64K",
+                      "ownId": "customer[1234]",
+                      "fullname": "Joao Sousa",
+                      "createdAt": "2015-07-01T18:12:33.000-03",
+                      "updatedAt": "2018-08-03T17:23:50.274-03",
+                      "birthDate": "1988-12-30",
+                      "email": "joao.sousa@email.com",
+                      "fundingInstrument": {
+                          "creditCard": {
+                              "id": "CRC-A3ZNIT523OYB",
+                              "brand": "VISA",
+                              "first6": "407302",
+                              "last4": "0002",
+                              "store": true
+                          },
+                          "method": "CREDIT_CARD"
+                      },
+                      "phone": {
+                          "countryCode": "55",
+                          "areaCode": "11",
+                          "number": "66778899"
+                      },
+                      "taxDocument": {
+                          "type": "CPF",
+                          "number": "22222222222"
+                      },
+                      "shippingAddress": {
+                          "zipCode": "01234000",
+                          "street": "Avenida Faria Lima",
+                          "streetNumber": "2927",
+                          "complement": "8",
+                          "city": "Sao Paulo",
+                          "district": "Itaim",
+                          "state": "SP",
+                          "country": "BRA"
+                      },
+                      "billingAddress": {
+                          "zipCode": "01234000",
+                          "street": "Avenida Faria Lima",
+                          "streetNumber": "2927",
+                          "complement": "8",
+                          "city": "Sao Paulo",
+                          "district": "Itaim",
+                          "state": "SP",
+                          "country": "BRA"
+                      },
+                      "moipAccount": {
+                          "id": "MPA-PQ0H8UZYNNWY"
+                      },
+                      "_links": {
+                          "self": {
+                              "href": "https://sandbox.moip.com.br/v2/customers/CUS-COEFORVOX64K"
+                          }
+                      },
+                      "fundingInstruments": [
+                          {
+                              "creditCard": {
+                                  "id": "CRC-0DWSR8500SWI",
+                                  "brand": "VISA",
+                                  "first6": "401200",
+                                  "last4": "3335",
+                                  "store": true
+                              },
+                              "method": "CREDIT_CARD"
+                          },
+                          {
+                              "creditCard": {
+                                  "id": "CRC-PMH3KO5OPWSC",
+                                  "brand": "VISA",
+                                  "first6": "401200",
+                                  "last4": "3335",
+                                  "store": true
+                              },
+                              "method": "CREDIT_CARD"
+                          }
+                      ]
+                  },
+                  "payments": [],
+                  "escrows": [],
+                  "refunds": [],
+                  "entries": [],
+                  "events": [
+                      {
+                          "type": "ORDER.CREATED",
+                          "createdAt": "2018-08-03T17:23:50.269-03",
+                          "description": ""
+                      }
+                  ],
+                  "receivers": [
+                      {
+                          "moipAccount": {
+                              "id": "MPA-IFYRB1HBL73Z",
+                              "login": "lojista_3@labs.moip.com.br",
+                              "fullname": "Lojista 3 Moip"
+                          },
+                          "type": "PRIMARY",
+                          "amount": {
+                              "total": 3945,
+                              "currency": "BRL",
+                              "fees": 0,
+                              "refunds": 0
+                          },
+                          "feePayor": false
+                      },
+                      {
+                          "moipAccount": {
+                              "id": "MPA-KQB1QFWS6QNM",
+                              "login": "secundario_1@labs.moip.com.br",
+                              "fullname": "Maria da Silva Santos"
+                          },
+                          "type": "SECONDARY",
+                          "amount": {
+                              "total": 55,
+                              "currency": "BRL",
+                              "fees": 0,
+                              "refunds": 0
+                          },
+                          "feePayor": false
+                      }
+                  ],
+                  "shippingAddress": {
+                      "zipCode": "01234000",
+                      "street": "Avenida Faria Lima",
+                      "streetNumber": "2927",
+                      "complement": "8",
+                      "city": "Sao Paulo",
+                      "district": "Itaim",
+                      "state": "SP",
+                      "country": "BRA"
+                  },
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/orders/ORD-GRZP5CX0LSSL"
+                      }
+                  }
+              }
+          ],
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/orders/MOR-R6Q839MNWWO2"
+              },
+              "checkout": {
+                  "payCreditCard": {
+                      "redirectHref": "https://checkout-sandbox.moip.com.br/creditcard/MOR-R6Q839MNWWO2"
+                  },
+                  "payBoleto": {
+                      "redirectHref": "https://checkout-sandbox.moip.com.br/boleto/MOR-R6Q839MNWWO2"
+                  },
+                  "payOnlineBankDebitItau": {
+                      "redirectHref": "https://checkout-sandbox.moip.com.br/debit/itau/MOR-R6Q839MNWWO2"
+                  }
+              }
+          }
+      }

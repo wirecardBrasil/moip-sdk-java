@@ -7,7 +7,7 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Refund {
+public class Refunds {
 
     private static final String ENDPOINT = "/v2/refunds/%s";
     private static final String ENDPOINT_REFUND_ORDER = "/v2/orders/%s/refunds";
@@ -32,7 +32,7 @@ public class Refund {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
                 .endpoint(String.format(ENDPOINT_REFUND_PAYMENT, paymentId))
-                .type(Refund.class)
+                .type(Refunds.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -59,7 +59,7 @@ public class Refund {
                 .method("POST")
                 .endpoint(String.format(ENDPOINT_REFUND_PAYMENT, paymentId))
                 .body(body)
-                .type(Refund.class)
+                .type(Refunds.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -83,7 +83,7 @@ public class Refund {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
                 .endpoint(String.format(ENDPOINT_REFUND_ORDER, orderId))
-                .type(Refund.class)
+                .type(Refunds.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -110,7 +110,7 @@ public class Refund {
                 .method("POST")
                 .endpoint(String.format(ENDPOINT_REFUND_ORDER, orderId))
                 .body(body)
-                .type(Refund.class)
+                .type(Refunds.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -133,7 +133,7 @@ public class Refund {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format(ENDPOINT, refundId))
-                .type(Refund.class)
+                .type(Refunds.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -156,7 +156,7 @@ public class Refund {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format(ENDPOINT_REFUND_PAYMENT, paymentId))
-                .type(Refund.class)
+                .type(Refunds.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -179,7 +179,7 @@ public class Refund {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format(ENDPOINT_REFUND_ORDER, orderId))
-                .type(Refund.class)
+                .type(Refunds.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

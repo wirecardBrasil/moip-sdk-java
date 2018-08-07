@@ -7,58 +7,28 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Multiorders {
+public class Multipayments {
 
-    private static final String ENDPOINT = "/v2/multiorders";
+    private static final String ENDPOINT = "/v2/multipayments";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
     private RequestMaker requestMaker;
 
     /**
-     * This method allows you to create a multiorder. The multiorder is a collection of orders, its used to
-     * transact with different sellers in the same shop cart.
+     * This method is used to capture a pre-authorized multipayment by its Moip multipayment external ID.
      *
-     * @param   body
-     *          {@code Map<String, Object} the request body.
-     *
-     * @param   setup
-     *          {@code Setup} the setup object.
-     *
-     * @return  {@code Map<String, Object>}
-     */
-    public Map<String, Object> create(Map<String, Object> body, Setup setup) {
-        this.requestMaker = new RequestMaker(setup);
-        RequestProperties props = new RequestPropertiesBuilder()
-                .method("POST")
-                .endpoint(ENDPOINT)
-                .body(body)
-                .type(Multiorders.class)
-                .contentType(CONTENT_TYPE)
-                .build();
-
-        return this.requestMaker.doRequest(props);
-    }
-
-    /**
-     * This method is used to create a multipayment, it means create a payment for each order from a multiorder
-     * with the same funding instrument (credit card, boleto, online bank debit).
-     *
-     * @param   body
-     *          {@code Map<String, Object>} the request body.
-     *
-     * @param   multiorderId
-     *          {@code String} the Moip multiorder external ID.
+     * @param   multipaymentId
+     *          {@code String} the Moip multipayment external ID.
      *
      * @param   setup
      *          {@code Setup} the setup object.
      *
      * @return  {@code Map<String, Object>}
      */
-    public Map<String, Object> pay(Map<String, Object> body, String multiorderId, Setup setup) {
+    public Map<String, Object> capturePreAuthorized(String multipaymentId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("POST")
-                .endpoint(String.format("%s/%s/multipayments", ENDPOINT, multiorderId))
-                .body(body)
+                .endpoint(String.format("%s/%s/capture", ENDPOINT, multipaymentId))
                 .type(Multipayments.class)
                 .contentType(CONTENT_TYPE)
                 .build();
@@ -67,22 +37,45 @@ public class Multiorders {
     }
 
     /**
-     * This method is used to get a created multiorder by Moip multiorder external ID.
+     * This method is used to cancel a pre-authorized multipayment by its Moip multipayment external ID.
      *
-     * @param   id
-     *          {@code String} the Moip multiorder external ID.
+     * @param   multipaymentId
+     *          {@code String} the Moip multipayment external ID.
      *
      * @param   setup
      *          {@code Setup} the setup object.
      *
      * @return  {@code Map<String, Object>}
      */
-    public Map<String, Object> get(String id, Setup setup) {
+    public Map<String, Object> cancelPreAuthorized(String multipaymentId, Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("POST")
+                .endpoint(String.format("%s/%s/void", ENDPOINT, multipaymentId))
+                .type(Multipayments.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return this.requestMaker.doRequest(props);
+    }
+
+    /**
+     * This method allows you to get the data of a created multipayment by its Moip multipayment external ID.
+     *
+     * @param   multipaymentId
+     *          {@code String} the Moip multipayment external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public Map<String, Object> get(String multipaymentId, Setup setup) {
         this.requestMaker = new RequestMaker(setup);
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
-                .endpoint(String.format("%s/%s", ENDPOINT, id))
-                .type(Multiorders.class)
+                .endpoint(String.format("%s/%s", ENDPOINT, multipaymentId))
+                .type(Multipayments.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

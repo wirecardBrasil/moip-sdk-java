@@ -2,7 +2,7 @@
 interactions:
 -
   request:
-    uri: /v2/multipayments/MPY-EVAWT7HR8QEP/void
+    uri: /v2/multipayments/MPY-8X6E4HB9FNGK/void
     headers:
       Content-Type: application/json
       Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
@@ -104,7 +104,22 @@ interactions:
                           "amount": {
                               "total": 4000,
                               "currency": "BRL",
-                              "fees": 0,
+                              "fees": 289,
+                              "refunds": 0
+                          },
+                          "feePayor": true
+                      },
+                      {
+                          "moipAccount": {
+                              "id": "MPA-VB5OGTVPCI52",
+                              "login": "lojista_1@labs.moip.com.br",
+                              "fullname": "Chris Coyier Moip"
+                          },
+                          "type": "PRIMARY",
+                          "amount": {
+                              "total": 4000,
+                              "currency": "BRL",
+                              "fees": 289,
                               "refunds": 0
                           },
                           "feePayor": true

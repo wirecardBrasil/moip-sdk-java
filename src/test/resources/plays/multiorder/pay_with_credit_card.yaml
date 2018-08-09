@@ -28,9 +28,9 @@ interactions:
                   "amount": {
                       "total": 4000,
                       "gross": 4000,
-                      "fees": 0,
+                      "fees": 289,
                       "refunds": 0,
-                      "liquid": 4000,
+                      "liquid": 3711,
                       "currency": "BRL"
                   },
                   "installmentCount": 1,
@@ -62,7 +62,7 @@ interactions:
                   "fees": [
                       {
                           "type": "TRANSACTION",
-                          "amount": 0
+                          "amount": 289
                       }
                   ],
                   "events": [
@@ -86,7 +86,7 @@ interactions:
                           "amount": {
                               "total": 4000,
                               "currency": "BRL",
-                              "fees": 0,
+                              "fees": 289,
                               "refunds": 0
                           },
                           "feePayor": true
@@ -111,9 +111,9 @@ interactions:
                   "amount": {
                       "total": 4000,
                       "gross": 4000,
-                      "fees": 0,
+                      "fees": 289,
                       "refunds": 0,
-                      "liquid": 4000,
+                      "liquid": 3711,
                       "currency": "BRL"
                   },
                   "installmentCount": 1,
@@ -145,7 +145,7 @@ interactions:
                   "fees": [
                       {
                           "type": "TRANSACTION",
-                          "amount": 0
+                          "amount": 289
                       }
                   ],
                   "events": [
@@ -161,30 +161,30 @@ interactions:
                   "receivers": [
                       {
                           "moipAccount": {
-                              "id": "MPA-IFYRB1HBL73Z",
-                              "login": "lojista_3@labs.moip.com.br",
-                              "fullname": "Lojista 3 Moip"
+                              "id": "MPA-VB5OGTVPCI52",
+                              "login": "lojista_1@labs.moip.com.br",
+                              "fullname": "Chris Coyier Moip"
                           },
                           "type": "PRIMARY",
                           "amount": {
-                              "total": 3945,
+                              "total": 4000,
                               "currency": "BRL",
-                              "fees": 0,
+                              "fees": 289,
                               "refunds": 0
                           },
                           "feePayor": true
                       },
                       {
                           "moipAccount": {
-                              "id": "MPA-KQB1QFWS6QNM",
-                              "login": "secundario_1@labs.moip.com.br",
-                              "fullname": "Maria da Silva Santos"
+                              "id": "MPA-VB5OGTVPCI52",
+                              "login": "lojista_1@labs.moip.com.br",
+                              "fullname": "Chris Coyier Moip"
                           },
                           "type": "SECONDARY",
                           "amount": {
-                              "total": 55,
+                              "total": 4000,
                               "currency": "BRL",
-                              "fees": 0,
+                              "fees": 289,
                               "refunds": 0
                           },
                           "feePayor": false

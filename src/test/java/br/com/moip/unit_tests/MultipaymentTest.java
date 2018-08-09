@@ -20,15 +20,14 @@ public class MultipaymentTest {
 
     @Rule
     public Player player = new Player();
+    private Parser parser = new Parser();
     private Setup setup;
     private Map<String, Object> variables;
-    private Parser parser;
 
     @Before
     public void initialize() {
         this.variables = new HashMap<>();
         this.setup = new SetupFactory().setupOAuth(player.getURL("").toString());
-        this.parser = new Parser();
     }
 
     @Play("multipayment/capture_pre_authorized")
@@ -121,7 +120,7 @@ public class MultipaymentTest {
         assertEquals("https://sandbox.moip.com.br/v2/multiorders/MOR-R6Q839MNWWO2", multiorder.get("href"));
     }
 
-    private void testPaymentsFromMultipayment(Map<String, Object> payment, Map<String, Object> variables) {
+    protected void testPaymentsFromMultipayment(Map<String, Object> payment, Map<String, Object> variables) {
 
         assertEquals(variables.get("id"), payment.get("id"));
         assertEquals(variables.get("status"), payment.get("status"));
@@ -164,7 +163,9 @@ public class MultipaymentTest {
         assertEquals("CREDIT_CARD", fundingInstrument.get("method"));
 
         Map<String, Object> acquirerDetails = parser.objectToMap(payment.get("acquirerDetails"));
-        assertEquals("123456", acquirerDetails.get("authorizationNumber"));
+
+        if (acquirerDetails.get("authorizationNumber") != null)
+            assertEquals("123456", acquirerDetails.get("authorizationNumber"));
 
         Map<String, Object> document = parser.objectToMap(acquirerDetails.get("taxDocument"));
         assertEquals("CNPJ", document.get("type"));
@@ -187,14 +188,10 @@ public class MultipaymentTest {
         assertEquals("lojista_1@labs.moip.com.br", moipAccount.get("login"));
         assertEquals("Chris Coyier Moip", moipAccount.get("fullname"));
 
-        assertEquals("PRIMARY", receiver.get("type"));
-
         Map<String, Object> amount = parser.objectToMap(receiver.get("amount"));
         assertEquals(4000, amount.get("total"));
         assertEquals("BRL", amount.get("currency"));
         assertEquals(289, amount.get("fees"));
         assertEquals(0, amount.get("refunds"));
-
-        assertEquals(true, receiver.get("feePayor"));
     }
 }

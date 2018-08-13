@@ -51,5 +51,5 @@ public class APIResources {
 
     public static Multipayments multipayments() { return multipaymentsInstance; }
 
-    public static BankAccounts bankAccounts() {return bankAccountsInstance; }
+    public static BankAccounts bankAccounts() { return bankAccountsInstance; }
 }

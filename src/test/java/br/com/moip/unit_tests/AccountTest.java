@@ -11,6 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -20,15 +21,17 @@ public class AccountTest {
 
     @Rule
     public Player player = new Player();
+    private BankAccountTest bankAccountTest = new BankAccountTest();
+    private Parser parser = new Parser();
     private Setup setup;
     private Map<String, Object> body;
-    private Parser parser;
+    private Map<String, Object> variables;
 
     @Before
     public void initialize() {
         this.body = new HashMap<>();
+        this.variables = new HashMap<>();
         this.setup = new SetupFactory().setupOAuth(player.getURL("").toString());
-        this.parser = new Parser();
     }
 
     @Play("account/check_existence_by_tax_document")
@@ -293,5 +296,53 @@ public class AccountTest {
         assertEquals("01010101010101010101010101010101", basicAuth.get("token"));
 
         assertEquals("-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoBttaXwRoI1Fbcond5mS\n7QOb7X2lykY5hvvDeLJelvFhpeLnS4YDwkrnziM3W00UNH1yiSDU+3JhfHu5G387\nO6uN9rIHXvL+TRzkVfa5iIjG+ap2N0/toPzy5ekpgxBicjtyPHEgoU6dRzdszEF4\nItimGk5ACx/lMOvctncS5j3uWBaTPwyn0hshmtDwClf6dEZgQvm/dNaIkxHKV+9j\nMn3ZfK/liT8A3xwaVvRzzuxf09xJTXrAd9v5VQbeWGxwFcW05oJulSFjmJA9Hcmb\nDYHJT+sG2mlZDEruCGAzCVubJwGY1aRlcs9AQc1jIm/l8JwH7le2kpk3QoX+gz0w\nWwIDAQAB\n-----END PUBLIC KEY-----\n", keys.get("encryption"));
+    }
+
+    @Play("account/create_bank_account")
+    @Test
+    public void createBankAccountTest() {
+
+        variables.put("id", "BKA-SD5MQZEBIM1E");
+        variables.put("agencyNumber", "12345");
+        variables.put("taxDocumentNumber", "255.328.259-12");
+        variables.put("taxDocumentType", "CPF");
+        variables.put("holderThirdParty", false);
+        variables.put("holderFullname", "Jose Silva dos Santos");
+        variables.put("accountNumber", "12345678");
+        variables.put("status", "NOT_VERIFIED");
+        variables.put("createdAt", "2018-08-13T17:03:35.021-03:00");
+        variables.put("accountCheckNumber", "7");
+        variables.put("selfHref", "https://sandbox.moip.com.br//accounts/BKA-SD5MQZEBIM1E/bankaccounts");
+        variables.put("bankName", "BANCO BRADESCO S.A.");
+        variables.put("type", "CHECKING");
+        variables.put("agencyCheckNumber", "0");
+        variables.put("bankNumber", "237");
+
+        Map<String, Object> bankAccount = Moip.API.accounts().createBankAccount(body, "MPA-CULBBYHD11", setup);
+        bankAccountTest.testBankAccountBody(bankAccount, variables);
+    }
+
+    @Play("account/list_bank_accounts")
+    @Test
+    public void listBankAccountsTest() {
+
+        variables.put("id", "BKA-KS1LVCCH0P25");
+        variables.put("agencyNumber", "1111");
+        variables.put("taxDocumentNumber", "255.328.259-12");
+        variables.put("taxDocumentType", "CPF");
+        variables.put("holderThirdParty", false);
+        variables.put("holderFullname", "Jose Silva dos Santos");
+        variables.put("accountNumber", "11111111");
+        variables.put("status", "NOT_VERIFIED");
+        variables.put("createdAt", "2016-04-07T15:25:57.000-03:00");
+        variables.put("accountCheckNumber", "1");
+        variables.put("selfHref", "https://sandbox.moip.com.br//accounts/BKA-KS1LVCCH0P25/bankaccounts");
+        variables.put("bankName", "BANCO DO BRASIL S.A.");
+        variables.put("type", "CHECKING");
+        variables.put("agencyCheckNumber", "1");
+        variables.put("bankNumber", "001");
+
+        List<Map<String, Object>> list = Moip.API.accounts().listBankAccounts("MPA-CULBBYHD11", setup);
+        bankAccountTest.testBankAccountBody(list.get(0), variables);
     }
 }

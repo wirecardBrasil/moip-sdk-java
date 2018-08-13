@@ -120,13 +120,13 @@ public class MultipaymentTest {
         assertEquals("https://sandbox.moip.com.br/v2/multiorders/MOR-R6Q839MNWWO2", multiorder.get("href"));
     }
 
-    protected void testPaymentsFromMultipayment(Map<String, Object> payment, Map<String, Object> variables) {
+    void testPaymentsFromMultipayment(Map<String, Object> payment, Map<String, Object> variables) {
 
         assertEquals(variables.get("id"), payment.get("id"));
         assertEquals(variables.get("status"), payment.get("status"));
         assertEquals(variables.get("delayCapture"), payment.get("delayCapture"));
 
-        if (variables.get("status") == "CANCELLED") {
+        if ("CANCELLED".equals(variables.get("status"))) {
             Map<String, Object> cancellationDetails = parser.objectToMap(payment.get("cancellationDetails"));
             assertEquals("7", cancellationDetails.get("code"));
             assertEquals("Política do Moip", cancellationDetails.get("description"));

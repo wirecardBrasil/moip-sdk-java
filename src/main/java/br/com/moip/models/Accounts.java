@@ -5,6 +5,7 @@ import br.com.moip.api.request.RequestProperties;
 import br.com.moip.api.request.RequestPropertiesBuilder;
 import org.apache.http.entity.ContentType;
 
+import java.util.List;
 import java.util.Map;
 
 public class Accounts {
@@ -127,5 +128,56 @@ public class Accounts {
                 .build();
 
         return this.requestMaker.doRequest(props);
+    }
+
+    /**
+     * This method allows you to create a bank account to a Moip account. You can use a bank account to make
+     * transfers and refunds on Moip.
+     *
+     * @param   body
+     *          {@code Map<String, Object>} the request body.
+     *
+     * @param   moipAccountId
+     *          {@code String} the Moip account external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public Map<String, Object> createBankAccount(Map<String, Object> body, String moipAccountId, Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("POST")
+                .endpoint(String.format("%s/%s/bankaccounts", ENDPOINT, moipAccountId))
+                .body(body)
+                .type(Accounts.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return this.requestMaker.doRequest(props);
+    }
+
+    /**
+     * This method allows you to list all bank account of a Moip account.
+     *
+     * @param   moipAccountId
+     *          {@code String} the Moip account external ID.
+     *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
+     * @return  {@code Map<String, Object>}
+     */
+    public List<Map<String, Object>> listBankAccounts(String moipAccountId, Setup setup) {
+        this.requestMaker = new RequestMaker(setup);
+        RequestProperties props = new RequestPropertiesBuilder()
+                .method("GET")
+                .endpoint(String.format("%s/%s/bankaccounts", ENDPOINT, moipAccountId))
+                .type(BankAccounts.class)
+                .contentType(CONTENT_TYPE)
+                .build();
+
+        return this.requestMaker.getList(props);
     }
 }

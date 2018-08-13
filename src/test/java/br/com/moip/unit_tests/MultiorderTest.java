@@ -21,15 +21,17 @@ public class MultiorderTest {
 
     @Rule
     public Player player = new Player();
+    private Parser parser = new Parser();
+    private MultipaymentTest multipaymentTest = new MultipaymentTest();
     private Setup setup;
     private Map<String, Object> body;
-    private Parser parser;
+    private Map<String, Object> variables;
 
     @Before
     public void initialize() {
         this.body = new HashMap<>();
+        this.variables = new HashMap<>();
         this.setup = new SetupFactory().setupOAuth(player.getURL("").toString());
-        this.parser = new Parser();
     }
 
     @Play("multiorder/create")
@@ -104,6 +106,40 @@ public class MultiorderTest {
 
         Map<String, Object> payOnlineBankDebitItau = parser.objectToMap(checkout.get("payOnlineBankDebitItau"));
         assertEquals("https://checkout-sandbox.moip.com.br/debit/itau/MOR-R6Q839MNWWO2", payOnlineBankDebitItau.get("redirectHref"));
+    }
+
+    @Play("multiorder/pay_with_credit_card")
+    @Test
+    public void payWithCreditCardTest() {
+
+        Map<String, Object> multipayment = Moip.API.multiorders().pay(body, "MOR-R6Q839MNWWO2", setup);
+
+        assertEquals("MPY-TTNVH6J6KBNC", multipayment.get("id"));
+        assertEquals("WAITING", multipayment.get("status"));
+
+        Map<String, Object> amount = parser.objectToMap(multipayment.get("amount"));
+        assertEquals(8000, amount.get("total"));
+        assertEquals("BRL", amount.get("currency"));
+
+        assertEquals(1, multipayment.get("installmentCount"));
+
+        List<Map<String, Object>> payments = parser.objectToList(multipayment.get("payments"));
+        variables.put("id", "PAY-DY1WE4PCPMLZ");
+        variables.put("status", "WAITING");
+        variables.put("delayCapture", false);
+        multipaymentTest.testPaymentsFromMultipayment(payments.get(0), variables);
+
+        variables.put("id", "PAY-7P670FWYIZ82");
+        variables.put("status", "WAITING");
+        variables.put("delayCapture", false);
+        multipaymentTest.testPaymentsFromMultipayment(payments.get(1),variables);
+
+        Map<String, Object> links = parser.objectToMap(multipayment.get("_links"));
+        Map<String, Object> self = parser.objectToMap(links.get("self"));
+        assertEquals("https://sandbox.moip.com.br/v2/multipayments/MPY-TTNVH6J6KBNC", self.get("href"));
+
+        Map<String, Object> multiorder = parser.objectToMap(links.get("multiorder"));
+        assertEquals("https://sandbox.moip.com.br/v2/multiorders/MOR-R6Q839MNWWO2", multiorder.get("href"));
     }
 
     private void customer(Map<String, Object> customer) {

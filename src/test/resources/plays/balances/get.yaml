@@ -1,0 +1,35 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/balances
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+      Accept: application/json;version=2.1
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "unavailable": [
+              {
+                  "amount": 0,
+                  "currency": "BRL"
+              }
+          ],
+          "future": [
+              {
+                  "amount": 64629427,
+                  "currency": "BRL"
+              }
+          ],
+          "current": [
+              {
+                  "amount": 1094194873,
+                  "currency": "BRL"
+              }
+          ]
+      }

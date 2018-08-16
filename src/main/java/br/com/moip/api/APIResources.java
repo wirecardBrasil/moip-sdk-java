@@ -12,6 +12,7 @@ import br.com.moip.models.Multiorders;
 import br.com.moip.models.Multipayments;
 import br.com.moip.models.BankAccounts;
 import br.com.moip.models.Balances;
+import br.com.moip.models.Entries;
 
 public class APIResources {
 
@@ -27,6 +28,7 @@ public class APIResources {
     private static Multipayments multipaymentsInstance = new Multipayments();
     private static BankAccounts bankAccountsInstance = new BankAccounts();
     private static Balances balancesInstance = new Balances();
+    private static Entries entriesInstance = new Entries();
 
     /**
      * This method is used to get a instance of customer object.
@@ -56,4 +58,6 @@ public class APIResources {
     public static BankAccounts bankAccounts() { return bankAccountsInstance; }
 
     public static Balances balances() { return balancesInstance; }
+
+    public static Entries entries() { return entriesInstance; }
 }

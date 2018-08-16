@@ -1,0 +1,56 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/entries/ENT-2JHP5A593QSW
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+      Accept: application/json;version=2.1
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "reschedule": [],
+          "scheduledFor": "2012-08-31T16:59:36.000Z",
+          "status": "SETTLED",
+          "moipAccount": {
+              "id": "MPA-CULBBYHD11"
+          },
+          "_links": {
+              "self": {
+                  "title": "ENT-2JHP5A593QSW",
+                  "href": "https://sandbox.moip.com.br/v2/entries/ENT-2JHP5A593QSW"
+              }
+          },
+          "fees": [
+              {
+                  "amount": 150,
+                  "type": "TRANSACTION"
+              }
+          ],
+          "type": "CREDIT_CARD",
+          "ownId": "",
+          "updatedAt": "2014-04-16T16:16:12.000Z",
+          "id": "ENT-2JHP5A593QSW",
+          "amount": {
+              "fee": 150,
+              "total": 150,
+              "liquid": 0,
+              "currency": "BRL"
+          },
+          "operation": "CREDIT",
+          "createdAt": "2014-04-16T16:16:12.000Z",
+          "event": "PAY-AQITTDNDKBU9",
+          "description": "Cartao de credito - Pedido ORD-UF4E00XMFDL1",
+          "occurrence": {
+              "to": 1,
+              "in": 1
+          },
+          "blocked": false,
+          "settledAt": "2012-08-31T00:00:00.000Z",
+          "additionalId": 145470
+      }

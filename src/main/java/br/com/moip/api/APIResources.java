@@ -1,18 +1,6 @@
 package br.com.moip.api;
 
-import br.com.moip.models.Customers;
-import br.com.moip.models.Orders;
-import br.com.moip.models.Payments;
-import br.com.moip.models.Refunds;
-import br.com.moip.models.NotificationPreferences;
-import br.com.moip.models.Webhooks;
-import br.com.moip.models.Accounts;
-import br.com.moip.models.Connect;
-import br.com.moip.models.Multiorders;
-import br.com.moip.models.Multipayments;
-import br.com.moip.models.BankAccounts;
-import br.com.moip.models.Balances;
-import br.com.moip.models.Entries;
+import br.com.moip.models.*;
 
 public class APIResources {
 
@@ -29,6 +17,7 @@ public class APIResources {
     private static BankAccounts bankAccountsInstance = new BankAccounts();
     private static Balances balancesInstance = new Balances();
     private static Entries entriesInstance = new Entries();
+    private static Transfers transfersInstance = new Transfers();
 
     /**
      * This method is used to get a instance of customer object.
@@ -60,4 +49,6 @@ public class APIResources {
     public static Balances balances() { return balancesInstance; }
 
     public static Entries entries() { return entriesInstance; }
+
+    public static Transfers transfers() { return transfersInstance; }
 }

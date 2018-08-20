@@ -14,6 +14,7 @@ import br.com.moip.models.BankAccounts;
 import br.com.moip.models.Balances;
 import br.com.moip.models.Entries;
 import br.com.moip.models.Transfers;
+import br.com.moip.models.Escrows;
 
 public class APIResources {
 
@@ -31,6 +32,7 @@ public class APIResources {
     private static Balances balancesInstance = new Balances();
     private static Entries entriesInstance = new Entries();
     private static Transfers transfersInstance = new Transfers();
+    private static Escrows escrowsInstance = new Escrows();
 
     /**
      * This method is used to get a instance of customer object.
@@ -64,4 +66,6 @@ public class APIResources {
     public static Entries entries() { return entriesInstance; }
 
     public static Transfers transfers() { return transfersInstance; }
+
+    public static Escrows escrows() { return escrowsInstance; }
 }

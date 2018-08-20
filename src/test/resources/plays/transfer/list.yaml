@@ -1,0 +1,78 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/transfers
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "summary": {
+              "amount": 659741662,
+              "count": 31776
+          },
+          "transfers": [
+              {
+                  "fee": 0,
+                  "amount": 500,
+                  "updatedAt": "2018-08-17T17:45:52.000Z",
+                  "id": "TRA-EW1UQ14495JI",
+                  "transferInstrument": {
+                      "moipAccount": {
+                          "id": "MPA-92DC9F7EF8B5",
+                          "email": "wemersonsantoos@hotmail.com",
+                          "login": "wemersonsantoos@hotmail.com",
+                          "fullname": "Wemerson Santos"
+                      },
+                      "senderAccountId": "MPA-CULBBYHD11",
+                      "method": "MOIP_ACCOUNT"
+                  },
+                  "status": "REVERSED",
+                  "createdAt": "2018-08-17T17:45:16.000Z",
+                  "role": "PAYER",
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/transfers/TRA-EW1UQ14495JI"
+                      }
+                  }
+              },
+              {
+                  "fee": 0,
+                  "amount": 500,
+                  "updatedAt": "2018-08-16T21:31:18.000Z",
+                  "id": "TRA-0KMLJYRDL1XR",
+                  "transferInstrument": {
+                      "moipAccount": {
+                          "id": "MPA-5D5053C0B4A4",
+                          "email": "mbnakaya25@gmail.com",
+                          "login": "mbnakaya25@gmail.com",
+                          "fullname": "Matheus Barbosa Nakaya"
+                      },
+                      "senderAccountId": "MPA-CULBBYHD11",
+                      "method": "MOIP_ACCOUNT"
+                  },
+                  "status": "COMPLETED",
+                  "createdAt": "2018-08-16T21:31:18.000Z",
+                  "role": "PAYER",
+                  "_links": {
+                      "self": {
+                          "href": "https://sandbox.moip.com.br/v2/transfers/TRA-0KMLJYRDL1XR"
+                      }
+                  }
+              }
+          ],
+          "_links": {
+              "previous": {
+                  "href": "https://sandbox.moip.com.br/v2/transfers?offset=0&limit=20"
+              },
+              "next": {
+                  "href": "https://sandbox.moip.com.br/v2/transfers?offset=20&limit=20"
+              }
+          }
+      }

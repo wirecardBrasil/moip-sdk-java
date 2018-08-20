@@ -1,0 +1,114 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/transfers/TRA-EW1UQ14495JI
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "fee": 0,
+          "amount": 500,
+          "updatedAt": "2018-08-17T17:45:52.000Z",
+          "id": "TRA-EW1UQ14495JI",
+          "transferInstrument": {
+              "moipAccount": {
+                  "id": "MPA-92DC9F7EF8B5",
+                  "email": "wemersonsantoos@hotmail.com",
+                  "login": "wemersonsantoos@hotmail.com",
+                  "fullname": "Wemerson Santos"
+              },
+              "senderAccountId": "MPA-CULBBYHD11",
+              "method": "MOIP_ACCOUNT"
+          },
+          "status": "REVERSED",
+          "events": [
+              {
+                  "createdAt": "2018-08-17T17:45:16.000Z",
+                  "description": "Requested",
+                  "type": "TRANSFER.REQUESTED"
+              },
+              {
+                  "createdAt": "2018-08-17T17:45:52.000Z",
+                  "description": "Reversed",
+                  "type": "TRANSFER.REVERSED"
+              }
+          ],
+          "createdAt": "2018-08-17T17:45:16.000Z",
+          "entries": [
+              {
+                  "external_id": "ENT-2AZIW958PIID",
+                  "reschedule": [],
+                  "scheduledFor": "2018-08-17T17:45:15.000Z",
+                  "status": "SETTLED",
+                  "moipAccount": {
+                      "account": "MPA-CULBBYHD11"
+                  },
+                  "fees": [],
+                  "type": "TRANSFER_TO_MOIP_ACCOUNT_PAID",
+                  "grossAmount": -500,
+                  "moipAccountId": 4477,
+                  "updatedAt": "2018-08-17T17:45:16.000Z",
+                  "id": 36943353,
+                  "installment": {
+                      "amount": 1,
+                      "number": 1
+                  },
+                  "references": [
+                      {
+                          "value": "APP-ML6Y8VWT7XFN",
+                          "type": "CHANNEL"
+                      }
+                  ],
+                  "eventId": "TRA-EW1UQ14495JI",
+                  "createdAt": "2018-08-17T17:45:16.000Z",
+                  "description": "Transferencia entre contas Moip realizada - TRA-EW1UQ14495JI",
+                  "blocked": false,
+                  "settledAt": "2018-08-17T17:45:16.000Z",
+                  "liquidAmount": -500
+              },
+              {
+                  "external_id": "ENT-HAIB2LI7XWOI",
+                  "reschedule": [],
+                  "scheduledFor": "2018-08-17T17:45:52.000Z",
+                  "status": "SETTLED",
+                  "moipAccount": {
+                      "account": "MPA-CULBBYHD11"
+                  },
+                  "fees": [],
+                  "type": "TRANSFER_TO_MOIP_ACCOUNT_PAID_REVERTED",
+                  "grossAmount": 500,
+                  "moipAccountId": 4477,
+                  "updatedAt": "2018-08-17T17:45:52.000Z",
+                  "id": 36943360,
+                  "installment": {
+                      "amount": 1,
+                      "number": 1
+                  },
+                  "references": [
+                      {
+                          "value": "REF-BT4DYML6K32R",
+                          "type": "REFUND"
+                      }
+                  ],
+                  "eventId": "TRA-EW1UQ14495JI",
+                  "createdAt": "2018-08-17T17:45:52.000Z",
+                  "description": "Transferencia entre contas revertida - TRA-EW1UQ14495JI",
+                  "blocked": false,
+                  "settledAt": "2018-08-17T17:45:52.000Z",
+                  "liquidAmount": 500
+              }
+          ],
+          "role": "PAYER",
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/transfers/TRA-EW1UQ14495JI"
+              }
+          }
+      }

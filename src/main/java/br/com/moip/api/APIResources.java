@@ -34,11 +34,6 @@ public class APIResources {
     private static Transfers transfersInstance = new Transfers();
     private static Escrows escrowsInstance = new Escrows();
 
-    /**
-     * This method is used to get a instance of customer object.
-     *
-     * @return  {@code Customers}
-     */
     public static Customers customers() { return customerInstance; }
 
     public static Orders orders() { return orderInstance; }

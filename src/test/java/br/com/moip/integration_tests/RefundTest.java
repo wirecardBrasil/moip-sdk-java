@@ -67,7 +67,7 @@ public class RefundTest {
         refundingInstrument.put("method", "BANK_ACCOUNT");
         refundingInstrument.put("bankAccount", bankAccount);
 
-        // Refund order bank account //
+        // Refunds order bank account //
         Map<String, Object> refundBankAccountBody = new HashMap<>();
         refundBankAccountBody.put("refundingInstrument", refundingInstrument);
 

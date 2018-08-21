@@ -1,0 +1,54 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/transfers/TRA-EW1UQ14495JI/reverse
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "fee": 0,
+          "amount": 500,
+          "updatedAt": "2018-08-17T17:45:52.372Z",
+          "id": "TRA-EW1UQ14495JI",
+          "transferInstrument": {
+              "moipAccount": {
+                  "id": "MPA-92DC9F7EF8B5",
+                  "email": "wemersonsantoos@hotmail.com",
+                  "login": "wemersonsantoos@hotmail.com",
+                  "fullname": "Wemerson Santos"
+              },
+              "senderAccountId": "MPA-CULBBYHD11",
+              "method": "MOIP_ACCOUNT"
+          },
+          "status": "REVERSED",
+          "events": [
+              {
+                  "createdAt": "2018-08-17T17:45:16.000Z",
+                  "description": "Requested",
+                  "type": "TRANSFER.REQUESTED"
+              },
+              {
+                  "createdAt": "2018-08-17T17:45:52.000Z",
+                  "description": "Reversed",
+                  "type": "TRANSFER.REVERSED"
+              }
+          ],
+          "createdAt": "2018-08-17T17:45:16.000Z",
+          "entries": [],
+          "role": "RECEIVER",
+          "_links": {
+              "reverse": {
+                  "href": "https://sandbox.moip.com.br/v2/transfers/TRA-EW1UQ14495JI/reverse"
+              },
+              "self": {
+                  "href": "https://sandbox.moip.com.br/v2/transfers/TRA-EW1UQ14495JI"
+              }
+          }
+      }

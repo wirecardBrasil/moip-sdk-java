@@ -1,0 +1,66 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/accounts/MPA-CULBBYHD11/bankaccounts
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      [
+          {
+              "id": "BKA-KS1LVCCH0P25",
+              "agencyNumber": "1111",
+              "accountNumber": "11111111",
+              "holder": {
+                  "thirdParty": false,
+                  "taxDocument": {
+                      "number": "255.328.259-12",
+                      "type": "CPF"
+                  },
+                  "fullname": "Jose Silva dos Santos"
+              },
+              "status": "NOT_VERIFIED",
+              "createdAt": "2016-04-07T15:25:57.000-03:00",
+              "accountCheckNumber": "1",
+              "_links": {
+                  "self": {
+                      "href": "https://sandbox.moip.com.br//accounts/BKA-KS1LVCCH0P25/bankaccounts"
+                  }
+              },
+              "bankName": "BANCO DO BRASIL S.A.",
+              "type": "CHECKING",
+              "agencyCheckNumber": "1",
+              "bankNumber": "001"
+          },
+          {
+              "id": "BKA-OHXN5SOS8RQR",
+              "agencyNumber": "12345",
+              "accountNumber": "12345678",
+              "holder": {
+                  "thirdParty": false,
+                  "taxDocument": {
+                      "number": "255.328.259-12",
+                      "type": "CPF"
+                  },
+                  "fullname": "Jose Silva dos Santos"
+              },
+              "status": "IN_VERIFICATION",
+              "createdAt": "2016-04-07T15:50:10.000-03:00",
+              "accountCheckNumber": "7",
+              "_links": {
+                  "self": {
+                      "href": "https://sandbox.moip.com.br//accounts/BKA-OHXN5SOS8RQR/bankaccounts"
+                  }
+              },
+              "bankName": "BANCO BRADESCO S.A.",
+              "type": "CHECKING",
+              "agencyCheckNumber": "0",
+              "bankNumber": "237"
+          }
+      ]

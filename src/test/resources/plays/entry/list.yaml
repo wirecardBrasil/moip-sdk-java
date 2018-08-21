@@ -1,0 +1,95 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/entries
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+      Accept: application/json;version=2.1
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "summary": {
+              "amount": 1494494396,
+              "count": 48561
+          },
+          "_links": {
+              "previous": {
+                  "href": "https://sandbox.moip.com.br/v2/entries?offset=0&limit=20"
+              },
+              "next": {
+                  "href": "https://sandbox.moip.com.br/v2/entries?offset=20&limit=20"
+              }
+          },
+          "entries": [
+              {
+                  "reschedule": [],
+                  "scheduledFor": "2012-08-31T16:59:36.000Z",
+                  "status": "SETTLED",
+                  "_links": {
+                      "self": {
+                          "title": "ENT-2JHP5A593QSW",
+                          "href": "https://sandbox.moip.com.br/v2/entries/ENT-2JHP5A593QSW"
+                      }
+                  },
+                  "type": "CREDIT_CARD",
+                  "ownId": "",
+                  "updatedAt": "2014-04-16T16:16:12.000Z",
+                  "id": "ENT-2JHP5A593QSW",
+                  "amount": {
+                      "fee": 150,
+                      "total": 150,
+                      "liquid": 0,
+                      "currency": "BRL"
+                  },
+                  "operation": "CREDIT",
+                  "createdAt": "2014-04-16T16:16:12.000Z",
+                  "event": "PAY-AQITTDNDKBU9",
+                  "description": "Cartao de credito - Pedido ORD-UF4E00XMFDL1",
+                  "occurrence": {
+                      "to": 1,
+                      "in": 1
+                  },
+                  "blocked": false,
+                  "settledAt": "2012-08-31T00:00:00.000Z",
+                  "additionalId": 145470
+              },
+              {
+                  "reschedule": [],
+                  "scheduledFor": "2012-09-07T00:00:00.000Z",
+                  "status": "SETTLED",
+                  "_links": {
+                      "self": {
+                          "title": "ENT-RSYUVS4C59PO",
+                          "href": "https://sandbox.moip.com.br/v2/entries/ENT-RSYUVS4C59PO"
+                      }
+                  },
+                  "type": "MOIP_WALLET",
+                  "ownId": "",
+                  "updatedAt": "2014-04-16T16:16:12.000Z",
+                  "id": "ENT-RSYUVS4C59PO",
+                  "amount": {
+                      "fee": 83,
+                      "total": 1500,
+                      "liquid": 1417,
+                      "currency": "BRL"
+                  },
+                  "operation": "CREDIT",
+                  "createdAt": "2014-04-16T16:16:12.000Z",
+                  "event": "PAY-VCOEO2GV65DE",
+                  "description": "Conta Moip - Pedido ORD-F4LJ3TF0ZGRN",
+                  "occurrence": {
+                      "to": 1,
+                      "in": 1
+                  },
+                  "blocked": false,
+                  "settledAt": "2012-09-07T00:00:00.000Z",
+                  "additionalId": 145466
+              }
+          ]
+      }

@@ -1,0 +1,39 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/accounts/MPA-CULBBYHD11/bankaccounts
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "BKA-SD5MQZEBIM1E",
+          "agencyNumber": "12345",
+          "holder": {
+              "taxDocument": {
+                  "number": "255.328.259-12",
+                  "type": "CPF"
+              },
+              "thirdParty": false,
+              "fullname": "Jose Silva dos Santos"
+          },
+          "accountNumber": "12345678",
+          "status": "NOT_VERIFIED",
+          "createdAt": "2018-08-13T17:03:35.021-03:00",
+          "accountCheckNumber": "7",
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br//accounts/BKA-SD5MQZEBIM1E/bankaccounts"
+              }
+          },
+          "bankName": "BANCO BRADESCO S.A.",
+          "type": "CHECKING",
+          "agencyCheckNumber": "0",
+          "bankNumber": "237"
+      }

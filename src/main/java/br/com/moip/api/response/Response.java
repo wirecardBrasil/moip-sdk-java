@@ -23,6 +23,26 @@ public class Response extends HashMap<String, Object> {
      * @return  {@code Map}
      */
     public Map<String, Object> jsonToMap(String json) {
+
+        /*
+         * This if block treats the /v2/accounts/exists response. Currently the endpoint returns the status
+         * code on its response body, breaking the JSON conversion.
+         */
+        if ("200".equals(json)) {
+            this.responseBody.put("code", 200);
+            return this.responseBody;
+        }
+
+        if ("400".equals(json)) {
+            this.responseBody.put("code", 400);
+            return this.responseBody;
+        }
+
+        if ("404".equals(json)) {
+            this.responseBody.put("code", 404);
+            return this.responseBody;
+        }
+
         if (!json.equals("")) {
             ObjectMapper mapper = new ObjectMapper();
             try {
@@ -49,11 +69,3 @@ public class Response extends HashMap<String, Object> {
         return this.responseBodyList;
     }
 }
-
-/* Este método resolve grande parte do problema, porém não resolve o problema por completo.
- * Precisamos fazer com que cada nó do JSON se converta em um objeto do seu respectivo model.
- * Ex: o nó "taxDocument" precisa ser convertido em um objeto da classe TaxDocument.
- *
- * Talvez seja possível trabalhar com o [type], o atributo da classe RequestProperties, que tem
- * como objetivo indicar a qual classe/model aquele objeto pertence.
- */

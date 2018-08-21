@@ -1,0 +1,39 @@
+!play
+interactions:
+-
+  request:
+    uri: /v2/bankaccounts/BKA-EQW51MWMAO22
+    headers:
+      Content-Type: application/json
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: GET
+  response:
+    status: 200
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "id": "BKA-EQW51MWMAO22",
+          "agencyNumber": "1111",
+          "holder": {
+              "taxDocument": {
+                  "number": "255.328.259-12",
+                  "type": "CPF"
+              },
+              "thirdParty": false,
+              "fullname": "Jose Silva dos Santos"
+          },
+          "accountNumber": "11111111",
+          "status": "IN_VERIFICATION",
+          "createdAt": "2016-04-07T15:23:48.000-03:00",
+          "accountCheckNumber": "1",
+          "_links": {
+              "self": {
+                  "href": "https://sandbox.moip.com.br//accounts/BKA-EQW51MWMAO22/bankaccounts"
+              }
+          },
+          "bankName": "BANCO DO BRASIL S.A.",
+          "type": "CHECKING",
+          "agencyCheckNumber": "1",
+          "bankNumber": "001"
+      }

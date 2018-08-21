@@ -1,0 +1,25 @@
+!play
+interactions:
+-
+  request:
+    uri: /oauth/token
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+      Authorization: OAuth 8833c9eb036543b6b0acd685a76c9ead_v2
+    method: POST
+  response:
+    status: 201
+    headers:
+      "Content-Type": application/json
+    body: |
+      {
+          "accessToken": "0c6937d062874507b9c19748d8e0f8df_v2",
+          "access_token": "0c6937d062874507b9c19748d8e0f8df_v2",
+          "expires_in": "2028-08-02",
+          "refreshToken": "c1384b7aa4a8432b8fcfad26622cb917_v2",
+          "refresh_token": "c1384b7aa4a8432b8fcfad26622cb917_v2",
+          "scope": "TRANSFER_FUNDS,RECEIVE_FUNDS",
+          "moipAccount": {
+              "id": "MPA-14C9EE706C55"
+          }
+      }

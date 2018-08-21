@@ -7,7 +7,7 @@ import org.apache.http.entity.ContentType;
 
 import java.util.Map;
 
-public class Order {
+public class Orders {
 
     private static final String ENDPOINT = "/v2/orders";
     private static final ContentType CONTENT_TYPE = ContentType.APPLICATION_JSON;
@@ -30,7 +30,7 @@ public class Order {
                 .method("POST")
                 .endpoint(ENDPOINT)
                 .body(body)
-                .type(Order.class)
+                .type(Orders.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -53,7 +53,7 @@ public class Order {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/%s", ENDPOINT, orderId))
-                .type(Order.class)
+                .type(Orders.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -73,7 +73,7 @@ public class Order {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(ENDPOINT)
-                .type(Order.class)
+                .type(Orders.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 
@@ -96,7 +96,7 @@ public class Order {
         RequestProperties props = new RequestPropertiesBuilder()
                 .method("GET")
                 .endpoint(String.format("%s/%s/payments", ENDPOINT, orderId))
-                .type(Order.class)
+                .type(Orders.class)
                 .contentType(CONTENT_TYPE)
                 .build();
 

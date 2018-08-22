@@ -25,7 +25,7 @@ public class Moip {
             properties.load(inputStream);
 
             USER_AGENT = properties.getProperty("userAgent");
-        } catch (Exception e) { // verificar tipo de exception
+        } catch (Exception e) {
             USER_AGENT = "MoipJavaSDK/UnknownVersion (+https://github.com/moip/moip-sdk-java/)";
         }
     }

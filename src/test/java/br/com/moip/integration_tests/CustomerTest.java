@@ -10,8 +10,6 @@ import br.com.moip.models.Setup;
 import static br.com.moip.helpers.PayloadFactory.payloadFactory;
 import static br.com.moip.helpers.PayloadFactory.value;
 
-import org.junit.Test;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +22,6 @@ public class CustomerTest {
 
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    @Test
     public void createCustomerTest() {
 
         Map<String, Object> taxDocument = payloadFactory(

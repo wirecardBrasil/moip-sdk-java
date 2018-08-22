@@ -33,9 +33,11 @@ public class ConnectTest {
     @Test
     public void buildUrl() {
 
+        this.setup = new Setup().setEnvironment(Setup.Environment.CONNECT_SANDBOX);
+
         String[] scope = {"TRANSFER_FUNDS", "RECEIVE_FUNDS"};
 
-        String url = Moip.API.connect().buildUrl("APP-DVLJHW59IKOS", "http://www.exemplo.com.br/retorno", scope);
+        String url = Moip.API.connect().buildUrl("APP-DVLJHW59IKOS", "http://www.exemplo.com.br/retorno", scope, setup);
 
         assertEquals("https://connect-sandbox.moip.com.br/oauth/authorize?response_type=code&client_id=APP-DVLJHW59IKOS" +
                 "&redirect_uri=http://www.exemplo.com.br/retorno&scope=TRANSFER_FUNDS,RECEIVE_FUNDS", url);

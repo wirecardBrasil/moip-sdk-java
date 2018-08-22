@@ -7,6 +7,11 @@ import br.com.moip.exception.UnexpectedException;
 import br.com.moip.exception.ValidationException;
 import br.com.moip.models.Setup;
 
+import static br.com.moip.helpers.PayloadFactory.payloadFactory;
+import static br.com.moip.helpers.PayloadFactory.value;
+
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,38 +24,39 @@ public class CustomerTest {
 
     private Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
 
-    private Map<String, Object> customerRequestBody = new HashMap<>();
-
-    private Map<String, Object> taxDocument = new HashMap<>();
-
-    private Map<String, Object> phone = new HashMap<>();
-
-    private Map<String, Object> shippingAddress = new HashMap<>();
-
+    @Test
     public void createCustomerTest() {
 
-        taxDocument.put("type", "CPF");
-        taxDocument.put("number", "10013390023");
+        Map<String, Object> taxDocument = payloadFactory(
+                value("type", "CPF"),
+                value("number", "10013390023")
+        );
 
-        phone.put("countryCode", "55");
-        phone.put("areaCode", "11");
-        phone.put("number", "22226842");
+        Map<String, Object> phone = payloadFactory(
+                value("countryCode", "55"),
+                value("areaCode", "11"),
+                value("number", "22226842")
+        );
 
-        shippingAddress.put("city", "Sao Paulo");
-        shippingAddress.put("district", "Itaim BiBi");
-        shippingAddress.put("street", "Av. Brigadeiro Faria Lima");
-        shippingAddress.put("streetNumber", "3064");
-        shippingAddress.put("state", "SP");
-        shippingAddress.put("country", "BRA");
-        shippingAddress.put("zipCode", "01451001");
+        Map<String, Object> shippingAddress = payloadFactory(
+                value("city", "Sao Paulo"),
+                value("district", "Itaim BiBi"),
+                value("street", "Av. Brigadeiro Faria Lima"),
+                value("streetNumber", "3064"),
+                value("state", "SP"),
+                value("country", "BRA"),
+                value("zipCode", "01451001")
+        );
 
-        customerRequestBody.put("ownId", "ffaajjsnoafg4qq1je24");
-        customerRequestBody.put("fullname", "Test Moip da Silva");
-        customerRequestBody.put("email", "test.moip@mail.com");
-        customerRequestBody.put("birthDate", "1980-5-10");
-        customerRequestBody.put("taxDocument", taxDocument);
-        customerRequestBody.put("phone", phone);
-        customerRequestBody.put("shippingAddress", shippingAddress);
+        Map<String, Object> customerRequestBody = payloadFactory(
+                value("ownId", "amslmfas12431mfpa"),
+                value("fullname", "Test Moip da Silva"),
+                value("email", "test.moip@mail.com"),
+                value("birthDate", "1980-5-10"),
+                value("taxDocument", taxDocument),
+                value("phone", phone),
+                value("shippingAddress", shippingAddress)
+        );
 
         try {
 

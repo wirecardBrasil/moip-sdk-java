@@ -16,9 +16,6 @@ public class Moip {
 
     public static final String CONNECT_PRODUCTION_URL = "https://connect.moip.com.br";
 
-    /**
-     *
-     */
     private static String USER_AGENT;
 
     static {

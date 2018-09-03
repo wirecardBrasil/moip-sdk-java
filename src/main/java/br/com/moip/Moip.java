@@ -16,9 +16,6 @@ public class Moip {
 
     public static final String CONNECT_PRODUCTION_URL = "https://connect.moip.com.br";
 
-    /**
-     *
-     */
     private static String USER_AGENT;
 
     static {
@@ -28,7 +25,7 @@ public class Moip {
             properties.load(inputStream);
 
             USER_AGENT = properties.getProperty("userAgent");
-        } catch (Exception e) { // verificar tipo de exception
+        } catch (Exception e) {
             USER_AGENT = "MoipJavaSDK/UnknownVersion (+https://github.com/moip/moip-sdk-java/)";
         }
     }

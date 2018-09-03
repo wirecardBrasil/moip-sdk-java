@@ -18,7 +18,7 @@ public class ConnectTest {
 
         String[] scope = {"TRANSFER_FUNDS", "RECEIVE_FUNDS"};
 
-        String url = Moip.API.connect().buildUrl("APP-DVLJHW59IKOS", "http://www.exemplo.com.br/retorno", scope);
+        String url = Moip.API.connect().buildUrl("APP-DVLJHW59IKOS", "http://www.exemplo.com.br/retorno", scope, setup);
 
         System.out.println(url);
     }

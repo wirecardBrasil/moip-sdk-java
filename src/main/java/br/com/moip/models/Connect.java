@@ -26,10 +26,14 @@ public class Connect {
      *          {@code String array} the array of permissions that you want to request.
      *          Ex: RECEIVE_FUNDS, MANAGE_ACCOUNT_INFO, TRANSFER_FUNDS...
      *
+     * @param   setup
+     *          {@code Setup} the setup object.
+     *
      * @return  {@code String}
      */
-    public String buildUrl(String clientId, String redirectUri, String[] scope) {
-        String url = "https://connect-sandbox.moip.com.br/oauth/authorize";
+    public String buildUrl(String clientId, String redirectUri, String[] scope, Setup setup) {
+
+        String url = setup.getEnvironment() + "/oauth/authorize";
 
         url += String.format("?response_type=code&client_id=%s&redirect_uri=%s&scope=", clientId, redirectUri);
 

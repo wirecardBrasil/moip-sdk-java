@@ -3,7 +3,7 @@
  */
 package br.com.moip.models.error;
 
-class Error {
+public class Error {
 
     private String code;
     private String path;

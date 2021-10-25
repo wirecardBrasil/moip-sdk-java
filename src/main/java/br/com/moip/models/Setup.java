@@ -3,6 +3,7 @@ package br.com.moip.models;
 import br.com.moip.auth.Authentication;
 
 import static br.com.moip.Moip.PRODUCTION_URL;
+import static br.com.moip.Moip.PRODUCTION_WAF_URL;
 import static br.com.moip.Moip.SANDBOX_URL;
 import static br.com.moip.Moip.CONNECT_PRODUCTION_URL;
 import static br.com.moip.Moip.CONNECT_SANDBOX_URL;
@@ -53,6 +54,7 @@ public class Setup {
 
             case SANDBOX : this.environment = SANDBOX_URL; break;
             case PRODUCTION : this.environment = PRODUCTION_URL; break;
+            case PRODUCTION_WAF: this.environment = PRODUCTION_WAF_URL; break;
             case CONNECT_SANDBOX : this.environment = CONNECT_SANDBOX_URL; break;
             case CONNECT_PRODUCTION : this.environment = CONNECT_PRODUCTION_URL; break;
 
@@ -138,5 +140,5 @@ public class Setup {
     /**
      * These enums are used to difference all Moip API environments.
      */
-    public enum Environment { SANDBOX, CONNECT_SANDBOX, PRODUCTION, CONNECT_PRODUCTION }
+    public enum Environment { SANDBOX, CONNECT_SANDBOX, PRODUCTION, CONNECT_PRODUCTION, PRODUCTION_WAF }
 }

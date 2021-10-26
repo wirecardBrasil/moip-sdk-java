@@ -12,8 +12,6 @@ public class Moip {
 
     public static final String PRODUCTION_URL = "https://api.moip.com.br";
 
-    public static final String PRODUCTION_WAF_URL = "https://api-waf.moip.com.br";
-
     public static final String CONNECT_SANDBOX_URL = "https://connect-sandbox.moip.com.br";
 
     public static final String CONNECT_PRODUCTION_URL = "https://connect.moip.com.br";

@@ -4,7 +4,7 @@ apply plugin: 'signing'
 
 group 'br.com.moip'
 archivesBaseName = "sdk-java"
-version '1.1.0'
+version '1.1.2'
 
 description = "Java SDK for Moip APIs integration"
 
@@ -51,11 +51,11 @@ uploadArchives {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: System.getenv('MVN_USERNAME'), password: System.getenv('MVN_PASSWORD'))
+                authentication(userName: ossrhUsername, password: ossrhPassword)
             }
 
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: System.getenv('MVN_USERNAME'), password: System.getenv('MVN_PASSWORD'))
+                authentication(userName: ossrhUsername, password: ossrhPassword)
             }
 
             pom.project {

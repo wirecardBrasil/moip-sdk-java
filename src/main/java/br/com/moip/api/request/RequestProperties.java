@@ -37,4 +37,10 @@ public class RequestProperties {
         return true;
     }
 
+    public boolean shouldSendBody(){
+        if(body != null)
+            return true;
+        return getMethod().equals("POST") || getMethod().equals("PUT") || getMethod().equals("PATCH");
+    }
+
 }

@@ -92,7 +92,7 @@ public class RequestMaker extends Moip {
             LOGGER.debug("---> {} {}", requestProps.method, connection.getURL().toString());
             logHeaders(connection.getRequestProperties().entrySet());
 
-            if (requestProps.body != null) {
+            if (requestProps.shouldSendBody()) {
                 connection.setDoOutput(true);
                 String body = tools.getBody(requestProps.body, requestProps.contentType);
 
@@ -157,7 +157,7 @@ public class RequestMaker extends Moip {
             LOGGER.debug("---> {} {}", requestProps.method, connection.getURL().toString());
             logHeaders(connection.getRequestProperties().entrySet());
 
-            if (requestProps.body != null) {
+            if (requestProps.shouldSendBody()) {
                 connection.setDoOutput(true);
                 String body = tools.getBody(requestProps.body, requestProps.contentType);
 
